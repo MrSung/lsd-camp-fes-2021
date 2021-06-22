@@ -1,5 +1,5 @@
-import { Home } from '@/components/pages/home';
+import { Home } from '@/components/pages/home'
 
-const IndexPage = () => <Home />;
+const IndexPage = () => <Home />
 
-export default IndexPage;
+export default IndexPage

@@ -1,8 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from 'next/head'
+import Image from 'next/image'
+
+import { DefaultTemplate } from '@/components/templates'
 
 export const Home = () => (
-  <div>
+  <DefaultTemplate>
     <Head>
       <title>TypeScript starter for Next.js</title>
       <meta
@@ -18,5 +20,5 @@ export const Home = () => (
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </span>
     </main>
-  </div>
-);
+  </DefaultTemplate>
+)
