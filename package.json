@@ -16,7 +16,7 @@
     "start": "next start",
     "tsc": "tsc",
     "lint:fix": "eslint --fix --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
-    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "fmt": "prettier --write --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "stylelint": "stylelint \"src/**/*.+(ts|js|tsx)\"",
     "postinstall": "typesync"
   },
