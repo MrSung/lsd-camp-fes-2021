@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 
 import { DefaultTemplate } from '@/components/templates'
+import { MainVisual } from '@/components/pages/home/main-visual'
 
 export const Home = () => (
   <DefaultTemplate>
@@ -14,11 +14,6 @@ export const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main>
-      Powered by{` `}
-      <span>
-        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-      </span>
-    </main>
+    <MainVisual />
   </DefaultTemplate>
 )
