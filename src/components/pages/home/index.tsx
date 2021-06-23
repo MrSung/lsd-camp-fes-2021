@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import { DefaultTemplate } from '@/components/templates'
 import { MainVisual } from '@/components/pages/home/main-visual'
+import { Message } from '@/components/pages/home/message'
 
 export const Home = () => (
   <DefaultTemplate>
@@ -15,5 +16,6 @@ export const Home = () => (
     </Head>
 
     <MainVisual />
+    <Message />
   </DefaultTemplate>
 )
