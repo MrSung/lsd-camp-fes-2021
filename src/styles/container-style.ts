@@ -10,7 +10,7 @@ export const containerStyle = css`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     max-width: 1170px;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 24px;
+    padding-left: 24px;
   }
 `
