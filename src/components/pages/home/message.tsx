@@ -3,18 +3,21 @@ import styled, { css } from 'styled-components'
 import katy from '@/images/katy.jpg'
 import flower from '@/images/flower.jpg'
 import { Style } from '@/const/style'
-import { containerStyle } from '@/styles'
-import { Heading } from '@/components/parts/heading'
-import { LayerImage } from '@/components/parts/layer-image'
+import {
+  sectionStyle,
+  containerStyle,
+  headingStyle,
+  inlineBlockStyle,
+} from '@/styles'
+import { LayerImage, LineBreakSpan } from '@/components/parts'
 
 export const Message = () => (
-  <section>
+  <Section>
     <Container>
       <MessageHeading>message</MessageHeading>
       <Subtitle>
         未完成な自分から
-        <br />
-        はじめよう
+        <InlineBlock>はじめよう</InlineBlock>
       </Subtitle>
       <ImageFirst>
         <LayerImage
@@ -27,9 +30,7 @@ export const Message = () => (
         />
       </ImageFirst>
       <ParagraphFirst>
-        いつかではなく
-        <br />
-        &quot;今&quot; の自分を見て
+        <LineBreakSpan>{`いつかではなく\n"今" の自分を見て`}</LineBreakSpan>
       </ParagraphFirst>
       <ImageSecond>
         <LayerImage
@@ -42,25 +43,31 @@ export const Message = () => (
         />
       </ImageSecond>
       <ParagraphSecond>
-        今のあなただからできることが
-        <br />
-        きっとあるよ
+        <LineBreakSpan>{`今のあなただからできることが\nきっとあるよ`}</LineBreakSpan>
       </ParagraphSecond>
     </Container>
-  </section>
+  </Section>
 )
+
+const Section = styled.section`
+  ${sectionStyle}
+`
 
 const Container = styled.div`
   ${containerStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     display: grid;
-    grid-template-columns: 570px 1fr;
-    grid-template-rows: 198px 100px 100px 1fr;
+    grid-template-columns: 520px 1fr;
+    grid-template-rows: 198px 108px 108px 1fr;
   }
 `
 
-const MessageHeading = styled(Heading)`
+const MessageHeading = styled.h2`
+  ${headingStyle}
+
+  margin-bottom: 36px;
+
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -68,18 +75,22 @@ const MessageHeading = styled(Heading)`
 `
 
 const Subtitle = styled.h3`
+  margin-bottom: 36px;
   font-size: 24px;
   font-weight: normal;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
+    margin-bottom: 0;
     margin-left: 30px;
     font-size: 48px;
   }
 `
 
 const ImageFirst = styled.div`
+  margin-bottom: 40px;
+
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 1 / 2;
     grid-row: 2 / 5;
@@ -88,6 +99,8 @@ const ImageFirst = styled.div`
 `
 
 const ImageSecond = styled.div`
+  margin-bottom: 40px;
+
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
@@ -95,15 +108,12 @@ const ImageSecond = styled.div`
 `
 
 const paragraphStyle = css`
+  margin-bottom: 24px;
   font-size: 18px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     margin-left: 30px;
     font-size: 24px;
-  }
-
-  & + & {
-    margin-top: 1em;
   }
 `
 
@@ -123,4 +133,8 @@ const ParagraphSecond = styled.p`
     grid-column: 2 / 3;
     grid-row: 3 / 4;
   }
+`
+
+const InlineBlock = styled.span`
+  ${inlineBlockStyle}
 `

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import titleMessage from '@/images/title-message.svg'
 import mvIllustration from '@/images/mv-illustration.png'
 import { Style } from '@/const/style'
-import { containerStyle } from '@/styles'
+import { sectionStyle, containerStyle } from '@/styles'
 
 export const MainVisual = () => (
-  <section>
+  <Section>
     <Container>
       <ColLeft>
         <Image src={titleMessage} alt="" width={470} height={168} />
@@ -16,8 +16,12 @@ export const MainVisual = () => (
         <Image src={mvIllustration} alt="" width={569} height={661} />
       </ColRight>
     </Container>
-  </section>
+  </Section>
 )
+
+const Section = styled.section`
+  ${sectionStyle}
+`
 
 const Container = styled.div`
   ${containerStyle}

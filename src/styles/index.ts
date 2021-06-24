@@ -1,2 +1,5 @@
 export { GlobalStyle } from './global-style'
+export { sectionStyle } from './section-style'
 export { containerStyle } from './container-style'
+export { headingStyle } from './heading-style'
+export { inlineBlockStyle } from './inline-block-style'
