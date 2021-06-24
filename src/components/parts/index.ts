@@ -1,2 +1,2 @@
 export { LayerImage } from './layer-image'
-export { LineBreakSpan } from './line-break-span'
+export { LineBreak } from './line-break'

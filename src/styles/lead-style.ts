@@ -2,13 +2,12 @@ import { css } from 'styled-components'
 
 import { Style } from '@/const/style'
 
-export const headingStyle = css`
+export const leadStyle = css`
   margin-bottom: 36px;
-  font-size: 36px;
-  font-weight: 600;
-  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: normal;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    font-size: 54px;
+    font-size: 48px;
   }
 `

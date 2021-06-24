@@ -7,18 +7,19 @@ import {
   sectionStyle,
   containerStyle,
   headingStyle,
+  leadStyle,
   inlineBlockStyle,
 } from '@/styles'
-import { LayerImage, LineBreakSpan } from '@/components/parts'
+import { LayerImage, LineBreak } from '@/components/parts'
 
 export const Message = () => (
   <Section>
     <Container>
       <MessageHeading>message</MessageHeading>
-      <Subtitle>
+      <Lead>
         未完成な自分から
         <InlineBlock>はじめよう</InlineBlock>
-      </Subtitle>
+      </Lead>
       <ImageFirst>
         <LayerImage
           src={katy}
@@ -30,7 +31,7 @@ export const Message = () => (
         />
       </ImageFirst>
       <ParagraphFirst>
-        <LineBreakSpan>{`いつかではなく\n"今" の自分を見て`}</LineBreakSpan>
+        <LineBreak>{`いつかではなく\n"今" の自分を見て`}</LineBreak>
       </ParagraphFirst>
       <ImageSecond>
         <LayerImage
@@ -43,7 +44,7 @@ export const Message = () => (
         />
       </ImageSecond>
       <ParagraphSecond>
-        <LineBreakSpan>{`今のあなただからできることが\nきっとあるよ`}</LineBreakSpan>
+        <LineBreak>{`今のあなただからできることが\nきっとあるよ`}</LineBreak>
       </ParagraphSecond>
     </Container>
   </Section>
@@ -66,25 +67,20 @@ const Container = styled.div`
 const MessageHeading = styled.h2`
   ${headingStyle}
 
-  margin-bottom: 36px;
-
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
 `
 
-const Subtitle = styled.h3`
-  margin-bottom: 36px;
-  font-size: 24px;
-  font-weight: normal;
+const Lead = styled.h3`
+  ${leadStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     margin-bottom: 0;
     margin-left: 30px;
-    font-size: 48px;
   }
 `
 
@@ -117,7 +113,7 @@ const paragraphStyle = css`
   }
 `
 
-const ParagraphFirst = styled.p`
+const ParagraphFirst = styled.div`
   ${paragraphStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
@@ -126,7 +122,7 @@ const ParagraphFirst = styled.p`
   }
 `
 
-const ParagraphSecond = styled.p`
+const ParagraphSecond = styled.div`
   ${paragraphStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
