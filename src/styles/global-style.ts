@@ -6,8 +6,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${Style.COLOR.LEMON_CHIFFON};
     color: ${Style.COLOR.RAISIN_BLACK};
-    font-family: 'ヒラギノ角ゴシック', 'Hiragino Sans', 'ＭＳ ゴシック',
+    font-family: 'Nunito Sans', 'ヒラギノ角ゴシック', 'Hiragino Sans', 'ＭＳ ゴシック',
       sans-serif;
+    line-height: 1.7;
   }
 
   ul {

@@ -20,7 +20,7 @@ export const Message = () => (
         未完成な自分から
         <InlineBlock>はじめよう</InlineBlock>
       </Lead>
-      <ImageFirst>
+      <ImageContainerFirst>
         <LayerImage
           src={katy}
           alt=""
@@ -29,11 +29,11 @@ export const Message = () => (
           layerPosition="leftBottom"
           layerColor={Style.COLOR.MANGO_TANGO}
         />
-      </ImageFirst>
+      </ImageContainerFirst>
       <ParagraphFirst>
         <LineBreak>{`いつかではなく\n"今" の自分を見て`}</LineBreak>
       </ParagraphFirst>
-      <ImageSecond>
+      <ImageContainerSecond>
         <LayerImage
           src={flower}
           alt=""
@@ -42,7 +42,7 @@ export const Message = () => (
           layerPosition="rightBottom"
           layerColor={Style.COLOR.STRAW}
         />
-      </ImageSecond>
+      </ImageContainerSecond>
       <ParagraphSecond>
         <LineBreak>{`今のあなただからできることが\nきっとあるよ`}</LineBreak>
       </ParagraphSecond>
@@ -84,7 +84,7 @@ const Lead = styled.h3`
   }
 `
 
-const ImageFirst = styled.div`
+const ImageContainerFirst = styled.div`
   margin-bottom: 40px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
@@ -94,7 +94,7 @@ const ImageFirst = styled.div`
   }
 `
 
-const ImageSecond = styled.div`
+const ImageContainerSecond = styled.div`
   margin-bottom: 40px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
