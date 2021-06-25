@@ -113,7 +113,7 @@ const paragraphStyle = css`
   }
 `
 
-const ParagraphFirst = styled.div`
+const ParagraphFirst = styled.p`
   ${paragraphStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
@@ -122,7 +122,7 @@ const ParagraphFirst = styled.div`
   }
 `
 
-const ParagraphSecond = styled.div`
+const ParagraphSecond = styled.p`
   ${paragraphStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {

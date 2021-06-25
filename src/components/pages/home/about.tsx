@@ -61,7 +61,7 @@ const InlineBlock = styled.span`
   ${inlineBlockStyle}
 `
 
-const Paragraph = styled.div`
+const Paragraph = styled.p`
   font-size: 16px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
