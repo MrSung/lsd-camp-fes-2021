@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Style } from '@/const/style'
 
 interface ILayerImageProps {
-  src: any
+  src: StaticImageData
   alt: string
   width: number
   height: number

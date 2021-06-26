@@ -17,11 +17,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${Style.COLOR.BLUE_JEANS};
+    color: ${Style.COLOR.RAISIN_BLACK};
     text-decoration: none;
 
     &:hover {
-      color: ${Style.COLOR.GREEN_BLUE_CRAYOLA};
+      color: ${Style.COLOR.RAISIN_GRAY};
     }
   }
 `

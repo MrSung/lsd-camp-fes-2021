@@ -4,6 +4,7 @@ import { DefaultTemplate } from '@/components/templates'
 import { MainVisual } from '@/components/pages/home/main-visual'
 import { Message } from '@/components/pages/home/message'
 import { About } from '@/components/pages/home/about'
+import { Program } from '@/components/pages/home/program'
 
 export const Home = () => (
   <DefaultTemplate>
@@ -19,5 +20,6 @@ export const Home = () => (
     <MainVisual />
     <Message />
     <About />
+    <Program />
   </DefaultTemplate>
 )

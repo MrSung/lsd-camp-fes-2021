@@ -55,13 +55,8 @@ const NavLink = styled.a`
   display: flex;
   align-items: center;
   height: 50px;
-  color: ${Style.COLOR.RAISIN_BLACK};
   font-size: 16px;
   text-transform: capitalize;
-
-  &:hover {
-    color: ${Style.COLOR.RAISIN_GRAY};
-  }
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     font-size: 20px;
