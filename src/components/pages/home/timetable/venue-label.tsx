@@ -31,7 +31,7 @@ interface IContainerProps {
 const Container = styled.div<IContainerProps>`
   height: 44px;
   padding: 0 16px;
+  background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
   font-size: 16px;
   line-height: 44px;
-  background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
 `

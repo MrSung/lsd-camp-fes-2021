@@ -10,7 +10,8 @@ import {
   leadStyle,
   inlineBlockStyle,
 } from '@/styles'
-import { LayerImage, LineBreak } from '@/components/parts'
+import { LineBreak } from '@/components/parts'
+import { LayerImage } from './layer-image'
 
 export const Message = () => (
   <Section>

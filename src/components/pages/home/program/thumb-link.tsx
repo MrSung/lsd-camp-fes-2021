@@ -9,7 +9,7 @@ const VENUE_COLOR = [
   Style.COLOR.ORCHID_CRAYOLA,
 ]
 
-interface IProgramThumbLinkProps {
+interface IThumbLinkProps {
   href: string
   labelNo: 0 | 1 | 2
   labelText: string
@@ -20,7 +20,7 @@ interface IProgramThumbLinkProps {
   title: string
 }
 
-export const ProgramThumbLink = ({
+export const ThumbLink = ({
   href,
   labelNo,
   labelText,
@@ -29,7 +29,7 @@ export const ProgramThumbLink = ({
   width,
   height,
   title,
-}: IProgramThumbLinkProps) => (
+}: IThumbLinkProps) => (
   <Wrapper width={width}>
     <ExternalLink href={href} target="_blank" rel="noopener noreferrer">
       <Label labelNo={labelNo}>{labelText}</Label>
@@ -42,7 +42,7 @@ export const ProgramThumbLink = ({
 )
 
 interface IWrapperProps {
-  width: IProgramThumbLinkProps['width']
+  width: IThumbLinkProps['width']
 }
 
 const Wrapper = styled.div<IWrapperProps>`
@@ -64,7 +64,7 @@ const ExternalLink = styled.a`
 `
 
 interface ILabelProps {
-  labelNo: IProgramThumbLinkProps['labelNo']
+  labelNo: IThumbLinkProps['labelNo']
 }
 
 const Label = styled.span<ILabelProps>`
@@ -84,8 +84,8 @@ const Label = styled.span<ILabelProps>`
 `
 
 interface IThumbContainerProps {
-  width: IProgramThumbLinkProps['width']
-  height: IProgramThumbLinkProps['height']
+  width: IThumbLinkProps['width']
+  height: IThumbLinkProps['height']
 }
 
 const ThumbContainer = styled.div<IThumbContainerProps>`

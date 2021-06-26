@@ -6,13 +6,13 @@ import cardImage3 from '@/images/card-image-3.jpg'
 import cardImage4 from '@/images/card-image-4.jpg'
 import { Style } from '@/const/style'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
-import { ProgramThumbLink } from '@/components/parts/program-thumb-link'
+import { ThumbLink } from './thumb-link'
 
 export const Program = () => (
   <Section>
     <Container>
       <ProgramHeading>program</ProgramHeading>
-      <ProgramThumbLink
+      <ThumbLink
         href="#"
         labelNo={0}
         labelText="会場A"
@@ -22,7 +22,7 @@ export const Program = () => (
         height={270}
         title="“NEO渋谷”を創り続ける、わたしの憧れのリーダーズ"
       />
-      <ProgramThumbLink
+      <ThumbLink
         href="#"
         labelNo={0}
         labelText="会場A"
@@ -32,7 +32,7 @@ export const Program = () => (
         height={270}
         title="平成の渋谷を見続けてきた、SHIBUYA愛に満ちた3人"
       />
-      <ProgramThumbLink
+      <ThumbLink
         href="#"
         labelNo={1}
         labelText="会場B"
@@ -42,7 +42,7 @@ export const Program = () => (
         height={270}
         title="いま注目の幡ヶ谷エリアで商いをする地元の仲間たち"
       />
-      <ProgramThumbLink
+      <ThumbLink
         href="#"
         labelNo={2}
         labelText="会場C"
