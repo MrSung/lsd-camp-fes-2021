@@ -14,6 +14,7 @@ export const Style = {
     MANGO_TANGO: `#f68d50`,
     ORCHID_CRAYOLA: `#fab2ea`,
     PERSIAN_GREEN: `#1b998b`,
+    GREEN_SHEEN: `#71AAA4`,
     BLUE_JEANS: `#18a0fb`,
     GREEN_BLUE_CRAYOLA: `#0485DC`,
   },
