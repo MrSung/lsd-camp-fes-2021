@@ -46,8 +46,11 @@ interface IWrapperProps {
 }
 
 const Wrapper = styled.div<IWrapperProps>`
+  margin-bottom: 24px;
+
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     width: ${({ width }) => `${width}px`};
+    margin-bottom: 0;
   }
 `
 

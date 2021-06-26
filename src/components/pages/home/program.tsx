@@ -1,4 +1,3 @@
-// import Image from 'next/image'
 import styled from 'styled-components'
 
 import cardImage1 from '@/images/card-image-1.jpg'
@@ -6,13 +5,7 @@ import cardImage2 from '@/images/card-image-2.jpg'
 import cardImage3 from '@/images/card-image-3.jpg'
 import cardImage4 from '@/images/card-image-4.jpg'
 import { Style } from '@/const/style'
-import {
-  sectionStyle,
-  containerStyle,
-  headingStyle,
-  // leadStyle,
-  // inlineBlockStyle,
-} from '@/styles'
+import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { ProgramThumbLink } from '@/components/parts/program-thumb-link'
 
 export const Program = () => (
@@ -65,6 +58,10 @@ export const Program = () => (
 
 const Section = styled.section`
   ${sectionStyle}
+
+  @media (min-width: ${Style.BREAKPOINT.MD}) {
+    padding-bottom: 48px;
+  }
 `
 
 const Container = styled.div`
@@ -79,7 +76,10 @@ const Container = styled.div`
 const ProgramHeading = styled.h2`
   ${headingStyle}
 
+  margin-bottom: 24px;
+
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 1 / 5;
+    margin-bottom: 32px;
   }
 `

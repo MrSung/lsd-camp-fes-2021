@@ -5,6 +5,7 @@ import { MainVisual } from '@/components/pages/home/main-visual'
 import { Message } from '@/components/pages/home/message'
 import { About } from '@/components/pages/home/about'
 import { Program } from '@/components/pages/home/program'
+import { Timetable } from '@/components/pages/home/timetable'
 
 export const Home = () => (
   <DefaultTemplate>
@@ -21,5 +22,6 @@ export const Home = () => (
     <Message />
     <About />
     <Program />
+    <Timetable />
   </DefaultTemplate>
 )

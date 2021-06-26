@@ -6,6 +6,7 @@ export const Style = {
     XL: `1280px`,
   },
   COLOR: {
+    WHITE: `#fff`,
     RAISIN_BLACK: `#1e1e24`,
     RAISIN_GRAY: `#646477`,
     STRAW: `#efe56d`,
