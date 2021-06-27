@@ -20,12 +20,14 @@ export const Timetable = () => (
         <VenueColFirst>
           <VenueLabel labelNo={0} labelText="会場A" />
           <Content
+            href="#"
             labelNo={0}
             time="10:30 〜 11:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />
           <Content
+            href="#"
             labelNo={0}
             time="10:30 〜 11:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
@@ -35,6 +37,7 @@ export const Timetable = () => (
         <VenueColSecond>
           <VenueLabel labelNo={1} labelText="会場B" />
           <Content
+            href="#"
             labelNo={1}
             time="10:30 〜 11:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
@@ -44,6 +47,7 @@ export const Timetable = () => (
         <VenueColThird>
           <VenueLabel labelNo={2} labelText="会場C" />
           <Content
+            href="#"
             labelNo={2}
             time="10:30 〜 11:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"

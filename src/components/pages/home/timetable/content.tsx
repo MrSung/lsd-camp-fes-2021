@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
+import { ExternalLink } from '@/components/parts'
 
 const VENUE_COLOR = [
   Style.COLOR.MANGO_TANGO,
@@ -9,21 +10,30 @@ const VENUE_COLOR = [
 ]
 
 interface IContentProps {
+  href: string
   labelNo: 0 | 1 | 2
   time: string
   title: string
   host: string
 }
 
-export const Content = ({ labelNo, time, title, host }: IContentProps) => (
+export const Content = ({
+  href,
+  labelNo,
+  time,
+  title,
+  host,
+}: IContentProps) => (
   <Wrapper>
-    <Dl>
-      <Dt labelNo={labelNo}>{time}</Dt>
-      <Dd>
-        <Title>{title}</Title>
-        <Host>{host}</Host>
-      </Dd>
-    </Dl>
+    <ExternalLink href={href}>
+      <Dl>
+        <Dt labelNo={labelNo}>{time}</Dt>
+        <Dd>
+          <Title>{title}</Title>
+          <Host>{host}</Host>
+        </Dd>
+      </Dl>
+    </ExternalLink>
   </Wrapper>
 )
 

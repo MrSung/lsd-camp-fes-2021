@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
+import { ExternalLink } from '@/components/parts'
 
 const VENUE_COLOR = [
   Style.COLOR.MANGO_TANGO,
@@ -31,7 +32,7 @@ export const ThumbLink = ({
   title,
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
-    <ExternalLink href={href} target="_blank" rel="noopener noreferrer">
+    <ExternalLink href={href}>
       <Label labelNo={labelNo}>{labelText}</Label>
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} />
@@ -51,15 +52,6 @@ const Wrapper = styled.div<IWrapperProps>`
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     width: ${({ width }) => `${width}px`};
     margin-bottom: 0;
-  }
-`
-
-const ExternalLink = styled.a`
-  display: block;
-
-  &:hover {
-    opacity: 0.8;
-    color: ${Style.COLOR.RAISIN_BLACK};
   }
 `
 
