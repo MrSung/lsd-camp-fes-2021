@@ -14,7 +14,9 @@ export const Timetable = () => (
       </DateHeading>
       <Inner>
         <TimesContainer>
-          <TimeHeading />
+          <TimesHeading />
+          <Time>17:00</Time>
+          <Time>18:00</Time>
         </TimesContainer>
         <VenueColFirst>
           <VenueLabel labelNo={0} labelText="会場A" />
@@ -78,8 +80,8 @@ const Container = styled.div`
 const Inner = styled.div`
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     display: grid;
-    grid-template-columns: ${Style.SIZE.TIMETABLE_COL_LEFT} 1fr 1fr 1fr ${Style
-        .SIZE.TIMETABLE_COL_RIGHT};
+    grid-template-columns: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH}px 1fr 1fr 1fr ${Style
+        .SIZE.TIMETABLE_COL_RIGHT_WIDTH}px;
   }
 `
 
@@ -94,9 +96,22 @@ const TimesContainer = styled.div`
   }
 `
 
-const TimeHeading = styled.div`
+const TimesHeading = styled.div`
   height: 80px;
   background-color: ${Style.COLOR.GREEN_SHEEN};
+`
+
+const Time = styled.time`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px;
+  color: ${Style.COLOR.WHITE};
+  font-size: 18px;
+
+  &:nth-of-type(even) {
+    background-color: ${Style.COLOR.GREEN_SHEEN};
+  }
 `
 
 const TimetableHeading = styled.h2`
@@ -120,8 +135,8 @@ const DateHeading = styled.h3`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     height: 80px;
-    padding-right: calc(${Style.SIZE.TIMETABLE_COL_RIGHT} - 2px);
-    padding-left: calc(${Style.SIZE.TIMETABLE_COL_LEFT} - 2px);
+    padding-right: ${Style.SIZE.TIMETABLE_COL_RIGHT_WIDTH - 2}px;
+    padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
     font-size: 36px;
     line-height: 80px;
   }
@@ -140,6 +155,13 @@ const venueColStyle = css`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     margin-top: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
+      ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
+      ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2}px
+    );
   }
 `
 
@@ -148,6 +170,7 @@ const VenueColFirst = styled.div`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 2 / 3;
+    margin-right: -24px;
   }
 `
 
@@ -156,6 +179,7 @@ const VenueColSecond = styled.div`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     grid-column: 3 / 4;
+    margin-right: -24px;
   }
 `
 

@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   background-color: ${Style.COLOR.GREEN_SHEEN};
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    padding: 18px 16px;
+    padding: 18px 24px;
   }
 `
 
@@ -40,6 +40,6 @@ const Container = styled.div<IContainerProps>`
   line-height: 44px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `
