@@ -9,8 +9,8 @@ export const containerStyle = css`
   padding-left: 16px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    min-width: ${1170 + 24 * 2}px;
-    max-width: ${1170 + 24 * 2}px;
+    min-width: ${Style.SIZE.CONTAINER_WIDTH};
+    max-width: ${Style.SIZE.CONTAINER_WIDTH};
     padding-right: 24px;
     padding-left: 24px;
   }

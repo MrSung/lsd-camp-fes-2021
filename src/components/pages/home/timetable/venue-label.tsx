@@ -20,9 +20,12 @@ export const VenueLabel = ({ labelNo, labelText }: IVenueLabelProps) => (
 )
 
 const Wrapper = styled.div`
-  margin-top: 32px;
   padding: 16px;
   background-color: ${Style.COLOR.GREEN_SHEEN};
+
+  @media (min-width: ${Style.BREAKPOINT.MD}) {
+    padding: 18px 16px;
+  }
 `
 
 interface IContainerProps {
@@ -35,4 +38,8 @@ const Container = styled.div<IContainerProps>`
   background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
   font-size: 16px;
   line-height: 44px;
+
+  @media (min-width: ${Style.BREAKPOINT.MD}) {
+    font-size: 16px;
+  }
 `
