@@ -9,6 +9,7 @@ export const Style = {
     WHITE: `#fff`,
     RAISIN_BLACK: `#1e1e24`,
     RAISIN_GRAY: `#646477`,
+    SPANISH_GRAY: `#999`,
     STRAW: `#efe56d`,
     LEMON_CHIFFON: `#fef7cc`,
     MANGO_TANGO: `#f68d50`,

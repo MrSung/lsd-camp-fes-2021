@@ -20,6 +20,7 @@ export const VenueLabel = ({ labelNo, labelText }: IVenueLabelProps) => (
 )
 
 const Wrapper = styled.div`
+  margin-top: 32px;
   padding: 16px;
   background-color: ${Style.COLOR.GREEN_SHEEN};
 `
