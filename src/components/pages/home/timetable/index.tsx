@@ -87,8 +87,8 @@ const TimesContainer = styled.div`
   display: none;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    grid-column: 1 / 2;
     display: flex;
+    grid-column: 1 / 2;
     flex-direction: column;
     border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
@@ -120,8 +120,8 @@ const DateHeading = styled.h3`
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     height: 80px;
-    padding-left: calc(${Style.SIZE.TIMETABLE_COL_LEFT} - 2px);
     padding-right: calc(${Style.SIZE.TIMETABLE_COL_RIGHT} - 2px);
+    padding-left: calc(${Style.SIZE.TIMETABLE_COL_LEFT} - 2px);
     font-size: 36px;
     line-height: 80px;
   }
@@ -130,8 +130,8 @@ const DateHeading = styled.h3`
 const DateContainer = styled.span`
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     display: block;
-    border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
     border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
+    border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
 `
 
@@ -171,8 +171,8 @@ const SpacerContainer = styled.span`
   display: none;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    grid-column: 5 / 6;
     display: flex;
+    grid-column: 5 / 6;
     flex-direction: column;
     border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }

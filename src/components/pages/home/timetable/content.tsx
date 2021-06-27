@@ -57,6 +57,6 @@ const Title = styled.h4`
 `
 
 const Host = styled.p`
-  font-size: 14px;
   color: ${Style.COLOR.SPANISH_GRAY};
+  font-size: 14px;
 `
