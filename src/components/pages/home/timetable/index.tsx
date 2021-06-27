@@ -18,24 +18,7 @@ export const Timetable = () => (
           <Time>18:00</Time>
         </TimesContainer>
         <VenueColFirst>
-          <VenueLabel labelNo={0} labelText="会場A" />
-          <Content
-            href="#"
-            labelNo={0}
-            time="10:30 〜 11:00"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
-          <Content
-            href="#"
-            labelNo={0}
-            time="10:30 〜 11:00"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
-        </VenueColFirst>
-        <VenueColSecond>
-          <VenueLabel labelNo={1} labelText="会場B" />
+          <VenueLabel labelNo={1} />
           <Content
             href="#"
             labelNo={1}
@@ -43,12 +26,29 @@ export const Timetable = () => (
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />
-        </VenueColSecond>
-        <VenueColThird>
-          <VenueLabel labelNo={2} labelText="会場C" />
+          <Content
+            href="#"
+            labelNo={1}
+            time="10:30 〜 11:00"
+            title="音楽ライブ「東田トモヒロwith辻コースケ」"
+            host="東田トモヒロwith辻コースケ"
+          />
+        </VenueColFirst>
+        <VenueColSecond>
+          <VenueLabel labelNo={2} />
           <Content
             href="#"
             labelNo={2}
+            time="10:30 〜 11:00"
+            title="音楽ライブ「東田トモヒロwith辻コースケ」"
+            host="東田トモヒロwith辻コースケ"
+          />
+        </VenueColSecond>
+        <VenueColThird>
+          <VenueLabel labelNo={3} />
+          <Content
+            href="#"
+            labelNo={3}
             time="10:30 〜 11:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"

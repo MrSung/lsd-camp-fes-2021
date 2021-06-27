@@ -2,18 +2,12 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
+import { VenueKey, Venue } from '@/const/venue'
 import { ExternalLink } from '@/components/parts'
-
-const VENUE_COLOR = [
-  Style.COLOR.MANGO_TANGO,
-  Style.COLOR.STRAW,
-  Style.COLOR.ORCHID_CRAYOLA,
-]
 
 interface IThumbLinkProps {
   href: string
-  labelNo: 0 | 1 | 2
-  labelText: string
+  labelNo: VenueKey
   src: StaticImageData
   alt: string
   width: number
@@ -24,7 +18,6 @@ interface IThumbLinkProps {
 export const ThumbLink = ({
   href,
   labelNo,
-  labelText,
   src,
   alt,
   width,
@@ -33,7 +26,7 @@ export const ThumbLink = ({
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
     <ExternalLink href={href}>
-      <Label labelNo={labelNo}>{labelText}</Label>
+      <Label labelNo={labelNo}>{Venue[labelNo].text}</Label>
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} />
       </ThumbContainer>
@@ -67,7 +60,7 @@ const Label = styled.span<ILabelProps>`
   height: 36px;
   margin-left: 16px;
   padding: 1px 12px 0;
-  background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
+  background-color: ${({ labelNo }) => Venue[labelNo].color};
   line-height: 36px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {

@@ -14,8 +14,7 @@ export const Program = () => (
       <ProgramHeading>program</ProgramHeading>
       <ThumbLink
         href="#"
-        labelNo={0}
-        labelText="会場A"
+        labelNo={1}
         src={cardImage1}
         alt=""
         width={270}
@@ -24,8 +23,7 @@ export const Program = () => (
       />
       <ThumbLink
         href="#"
-        labelNo={0}
-        labelText="会場A"
+        labelNo={1}
         src={cardImage2}
         alt=""
         width={270}
@@ -35,7 +33,6 @@ export const Program = () => (
       <ThumbLink
         href="#"
         labelNo={1}
-        labelText="会場B"
         src={cardImage3}
         alt=""
         width={270}
@@ -45,7 +42,6 @@ export const Program = () => (
       <ThumbLink
         href="#"
         labelNo={2}
-        labelText="会場C"
         src={cardImage4}
         alt=""
         width={270}

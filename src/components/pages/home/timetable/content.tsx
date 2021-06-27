@@ -1,17 +1,12 @@
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
+import { VenueKey, Venue } from '@/const/venue'
 import { ExternalLink } from '@/components/parts'
-
-const VENUE_COLOR = [
-  Style.COLOR.MANGO_TANGO,
-  Style.COLOR.STRAW,
-  Style.COLOR.ORCHID_CRAYOLA,
-]
 
 interface IContentProps {
   href: string
-  labelNo: 0 | 1 | 2
+  labelNo: VenueKey
   time: string
   title: string
   host: string
@@ -54,7 +49,7 @@ interface IDtProps {
 const Dt = styled.dt<IDtProps>`
   height: 44px;
   padding: 0 16px;
-  background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
+  background-color: ${({ labelNo }) => Venue[labelNo].color};
   font-size: 16px;
   line-height: 44px;
 

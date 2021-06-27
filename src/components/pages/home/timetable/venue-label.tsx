@@ -1,21 +1,15 @@
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
-
-const VENUE_COLOR = [
-  Style.COLOR.MANGO_TANGO,
-  Style.COLOR.STRAW,
-  Style.COLOR.ORCHID_CRAYOLA,
-]
+import { VenueKey, Venue } from '@/const/venue'
 
 interface IVenueLabelProps {
-  labelNo: 0 | 1 | 2
-  labelText: string
+  labelNo: VenueKey
 }
 
-export const VenueLabel = ({ labelNo, labelText }: IVenueLabelProps) => (
+export const VenueLabel = ({ labelNo }: IVenueLabelProps) => (
   <Wrapper>
-    <Container labelNo={labelNo}>{labelText}</Container>
+    <Container labelNo={labelNo}>{Venue[labelNo].text}</Container>
   </Wrapper>
 )
 
@@ -35,7 +29,7 @@ interface IContainerProps {
 const Container = styled.div<IContainerProps>`
   height: 44px;
   padding: 0 16px;
-  background-color: ${({ labelNo }) => VENUE_COLOR[labelNo]};
+  background-color: ${({ labelNo }) => Venue[labelNo].color};
   font-size: 16px;
   line-height: 44px;
 
