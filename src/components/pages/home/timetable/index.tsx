@@ -14,7 +14,6 @@ export const Timetable = () => (
       </DateHeading>
       <Inner>
         <TimesContainer>
-          <TimesHeading />
           <Time>17:00</Time>
           <Time>18:00</Time>
         </TimesContainer>
@@ -51,9 +50,7 @@ export const Timetable = () => (
             host="東田トモヒロwith辻コースケ"
           />
         </VenueColThird>
-        <SpacerContainer>
-          <SpacerHeading />
-        </SpacerContainer>
+        <Spacers />
       </Inner>
     </Container>
   </Section>
@@ -85,20 +82,43 @@ const Inner = styled.div`
   }
 `
 
+const repeatingStripe = css`
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent
+      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT +
+      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px,
+    ${Style.COLOR.GREEN_SHEEN}
+      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT +
+      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px,
+    ${Style.COLOR.GREEN_SHEEN}
+      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2 +
+      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px
+  );
+`
+
+const repeatingStripeHeader = css`
+  &::before {
+    content: '';
+    display: block;
+    height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
+    background-color: ${Style.COLOR.GREEN_SHEEN};
+  }
+`
+
 const TimesContainer = styled.div`
   display: none;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
+    ${repeatingStripe}
+    ${repeatingStripeHeader}
+
     display: flex;
     grid-column: 1 / 2;
     flex-direction: column;
     border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
-`
-
-const TimesHeading = styled.div`
-  height: 80px;
-  background-color: ${Style.COLOR.GREEN_SHEEN};
 `
 
 const Time = styled.time`
@@ -108,10 +128,6 @@ const Time = styled.time`
   height: ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px;
   color: ${Style.COLOR.WHITE};
   font-size: 18px;
-
-  &:nth-of-type(even) {
-    background-color: ${Style.COLOR.GREEN_SHEEN};
-  }
 `
 
 const TimetableHeading = styled.h2`
@@ -134,11 +150,11 @@ const DateHeading = styled.h3`
   text-align: center;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    height: 80px;
+    height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
     padding-right: ${Style.SIZE.TIMETABLE_COL_RIGHT_WIDTH - 2}px;
     padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
     font-size: 36px;
-    line-height: 80px;
+    line-height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
   }
 `
 
@@ -154,14 +170,9 @@ const venueColStyle = css`
   margin-top: 32px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
+    ${repeatingStripe}
+
     margin-top: 0;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
-      ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
-      ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2}px
-    );
   }
 `
 
@@ -191,18 +202,16 @@ const VenueColThird = styled.div`
   }
 `
 
-const SpacerContainer = styled.span`
+const Spacers = styled.span`
   display: none;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
+    ${repeatingStripe}
+    ${repeatingStripeHeader}
+
     display: flex;
     grid-column: 5 / 6;
     flex-direction: column;
     border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
-`
-
-const SpacerHeading = styled.div`
-  height: 80px;
-  background-color: ${Style.COLOR.GREEN_SHEEN};
 `
