@@ -11,6 +11,7 @@ interface IContentProps {
   endTime: string
   title: string
   host: string
+  gridRow: string
 }
 
 export const Content = ({
@@ -20,8 +21,9 @@ export const Content = ({
   endTime,
   title,
   host,
+  gridRow,
 }: IContentProps) => (
-  <Wrapper>
+  <Wrapper gridRow={gridRow}>
     <ExternalLink href={href} fillColor={Style.COLOR.WHITE}>
       <Dl>
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
@@ -34,10 +36,15 @@ export const Content = ({
   </Wrapper>
 )
 
-const Wrapper = styled.div`
+interface IWrapperProps {
+  gridRow: IContentProps['gridRow']
+}
+
+const Wrapper = styled.div<IWrapperProps>`
   padding: 16px 16px 0;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
+    grid-row: ${({ gridRow }) => gridRow};
     padding: 0 24px;
   }
 `

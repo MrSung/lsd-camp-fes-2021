@@ -5,7 +5,60 @@ import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { VenueLabel } from './venue-label'
 import { Content } from './content'
 
-const TIME_RANGE = [`17:00`, `18:00`, `19:00`, `20:00`, `21:00`]
+const TIME_RANGE = [
+  `17:00`,
+  `17:30`,
+  `18:00`,
+  `18:30`,
+  `19:00`,
+  `19:30`,
+  `20:00`,
+  `20:30`,
+  `21:00`,
+  `21:30`,
+  `22:00`,
+]
+
+const FIRST_VENUE_CONTENT = [
+  {
+    id: `1`,
+    href: `#`,
+    startTime: `17:00`,
+    endTime: `18:00`,
+    title: `音楽ライブ「東田トモヒロwith辻コースケ」`,
+    host: `東田トモヒロwith辻コースケ`,
+  },
+  {
+    id: `2`,
+    href: `#`,
+    startTime: `18:00`,
+    endTime: `19:00`,
+    title: `音楽ライブ「東田トモヒロwith辻コースケ」`,
+    host: `東田トモヒロwith辻コースケ`,
+  },
+]
+
+const SECOND_VENUE_CONTENT = [
+  {
+    id: `1`,
+    href: `#`,
+    startTime: `18:30`,
+    endTime: `19:30`,
+    title: `音楽ライブ「東田トモヒロwith辻コースケ」`,
+    host: `東田トモヒロwith辻コースケ`,
+  },
+]
+
+const THIRD_VENUE_CONTENT = [
+  {
+    id: `1`,
+    href: `#`,
+    startTime: `20:00`,
+    endTime: `21:00`,
+    title: `音楽ライブ「東田トモヒロwith辻コースケ」`,
+    host: `東田トモヒロwith辻コースケ`,
+  },
+]
 
 export const Timetable = () => (
   <Section>
@@ -16,50 +69,77 @@ export const Timetable = () => (
       </DateHeading>
       <Inner>
         <TimesContainer>
-          {TIME_RANGE.map((time) => (
-            <Time key={time}>{time}</Time>
-          ))}
+          {TIME_RANGE.filter((time) => time.split(`:`)[1] === `00`).map(
+            (time) => (
+              <Time key={time}>{time}</Time>
+            ),
+          )}
         </TimesContainer>
         <VenueColFirst>
           <VenueLabel labelNo={1} />
-          <Content
-            href="#"
-            labelNo={1}
-            startTime="17:00"
-            endTime="18:00"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
-          <Content
-            href="#"
-            labelNo={1}
-            startTime="18:00"
-            endTime="19:00"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
+          {FIRST_VENUE_CONTENT.map((o) => {
+            const startTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.startTime) + 2
+            const endTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.endTime) + 2
+
+            return (
+              <Content
+                key={o.id}
+                href={o.href}
+                labelNo={1}
+                startTime={o.startTime}
+                endTime={o.endTime}
+                title={o.title}
+                host={o.host}
+                gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+              />
+            )
+          })}
         </VenueColFirst>
         <VenueColSecond>
           <VenueLabel labelNo={2} />
-          <Content
-            href="#"
-            labelNo={2}
-            startTime="18:30"
-            endTime="19:30"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
+          {SECOND_VENUE_CONTENT.map((o) => {
+            const startTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.startTime) + 2
+            const endTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.endTime) + 2
+
+            return (
+              <Content
+                key={o.id}
+                href={o.href}
+                labelNo={2}
+                startTime={o.startTime}
+                endTime={o.endTime}
+                title={o.title}
+                host={o.host}
+                gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+              />
+            )
+          })}
         </VenueColSecond>
         <VenueColThird>
           <VenueLabel labelNo={3} />
-          <Content
-            href="#"
-            labelNo={3}
-            startTime="20:00"
-            endTime="21:00"
-            title="音楽ライブ「東田トモヒロwith辻コースケ」"
-            host="東田トモヒロwith辻コースケ"
-          />
+          {THIRD_VENUE_CONTENT.map((o) => {
+            const startTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.startTime) + 2
+            const endTimeGridIndex =
+              TIME_RANGE.findIndex((t) => t === o.endTime) + 2
+
+            return (
+              <Content
+                key={o.id}
+                href={o.href}
+                labelNo={3}
+                startTime={o.startTime}
+                endTime={o.endTime}
+                title={o.title}
+                host={o.host}
+                gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+              />
+            )
+          })}
         </VenueColThird>
         <Spacers />
       </Inner>
@@ -178,6 +258,11 @@ const venueColStyle = css`
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     ${repeatingStripe}
 
+    display: grid;
+    grid-template-rows: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px repeat(
+        auto-fill,
+        ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT / 2}px
+      );
     margin-top: 0;
   }
 `
