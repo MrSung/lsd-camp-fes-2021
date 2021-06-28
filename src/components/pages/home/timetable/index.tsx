@@ -5,6 +5,8 @@ import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { VenueLabel } from './venue-label'
 import { Content } from './content'
 
+const TIME_RANGE = [`17:00`, `18:00`, `19:00`, `20:00`, `21:00`]
+
 export const Timetable = () => (
   <Section>
     <Container>
@@ -14,25 +16,25 @@ export const Timetable = () => (
       </DateHeading>
       <Inner>
         <TimesContainer>
-          <Time>17:00</Time>
-          <Time>18:00</Time>
-          <Time>19:00</Time>
-          <Time>20:00</Time>
-          <Time>21:00</Time>
+          {TIME_RANGE.map((time) => (
+            <Time key={time}>{time}</Time>
+          ))}
         </TimesContainer>
         <VenueColFirst>
           <VenueLabel labelNo={1} />
           <Content
             href="#"
             labelNo={1}
-            time="10:30 〜 11:00"
+            startTime="17:00"
+            endTime="18:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />
           <Content
             href="#"
             labelNo={1}
-            time="10:30 〜 11:00"
+            startTime="18:00"
+            endTime="19:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />
@@ -42,7 +44,8 @@ export const Timetable = () => (
           <Content
             href="#"
             labelNo={2}
-            time="10:30 〜 11:00"
+            startTime="18:30"
+            endTime="19:30"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />
@@ -52,7 +55,8 @@ export const Timetable = () => (
           <Content
             href="#"
             labelNo={3}
-            time="10:30 〜 11:00"
+            startTime="20:00"
+            endTime="21:00"
             title="音楽ライブ「東田トモヒロwith辻コースケ」"
             host="東田トモヒロwith辻コースケ"
           />

@@ -7,7 +7,8 @@ import { ExternalLink } from '@/components/parts'
 interface IContentProps {
   href: string
   labelNo: VenueKey
-  time: string
+  startTime: string
+  endTime: string
   title: string
   host: string
 }
@@ -15,14 +16,15 @@ interface IContentProps {
 export const Content = ({
   href,
   labelNo,
-  time,
+  startTime,
+  endTime,
   title,
   host,
 }: IContentProps) => (
   <Wrapper>
     <ExternalLink href={href}>
       <Dl>
-        <Dt labelNo={labelNo}>{time}</Dt>
+        <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>
           <Title>{title}</Title>
           <Host>{host}</Host>
