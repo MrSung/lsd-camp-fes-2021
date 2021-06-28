@@ -16,6 +16,9 @@ export const Timetable = () => (
         <TimesContainer>
           <Time>17:00</Time>
           <Time>18:00</Time>
+          <Time>19:00</Time>
+          <Time>20:00</Time>
+          <Time>21:00</Time>
         </TimesContainer>
         <VenueColFirst>
           <VenueLabel labelNo={1} />
@@ -90,16 +93,11 @@ const repeatingStripe = css`
   background-image: repeating-linear-gradient(
     to bottom,
     transparent,
-    transparent
-      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT +
-      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px,
-    ${Style.COLOR.GREEN_SHEEN}
-      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT +
-      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px,
-    ${Style.COLOR.GREEN_SHEEN}
-      ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2 +
-      Style.SIZE.TIMETABLE_HEADER_HEIGHT}px
+    transparent ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
+    ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px,
+    ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2}px
   );
+  background-position: 0 ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
 `
 
 const repeatingStripeHeader = css`
