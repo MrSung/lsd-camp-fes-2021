@@ -22,7 +22,7 @@ export const Content = ({
   host,
 }: IContentProps) => (
   <Wrapper>
-    <ExternalLink href={href}>
+    <ExternalLink href={href} fillColor={Style.COLOR.WHITE}>
       <Dl>
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>

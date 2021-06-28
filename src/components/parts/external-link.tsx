@@ -5,18 +5,33 @@ import { Style } from '@/const/style'
 interface IExternalLinkProps {
   href: string
   children: React.ReactNode
+  fillColor?: string
 }
 
-export const ExternalLink = ({ href, children }: IExternalLinkProps) => (
-  <Wrapper href={href} target="_blank" rel="noopener noreferrer">
+export const ExternalLink = ({
+  href,
+  children,
+  fillColor,
+}: IExternalLinkProps) => (
+  <Wrapper
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    fillColor={fillColor}
+  >
     {children}
   </Wrapper>
 )
 
-const Wrapper = styled.a`
-  display: block;
+interface IWrapperProps {
+  fillColor: IExternalLinkProps['fillColor']
+}
 
-  &:hover {
+const Wrapper = styled.a<IWrapperProps>`
+  display: block;
+  background-color: ${({ fillColor }) => fillColor};
+
+  &:hover > * {
     opacity: 0.8;
     color: ${Style.COLOR.RAISIN_BLACK};
   }
