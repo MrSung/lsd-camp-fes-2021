@@ -6,6 +6,12 @@ import { Message } from '@/components/pages/home/message'
 import { About } from '@/components/pages/home/about'
 import { Program } from '@/components/pages/home/program'
 import { Timetable } from '@/components/pages/home/timetable'
+import {
+  HOME_LINK_MESSAGE,
+  HOME_LINK_ABOUT,
+  HOME_LINK_PROGRAM,
+  HOME_LINK_TIMETABLE,
+} from '@/const/home-links'
 
 export const Home = () => (
   <DefaultTemplate>
@@ -19,9 +25,9 @@ export const Home = () => (
     </Head>
 
     <MainVisual />
-    <Message />
-    <About />
-    <Program />
-    <Timetable />
+    <Message sectionId={HOME_LINK_MESSAGE} />
+    <About sectionId={HOME_LINK_ABOUT} />
+    <Program sectionId={HOME_LINK_PROGRAM} />
+    <Timetable sectionId={HOME_LINK_TIMETABLE} />
   </DefaultTemplate>
 )

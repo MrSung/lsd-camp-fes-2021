@@ -60,8 +60,12 @@ const THIRD_VENUE_CONTENT = [
   },
 ]
 
-export const Timetable = () => (
-  <Section>
+interface ITimetableProps {
+  sectionId: string
+}
+
+export const Timetable = ({ sectionId }: ITimetableProps) => (
+  <Section id={sectionId}>
     <Container>
       <TimetableHeading>timetable</TimetableHeading>
       <DateHeading>
@@ -150,14 +154,16 @@ export const Timetable = () => (
 const Section = styled.section`
   ${sectionStyle}
 
+  margin-top: 108px;
   margin-bottom: 0;
-  padding-top: 48px;
+  padding-top: 108px;
   padding-bottom: 64px;
   background-color: ${Style.COLOR.PERSIAN_GREEN};
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
-    padding-top: 90px;
-    padding-bottom: 108px;
+    margin-bottom: 0;
+    padding-top: 132px;
+    padding-bottom: 144px;
   }
 `
 

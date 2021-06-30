@@ -13,8 +13,12 @@ import {
 import { LineBreak } from '@/components/parts'
 import { LayerImage } from './layer-image'
 
-export const Message = () => (
-  <Section>
+interface IMessageProps {
+  sectionId: string
+}
+
+export const Message = ({ sectionId }: IMessageProps) => (
+  <Section id={sectionId}>
     <Container>
       <MessageHeading>message</MessageHeading>
       <Lead>
@@ -53,6 +57,10 @@ export const Message = () => (
 
 const Section = styled.section`
   ${sectionStyle}
+
+  @media (max-width: 767px) {
+    margin-bottom: 144px;
+  }
 `
 
 const Container = styled.div`

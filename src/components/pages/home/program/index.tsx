@@ -8,8 +8,12 @@ import { Style } from '@/const/style'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { ThumbLink } from './thumb-link'
 
-export const Program = () => (
-  <Section>
+interface IProgramProps {
+  sectionId: string
+}
+
+export const Program = ({ sectionId }: IProgramProps) => (
+  <Section id={sectionId}>
     <Container>
       <ProgramHeading>program</ProgramHeading>
       <ThumbLink
@@ -54,6 +58,8 @@ export const Program = () => (
 
 const Section = styled.section`
   ${sectionStyle}
+
+  padding-top: 72px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     padding-bottom: 48px;

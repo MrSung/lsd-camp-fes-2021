@@ -13,8 +13,12 @@ import {
 } from '@/styles'
 import { LineBreak } from '@/components/parts'
 
-export const About = () => (
-  <Section>
+interface IAboutProps {
+  sectionId: string
+}
+
+export const About = ({ sectionId }: IAboutProps) => (
+  <Section id={sectionId}>
     <Container>
       <AboutHeading>about</AboutHeading>
       <Lead>

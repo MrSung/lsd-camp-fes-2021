@@ -55,7 +55,7 @@ interface ILabelProps {
 const Label = styled.span<ILabelProps>`
   display: inline-block;
   position: relative;
-  z-index: 1;
+  z-index: ${Style.Z_INDEX_1};
   bottom: -18px;
   height: 36px;
   margin-left: 16px;

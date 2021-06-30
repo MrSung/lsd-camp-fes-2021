@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
 
 import { Style } from '@/const/style'
 import { GlobalStyle, containerStyle } from '@/styles'
-
-const LINKS = [`message`, `about`, `program`, `timetable`]
+import { HOME_LINKS } from '@/const/home-links'
 
 interface IDefaultTemplateProps {
   children: React.ReactNode
@@ -16,19 +16,26 @@ export const DefaultTemplate = ({ children }: IDefaultTemplateProps) => (
     <Header>
       <Nav>
         <NavUl>
-          {LINKS.map((link) => (
+          {HOME_LINKS.map(({ link, offset }) => (
             <NavLi key={link}>
-              <NavLink href={`#${link}`}>{link}</NavLink>
+              <NavLink to={link} smooth="easeInOutQuint" offset={offset}>
+                {link}
+              </NavLink>
             </NavLi>
           ))}
         </NavUl>
       </Nav>
     </Header>
-    <main>{children}</main>
+    <Main>{children}</Main>
   </>
 )
 
 const Header = styled.header`
+  position: fixed;
+  z-index: ${Style.Z_INDEX_10};
+  top: 0;
+  right: 0;
+  left: 0;
   padding-top: 36px;
   padding-bottom: 36px;
 
@@ -51,14 +58,19 @@ const NavUl = styled.ul`
 
 const NavLi = styled.li``
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   height: 50px;
   font-size: 16px;
   text-transform: capitalize;
+  cursor: pointer;
 
   @media (min-width: ${Style.BREAKPOINT.MD}) {
     font-size: 20px;
   }
+`
+
+const Main = styled.main`
+  padding-top: ${Style.SIZE.HEADER_HEIGHT}px;
 `
