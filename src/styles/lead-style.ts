@@ -8,7 +8,7 @@ export const leadStyle = css`
   font-weight: 400;
   line-height: 1.5;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 48px;
   }
 `

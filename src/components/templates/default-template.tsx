@@ -39,7 +39,7 @@ const Header = styled.header`
   padding-top: 36px;
   padding-bottom: 36px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-bottom: 12px;
     padding-top: 44px;
     padding-bottom: 44px;
@@ -66,7 +66,7 @@ const NavLink = styled(Link)`
   text-transform: capitalize;
   cursor: pointer;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 20px;
   }
 `

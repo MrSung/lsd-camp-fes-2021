@@ -51,7 +51,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-template-columns: 1fr 400px 1fr;
     text-align: center;
   }
@@ -63,7 +63,7 @@ const AboutHeading = styled.h2`
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     margin-bottom: 48px;
   }
@@ -75,7 +75,7 @@ const Lead = styled.h3`
   grid-column: 1 / 3;
   grid-row: 2 / 3;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     margin-bottom: 54px;
   }
@@ -94,7 +94,7 @@ const imageStyle = css`
 const ImageContainerLeft = styled.div`
   ${imageStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 1 / 2;
     grid-row: 1 / 4;
   }
@@ -103,7 +103,7 @@ const ImageContainerLeft = styled.div`
 const ImageContainerRight = styled.div`
   ${imageStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 3 / 4;
     grid-row: 1 / 4;
   }
@@ -113,7 +113,7 @@ const Paragraph = styled.p`
   grid-column: 1 / 3;
   font-size: 16px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     font-size: 18px;
   }

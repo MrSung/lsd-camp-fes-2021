@@ -5,7 +5,7 @@ import { Style } from '@/const/style'
 export const inlineBlockStyle = css`
   display: inline-block;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: block;
   }
 `

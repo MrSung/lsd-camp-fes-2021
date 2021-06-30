@@ -160,7 +160,7 @@ const Section = styled.section`
   padding-bottom: 64px;
   background-color: ${Style.COLOR.PERSIAN_GREEN};
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-bottom: 0;
     padding-top: 132px;
     padding-bottom: 144px;
@@ -172,7 +172,7 @@ const Container = styled.div`
 `
 
 const Inner = styled.div`
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: grid;
     grid-template-columns: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH}px 1fr 1fr 1fr ${Style
         .SIZE.TIMETABLE_COL_RIGHT_WIDTH}px;
@@ -202,7 +202,7 @@ const repeatingStripeHeader = css`
 const TimesContainer = styled.div`
   display: none;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     ${repeatingStripe}
     ${repeatingStripeHeader}
 
@@ -228,7 +228,7 @@ const TimetableHeading = styled.h2`
   margin-bottom: 28px;
   color: ${Style.COLOR.WHITE};
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-template-columns: 1 / 6;
   }
 `
@@ -241,7 +241,7 @@ const DateHeading = styled.h3`
   line-height: 48px;
   text-align: center;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
     padding-right: ${Style.SIZE.TIMETABLE_COL_RIGHT_WIDTH - 2}px;
     padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
@@ -251,7 +251,7 @@ const DateHeading = styled.h3`
 `
 
 const DateContainer = styled.span`
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: block;
     border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
     border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
@@ -261,7 +261,7 @@ const DateContainer = styled.span`
 const venueColStyle = css`
   margin-top: 32px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     ${repeatingStripe}
 
     display: grid;
@@ -276,7 +276,7 @@ const venueColStyle = css`
 const VenueColFirst = styled.div`
   ${venueColStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     margin-right: -24px;
   }
@@ -285,7 +285,7 @@ const VenueColFirst = styled.div`
 const VenueColSecond = styled.div`
   ${venueColStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 3 / 4;
     margin-right: -24px;
   }
@@ -294,7 +294,7 @@ const VenueColSecond = styled.div`
 const VenueColThird = styled.div`
   ${venueColStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 4 / 5;
   }
 `
@@ -302,7 +302,7 @@ const VenueColThird = styled.div`
 const Spacers = styled.span`
   display: none;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     ${repeatingStripe}
     ${repeatingStripeHeader}
 

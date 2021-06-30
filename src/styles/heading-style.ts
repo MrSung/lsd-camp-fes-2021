@@ -10,7 +10,7 @@ export const headingStyle = css`
   line-height: 1.5;
   text-transform: capitalize;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 54px;
   }
 `

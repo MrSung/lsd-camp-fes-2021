@@ -26,7 +26,7 @@ const Section = styled.section`
 const Container = styled.div`
   ${containerStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,7 +38,7 @@ const ColLeft = styled.div`
   justify-content: center;
   margin-bottom: 32px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: block;
     margin-bottom: 128px;
   }
@@ -49,7 +49,7 @@ const ColRight = styled.div`
   justify-content: center;
   margin-bottom: 24px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: block;
     margin-bottom: 0;
   }

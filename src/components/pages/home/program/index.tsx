@@ -61,7 +61,7 @@ const Section = styled.section`
 
   padding-top: 72px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     padding-bottom: 48px;
   }
 `
@@ -69,7 +69,7 @@ const Section = styled.section`
 const Container = styled.div`
   ${containerStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -80,7 +80,7 @@ const ProgramHeading = styled.h2`
 
   margin-bottom: 24px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 1 / 5;
     margin-bottom: 32px;
   }

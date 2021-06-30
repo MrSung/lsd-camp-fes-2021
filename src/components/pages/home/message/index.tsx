@@ -58,7 +58,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
 const Section = styled.section`
   ${sectionStyle}
 
-  @media (max-width: 767px) {
+  @media (max-width: ${Style.BREAKPOINT.MD - 1}px) {
     margin-bottom: 144px;
   }
 `
@@ -66,7 +66,7 @@ const Section = styled.section`
 const Container = styled.div`
   ${containerStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: grid;
     grid-template-columns: 520px 1fr;
     grid-template-rows: 198px 108px 108px 1fr;
@@ -76,7 +76,7 @@ const Container = styled.div`
 const MessageHeading = styled.h2`
   ${headingStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
@@ -85,7 +85,7 @@ const MessageHeading = styled.h2`
 const Lead = styled.h3`
   ${leadStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     margin-bottom: 0;
@@ -96,7 +96,7 @@ const Lead = styled.h3`
 const ImageContainerFirst = styled.div`
   margin-bottom: 40px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 1 / 2;
     grid-row: 2 / 5;
     margin-left: -40px;
@@ -106,7 +106,7 @@ const ImageContainerFirst = styled.div`
 const ImageContainerSecond = styled.div`
   margin-bottom: 40px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
   }
@@ -116,7 +116,7 @@ const paragraphStyle = css`
   margin-bottom: 24px;
   font-size: 18px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-left: 30px;
     font-size: 24px;
   }
@@ -125,7 +125,7 @@ const paragraphStyle = css`
 const ParagraphFirst = styled.p`
   ${paragraphStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
@@ -134,7 +134,7 @@ const ParagraphFirst = styled.p`
 const ParagraphSecond = styled.p`
   ${paragraphStyle}
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
   }

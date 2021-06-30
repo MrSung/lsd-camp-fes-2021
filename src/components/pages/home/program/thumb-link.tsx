@@ -42,7 +42,7 @@ interface IWrapperProps {
 const Wrapper = styled.div<IWrapperProps>`
   margin-bottom: 24px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     width: ${({ width }) => `${width}px`};
     margin-bottom: 0;
   }
@@ -63,7 +63,7 @@ const Label = styled.span<ILabelProps>`
   background-color: ${({ labelNo }) => Venue[labelNo].color};
   line-height: 36px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 16px;
   }
 `
@@ -76,7 +76,7 @@ interface IThumbContainerProps {
 const ThumbContainer = styled.div<IThumbContainerProps>`
   overflow: hidden;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     width: ${({ width }) => `${width}px`};
     height: ${({ height }) => `${height}px`};
   }
@@ -87,7 +87,7 @@ const Title = styled.p`
   font-size: 14px;
   line-height: 1.5;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-top: 20px;
     font-size: 18px;
     line-height: 1.6;

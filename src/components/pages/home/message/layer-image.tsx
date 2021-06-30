@@ -38,7 +38,7 @@ interface IWrapperProps {
 const Wrapper = styled.div<IWrapperProps>`
   margin-bottom: ${LAYER_OFFSET_SMALL}px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-bottom: ${LAYER_OFFSET_LARGE}px;
   }
 
@@ -48,7 +48,7 @@ const Wrapper = styled.div<IWrapperProps>`
         return `
           margin-left: ${LAYER_OFFSET_SMALL}px;
 
-          @media (min-width: ${Style.BREAKPOINT.MD}) {
+          @media (min-width: ${Style.BREAKPOINT.MD}px) {
             margin-left: ${LAYER_OFFSET_LARGE}px;
           }
         `
@@ -56,7 +56,7 @@ const Wrapper = styled.div<IWrapperProps>`
         return `
           margin-right: ${LAYER_OFFSET_SMALL}px;
 
-          @media (min-width: ${Style.BREAKPOINT.MD}) {
+          @media (min-width: ${Style.BREAKPOINT.MD}px) {
             margin-right: ${LAYER_OFFSET_LARGE}px;
           }
         `
@@ -74,7 +74,7 @@ const Container = styled.div<IContainerProps>`
   max-width: 100%;
   height: auto;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     width: ${({ width }) => `${width}px`};
     height: ${({ height }) => `${height}px`};
   }
@@ -92,7 +92,7 @@ const BackgroundLayer = styled.div<IBackgroundLayer>`
   height: 100%;
   background-color: ${({ layerColor }) => layerColor};
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     bottom: -${LAYER_OFFSET_LARGE}px;
   }
 
@@ -102,7 +102,7 @@ const BackgroundLayer = styled.div<IBackgroundLayer>`
         return `
           left: -${LAYER_OFFSET_SMALL}px;
 
-          @media (min-width: ${Style.BREAKPOINT.MD}) {
+          @media (min-width: ${Style.BREAKPOINT.MD}px) {
             left: -${LAYER_OFFSET_LARGE}px;
           }
         `
@@ -110,7 +110,7 @@ const BackgroundLayer = styled.div<IBackgroundLayer>`
         return `
           right: -${LAYER_OFFSET_SMALL}px;
 
-          @media (min-width: ${Style.BREAKPOINT.MD}) {
+          @media (min-width: ${Style.BREAKPOINT.MD}px) {
             right: -${LAYER_OFFSET_LARGE}px;
           }
         `

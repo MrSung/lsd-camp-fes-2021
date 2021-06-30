@@ -43,7 +43,7 @@ interface IWrapperProps {
 const Wrapper = styled.div<IWrapperProps>`
   padding: 16px 16px 0;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-row: ${({ gridRow }) => gridRow};
     padding: 0 24px;
   }
@@ -62,7 +62,7 @@ const Dt = styled.dt<IDtProps>`
   font-size: 16px;
   line-height: 44px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 18px;
   }
 `
@@ -71,7 +71,7 @@ const Dd = styled.dd`
   padding: 16px 16px 14px;
   background-color: ${Style.COLOR.WHITE};
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     height: ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT - 44}px;
   }
 `
@@ -81,7 +81,7 @@ const Title = styled.h4`
   font-size: 14px;
   font-weight: 400;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 18px;
   }
 `
@@ -90,7 +90,7 @@ const Host = styled.p`
   color: ${Style.COLOR.SPANISH_GRAY};
   font-size: 14px;
 
-  @media (min-width: ${Style.BREAKPOINT.MD}) {
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 18px;
   }
 `
