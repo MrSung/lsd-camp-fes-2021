@@ -89,7 +89,7 @@ const Lead = styled.h3`
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     margin-bottom: 0;
-    margin-left: 30px;
+    margin-left: 50px;
   }
 `
 
@@ -109,6 +109,7 @@ const ImageContainerSecond = styled.div`
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
+    padding-left: 50px;
   }
 `
 
@@ -117,7 +118,7 @@ const paragraphStyle = css`
   font-size: 18px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    margin-left: 30px;
+    margin-left: 50px;
     font-size: 24px;
   }
 `

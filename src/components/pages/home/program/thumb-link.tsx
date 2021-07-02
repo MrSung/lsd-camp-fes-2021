@@ -46,6 +46,12 @@ const Wrapper = styled.div<IWrapperProps>`
     width: ${({ width }) => `${width}px`};
     margin-bottom: 0;
   }
+
+  &:not(:nth-of-type(4n)) {
+    @media (min-width: ${Style.BREAKPOINT.MD}px) {
+      margin-right: 30px;
+    }
+  }
 `
 
 interface ILabelProps {

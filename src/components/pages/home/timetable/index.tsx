@@ -161,8 +161,9 @@ const Section = styled.section`
   background-color: ${Style.COLOR.PERSIAN_GREEN};
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    margin-top: 136px;
     margin-bottom: 0;
-    padding-top: 132px;
+    padding-top: 144px;
     padding-bottom: 144px;
   }
 `
