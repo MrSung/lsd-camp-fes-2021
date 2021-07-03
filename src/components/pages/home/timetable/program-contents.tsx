@@ -3,13 +3,13 @@ import styled from 'styled-components'
 
 import { Style } from '@/const/style'
 import { VenueKey, Venue } from '@/const/venue'
-import { timeRange } from '@/const/time-range'
 import { dateToJaStdDateTime } from '@/utils/date'
 import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'
 
 export const ProgramContents = (
   contents: IProgramContent[],
+  timeRange: string[],
   labelNo: VenueKey,
 ) =>
   contents.map((o) => {
@@ -18,8 +18,11 @@ export const ProgramContents = (
       `HH:mm`,
     )
     const endTime = format(new Date(dateToJaStdDateTime(o.endDate)), `HH:mm`)
+
     const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
-    const endTimeGridIndex = timeRange.findIndex((t) => t === endTime) + 2
+    const endTimeIndex = timeRange.findIndex((t) => t === endTime)
+    const endTimeGridIndex =
+      endTimeIndex === -1 ? timeRange.length : endTimeIndex + 2
 
     return (
       <Content

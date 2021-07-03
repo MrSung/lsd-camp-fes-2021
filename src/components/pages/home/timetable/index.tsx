@@ -1,14 +1,53 @@
-import { isSameDay } from 'date-fns'
+import { parse, format, isBefore, isAfter, isSameDay } from 'date-fns'
 import styled, { css } from 'styled-components'
 
 import { Style } from '@/const/style'
 import { timeRange } from '@/const/time-range'
-import { dateToJaStdDate } from '@/utils/date'
+import { dateToJaStdTime, dateToJaStdDate } from '@/utils/date'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { IProgramData, IProgramContent } from '@/pages'
 import { DateHeading } from './date-heading'
 import { VenueLabel } from './venue-label'
 import { ProgramContents } from './program-contents'
+
+const timeRangeReducer = (contents: IProgramContent[]) => {
+  const startTime = contents.reduce((acc, cur, i) => {
+    const startDate = dateToJaStdTime(cur.startDate)
+
+    if (
+      i === 0 ||
+      isBefore(
+        parse(startDate, `HH:mm:ss`, new Date()),
+        parse(acc, `HH:mm:ss`, new Date()),
+      )
+    ) {
+      acc = startDate
+    }
+
+    return acc
+  }, ``)
+
+  const endTime = contents.reduce((acc, cur, i) => {
+    const endDate = dateToJaStdTime(cur.endDate)
+
+    if (
+      i === 0 ||
+      isAfter(
+        parse(endDate, `HH:mm:ss`, new Date()),
+        parse(acc, `HH:mm:ss`, new Date()),
+      )
+    ) {
+      acc = endDate
+    }
+
+    return acc
+  }, ``)
+
+  return {
+    startTime: format(parse(startTime, `HH:mm:ss`, new Date()), `HH:mm`),
+    endTime: format(parse(endTime, `HH:mm:ss`, new Date()), `HH:mm`),
+  }
+}
 
 const programDateReducer = (contents: IProgramContent[]) =>
   contents.reduce<[IProgramContent[], IProgramContent[]]>(
@@ -65,6 +104,30 @@ export const Timetable = ({
     programVenueReducer(prevDateContents)
   const [mainDateFirstContents, mainDateSecondContents, mainDateThirdContents] =
     programVenueReducer(mainDateContents)
+  const { startTime: prevDateStartTime, endTime: prevDateEndTime } =
+    timeRangeReducer(prevDateContents)
+  const { startTime: mainDateStartTime, endTime: mainDateEndTime } =
+    timeRangeReducer(mainDateContents)
+
+  const oneHourTimeRange = timeRange.filter(
+    (time) => time.split(`:`)[1] === `00`,
+  )
+  const prevDateOneHourTimeRange = oneHourTimeRange.slice(
+    oneHourTimeRange.findIndex((t) => t === prevDateStartTime),
+    oneHourTimeRange.findIndex((t) => t === prevDateEndTime),
+  )
+  const mainDateOneHourTimeRange = oneHourTimeRange.slice(
+    oneHourTimeRange.findIndex((t) => t === mainDateStartTime),
+    oneHourTimeRange.findIndex((t) => t === mainDateEndTime),
+  )
+  const prevDateQuarterHourTimeRange = timeRange.slice(
+    timeRange.findIndex((t) => t === prevDateStartTime),
+    timeRange.findIndex((t) => t === prevDateEndTime),
+  )
+  const mainDateQuarterHourTimeRange = timeRange.slice(
+    timeRange.findIndex((t) => t === mainDateStartTime),
+    timeRange.findIndex((t) => t === mainDateEndTime),
+  )
 
   return (
     <Section id={sectionId}>
@@ -74,23 +137,33 @@ export const Timetable = ({
         <DateHeading>7 / 31 (Sat)</DateHeading>
         <Inner>
           <TimesContainer>
-            {timeRange
-              .filter((time) => time.split(`:`)[1] === `00`)
-              .map((time) => (
-                <Time key={time}>{time}</Time>
-              ))}
+            {prevDateOneHourTimeRange.map((time) => (
+              <Time key={time}>{time}</Time>
+            ))}
           </TimesContainer>
           <VenueColFirst>
             <VenueLabel labelNo="1" />
-            {ProgramContents(prevDateFirstContents, `1`)}
+            {ProgramContents(
+              prevDateFirstContents,
+              prevDateQuarterHourTimeRange,
+              `1`,
+            )}
           </VenueColFirst>
           <VenueColSecond>
             <VenueLabel labelNo="2" />
-            {ProgramContents(prevDateSecondContents, `2`)}
+            {ProgramContents(
+              prevDateSecondContents,
+              prevDateQuarterHourTimeRange,
+              `2`,
+            )}
           </VenueColSecond>
           <VenueColThird>
             <VenueLabel labelNo="3" />
-            {ProgramContents(prevDateThirdContents, `3`)}
+            {ProgramContents(
+              prevDateThirdContents,
+              prevDateQuarterHourTimeRange,
+              `3`,
+            )}
           </VenueColThird>
           <Spacers />
         </Inner>
@@ -98,23 +171,33 @@ export const Timetable = ({
         <DateHeading>8 / 1 (Sun)</DateHeading>
         <Inner>
           <TimesContainer>
-            {timeRange
-              .filter((time) => time.split(`:`)[1] === `00`)
-              .map((time) => (
-                <Time key={time}>{time}</Time>
-              ))}
+            {mainDateOneHourTimeRange.map((time) => (
+              <Time key={time}>{time}</Time>
+            ))}
           </TimesContainer>
           <VenueColFirst>
             <VenueLabel labelNo="1" />
-            {ProgramContents(mainDateFirstContents, `1`)}
+            {ProgramContents(
+              mainDateFirstContents,
+              mainDateQuarterHourTimeRange,
+              `1`,
+            )}
           </VenueColFirst>
           <VenueColSecond>
             <VenueLabel labelNo="2" />
-            {ProgramContents(mainDateSecondContents, `2`)}
+            {ProgramContents(
+              mainDateSecondContents,
+              mainDateQuarterHourTimeRange,
+              `2`,
+            )}
           </VenueColSecond>
           <VenueColThird>
             <VenueLabel labelNo="3" />
-            {ProgramContents(mainDateThirdContents, `3`)}
+            {ProgramContents(
+              mainDateThirdContents,
+              mainDateQuarterHourTimeRange,
+              `3`,
+            )}
           </VenueColThird>
           <Spacers />
         </Inner>
