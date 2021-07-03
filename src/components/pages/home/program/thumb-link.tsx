@@ -83,6 +83,11 @@ const ThumbContainer = styled.div<IThumbContainerProps>`
   position: relative;
   overflow: hidden;
 
+  @media (max-width: ${Style.BREAKPOINT.MD - 1}px) {
+    width: calc(100vw - 32px);
+    height: calc(100vw - 32px);
+  }
+
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     width: ${({ width }) => `${width}px`};
     height: ${({ height }) => `${height}px`};
