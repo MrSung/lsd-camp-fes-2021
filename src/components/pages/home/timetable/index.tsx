@@ -1,14 +1,32 @@
-import { format, isSameDay } from 'date-fns'
+import { isSameDay } from 'date-fns'
 import styled, { css } from 'styled-components'
 
 import { Style } from '@/const/style'
 import { timeRange } from '@/const/time-range'
-import { VenueKey } from '@/const/venue'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { IProgramData, IProgramContent } from '@/pages'
-import { dateToJaStdDateTime, dateToJaStdDate } from '@/utils/date'
+import { dateToJaStdDate } from '@/utils/date'
 import { VenueLabel } from './venue-label'
-import { Content } from './content'
+import { ProgramContents } from './program-contents'
+
+const programVenueReducer = (contents: IProgramContent[]) =>
+  contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
+    (acc, cur) => {
+      switch (cur.venue[0]) {
+        case `1`:
+          acc[0].push(cur)
+          break
+        case `2`:
+          acc[1].push(cur)
+          break
+        case `3`:
+          acc[2].push(cur)
+          break
+      }
+      return acc
+    },
+    [[], [], []],
+  )
 
 const programDateReducer = (contents: IProgramContent[]) =>
   contents.reduce<[IProgramContent[], IProgramContent[]]>(
@@ -32,30 +50,6 @@ const programDateReducer = (contents: IProgramContent[]) =>
     [[], []],
   )
 
-const ProgramContents = (contents: IProgramContent[], labelNo: VenueKey) =>
-  contents.map((o) => {
-    const startTime = format(
-      new Date(dateToJaStdDateTime(o.startDate)),
-      `HH:mm`,
-    )
-    const endTime = format(new Date(dateToJaStdDateTime(o.endDate)), `HH:mm`)
-    const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
-    const endTimeGridIndex = timeRange.findIndex((t) => t === endTime) + 2
-
-    return (
-      <Content
-        key={o.id}
-        href={o.link}
-        labelNo={labelNo}
-        startTime={startTime}
-        endTime={endTime}
-        title={o.title}
-        host={`host name`}
-        gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
-      />
-    )
-  })
-
 interface ITimetableProps {
   sectionId: string
   programData: IProgramData
@@ -66,23 +60,7 @@ export const Timetable = ({
   programData: { contents },
 }: ITimetableProps) => {
   const [firstVenueContents, secondVenueContents, thirdVenueContents] =
-    contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
-      (acc, cur) => {
-        switch (cur.venue[0]) {
-          case `1`:
-            acc[0].push(cur)
-            break
-          case `2`:
-            acc[1].push(cur)
-            break
-          case `3`:
-            acc[2].push(cur)
-            break
-        }
-        return acc
-      },
-      [[], [], []],
-    )
+    programVenueReducer(contents)
   const [prevDateFirstContents, mainDateFirstContents] =
     programDateReducer(firstVenueContents)
   const [prevDateSecondContents, mainDateSecondContents] =

@@ -1,8 +1,39 @@
+import { format } from 'date-fns'
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
 import { VenueKey, Venue } from '@/const/venue'
+import { timeRange } from '@/const/time-range'
+import { dateToJaStdDateTime } from '@/utils/date'
+import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'
+
+export const ProgramContents = (
+  contents: IProgramContent[],
+  labelNo: VenueKey,
+) =>
+  contents.map((o) => {
+    const startTime = format(
+      new Date(dateToJaStdDateTime(o.startDate)),
+      `HH:mm`,
+    )
+    const endTime = format(new Date(dateToJaStdDateTime(o.endDate)), `HH:mm`)
+    const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
+    const endTimeGridIndex = timeRange.findIndex((t) => t === endTime) + 2
+
+    return (
+      <Content
+        key={o.id}
+        href={o.link}
+        labelNo={labelNo}
+        startTime={startTime}
+        endTime={endTime}
+        title={o.title}
+        host={`host name`}
+        gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+      />
+    )
+  })
 
 interface IContentProps {
   href: string
