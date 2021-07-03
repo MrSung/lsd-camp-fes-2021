@@ -1,44 +1,60 @@
-import { format } from 'date-fns'
+import { format, isSameDay } from 'date-fns'
 import styled, { css } from 'styled-components'
 
 import { Style } from '@/const/style'
+import { timeRange } from '@/const/time-range'
+import { VenueKey } from '@/const/venue'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { IProgramData, IProgramContent } from '@/pages'
+import { dateToJaStdDateTime, dateToJaStdDate } from '@/utils/date'
 import { VenueLabel } from './venue-label'
 import { Content } from './content'
 
-const minutesReducer = (i: number) => {
-  switch (i % 4) {
-    case 0:
-      return `00`
-    case 1:
-      return `15`
-    case 2:
-      return `30`
-    case 3:
-      return `45`
-    default:
-      return `00`
-  }
-}
-
-const timeRange = Array(24)
-  .fill(0)
-  .reduce(
-    (acc: number[][], cur: number, i) => [
-      ...acc,
-      Array(4).fill(
-        Array.from(`0` + String(cur + i))
-          .slice(-2)
-          .join(``),
-      ),
-    ],
-    [],
+const programDateReducer = (contents: IProgramContent[]) =>
+  contents.reduce<[IProgramContent[], IProgramContent[]]>(
+    (acc, cur) => {
+      switch (true) {
+        case isSameDay(
+          new Date(dateToJaStdDate(cur.startDate)),
+          new Date(2021, 6, 31), // 前夜祭：2021/7/31
+        ):
+          acc[0].push(cur)
+          break
+        case isSameDay(
+          new Date(dateToJaStdDate(cur.startDate)),
+          new Date(2021, 7, 1), // 当日：2021/8/1
+        ):
+          acc[1].push(cur)
+          break
+      }
+      return acc
+    },
+    [[], []],
   )
-  .flat()
-  .map(
-    (h: number, i: number) => `${String(h)}:${minutesReducer(i)}`,
-  ) as string[]
+
+const ProgramContents = (contents: IProgramContent[], labelNo: VenueKey) =>
+  contents.map((o) => {
+    const startTime = format(
+      new Date(dateToJaStdDateTime(o.startDate)),
+      `HH:mm`,
+    )
+    const endTime = format(new Date(dateToJaStdDateTime(o.endDate)), `HH:mm`)
+    const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
+    const endTimeGridIndex = timeRange.findIndex((t) => t === endTime) + 2
+
+    return (
+      <Content
+        key={o.id}
+        href={o.link}
+        labelNo={labelNo}
+        startTime={startTime}
+        endTime={endTime}
+        title={o.title}
+        host={`host name`}
+        gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+      />
+    )
+  })
 
 interface ITimetableProps {
   sectionId: string
@@ -67,11 +83,18 @@ export const Timetable = ({
       },
       [[], [], []],
     )
+  const [prevDateFirstContents, mainDateFirstContents] =
+    programDateReducer(firstVenueContents)
+  const [prevDateSecondContents, mainDateSecondContents] =
+    programDateReducer(secondVenueContents)
+  const [prevDateThirdContents, mainDateThirdContents] =
+    programDateReducer(thirdVenueContents)
 
   return (
     <Section id={sectionId}>
       <Container>
         <TimetableHeading>timetable</TimetableHeading>
+
         <DateHeading>
           <DateContainer>7 / 31 (Sat)</DateContainer>
         </DateHeading>
@@ -85,75 +108,41 @@ export const Timetable = ({
           </TimesContainer>
           <VenueColFirst>
             <VenueLabel labelNo="1" />
-            {firstVenueContents.map((o) => {
-              const startTime = format(new Date(o.startDate), `HH:mm`)
-              const endTime = format(new Date(o.endDate), `HH:mm`)
-              const startTimeGridIndex =
-                timeRange.findIndex((t) => t === startTime) + 2
-              const endTimeGridIndex =
-                timeRange.findIndex((t) => t === endTime) + 2
-
-              return (
-                <Content
-                  key={o.id}
-                  href={o.link}
-                  labelNo="1"
-                  startTime={startTime}
-                  endTime={endTime}
-                  title={o.title}
-                  host={`host name`}
-                  gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
-                />
-              )
-            })}
+            {ProgramContents(prevDateFirstContents, `1`)}
           </VenueColFirst>
           <VenueColSecond>
             <VenueLabel labelNo="2" />
-            {secondVenueContents.map((o) => {
-              const startTime = format(new Date(o.startDate), `HH:mm`)
-              const endTime = format(new Date(o.endDate), `HH:mm`)
-              const startTimeGridIndex =
-                timeRange.findIndex((t) => t === startTime) + 2
-              const endTimeGridIndex =
-                timeRange.findIndex((t) => t === endTime) + 2
-
-              return (
-                <Content
-                  key={o.id}
-                  href={o.link}
-                  labelNo="2"
-                  startTime={startTime}
-                  endTime={endTime}
-                  title={o.title}
-                  host={`host name`}
-                  gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
-                />
-              )
-            })}
+            {ProgramContents(prevDateSecondContents, `2`)}
           </VenueColSecond>
           <VenueColThird>
             <VenueLabel labelNo="3" />
-            {thirdVenueContents.map((o) => {
-              const startTime = format(new Date(o.startDate), `HH:mm`)
-              const endTime = format(new Date(o.endDate), `HH:mm`)
-              const startTimeGridIndex =
-                timeRange.findIndex((t) => t === startTime) + 2
-              const endTimeGridIndex =
-                timeRange.findIndex((t) => t === endTime) + 2
+            {ProgramContents(prevDateThirdContents, `3`)}
+          </VenueColThird>
+          <Spacers />
+        </Inner>
 
-              return (
-                <Content
-                  key={o.id}
-                  href={o.link}
-                  labelNo="3"
-                  startTime={startTime}
-                  endTime={endTime}
-                  title={o.title}
-                  host={`host name`}
-                  gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
-                />
-              )
-            })}
+        <DateHeading>
+          <DateContainer>8 / 1 (Sun)</DateContainer>
+        </DateHeading>
+        <Inner>
+          <TimesContainer>
+            {timeRange
+              .filter((time) => time.split(`:`)[1] === `00`)
+              .map((time) => (
+                <Time key={time}>{time}</Time>
+              ))}
+          </TimesContainer>
+          <VenueColFirst>
+            <VenueLabel labelNo="1" />
+            {ProgramContents(mainDateFirstContents, `1`)}
+          </VenueColFirst>
+          <VenueColSecond>
+            <VenueLabel labelNo="2" />
+            {ProgramContents(mainDateSecondContents, `2`)}
+          </VenueColSecond>
+          <VenueColThird>
+            <VenueLabel labelNo="3" />
+            {ProgramContents(mainDateThirdContents, `3`)}
           </VenueColThird>
           <Spacers />
         </Inner>
@@ -259,6 +248,10 @@ const DateHeading = styled.h3`
     padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
     font-size: 36px;
     line-height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
+  }
+
+  & ~ & {
+    margin-top: 196px;
   }
 `
 

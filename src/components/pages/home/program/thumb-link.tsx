@@ -44,7 +44,6 @@ const Wrapper = styled.div<IWrapperProps>`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     width: ${({ width }) => `${width}px`};
-    margin-bottom: 0;
   }
 
   &:not(:nth-of-type(4n)) {
