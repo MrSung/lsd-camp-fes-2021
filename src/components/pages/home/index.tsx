@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { IHomePageData } from '@/pages'
+import { IIndexPageProps } from '@/pages'
 import { DefaultTemplate } from '@/components/templates'
 import { MainVisual } from '@/components/pages/home/main-visual'
 import { Message } from '@/components/pages/home/message'
@@ -14,11 +14,7 @@ import {
   HOME_LINK_TIMETABLE,
 } from '@/const/home-links'
 
-interface IHomeProps {
-  pageData: IHomePageData
-}
-
-export const Home = ({ pageData }: IHomeProps) => {
+export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
   return (
     <DefaultTemplate>
       <Head>
@@ -33,7 +29,7 @@ export const Home = ({ pageData }: IHomeProps) => {
       <MainVisual />
       <Message sectionId={HOME_LINK_MESSAGE} />
       <About sectionId={HOME_LINK_ABOUT} />
-      <Program sectionId={HOME_LINK_PROGRAM} />
+      <Program sectionId={HOME_LINK_PROGRAM} programData={programData} />
       <Timetable sectionId={HOME_LINK_TIMETABLE} />
     </DefaultTemplate>
   )

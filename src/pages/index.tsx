@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { Home } from '@/components/pages/home'
 import { fetcher } from '@/utils/http-client'
 
-export interface IHomePageData {
+export interface IProgramData {
   contents: Array<{
     id: string
     createdAt: string
@@ -26,8 +26,10 @@ export interface IHomePageData {
   limit: number
 }
 
-interface IIndexPageProps {
-  pageData: IHomePageData
+export interface IIndexPageProps {
+  pageData: {
+    programData: IProgramData
+  }
 }
 
 const IndexPage = ({ pageData }: IIndexPageProps) => (
@@ -37,11 +39,13 @@ const IndexPage = ({ pageData }: IIndexPageProps) => (
 export default IndexPage
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pageData = await fetcher<IHomePageData>(`fes-21-program`)
+  const programData = await fetcher<IProgramData>(`fes-21-program`)
 
   return {
     props: {
-      pageData,
+      pageData: {
+        programData,
+      },
     },
   }
 }

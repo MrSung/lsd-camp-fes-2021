@@ -1,57 +1,36 @@
 import styled from 'styled-components'
 
-import cardImage1 from '@/images/card-image-1.jpg'
-import cardImage2 from '@/images/card-image-2.jpg'
-import cardImage3 from '@/images/card-image-3.jpg'
-import cardImage4 from '@/images/card-image-4.jpg'
+import { VenueKey } from '@/const/venue'
 import { Style } from '@/const/style'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
+import { IProgramData } from '@/pages'
 import { ThumbLink } from './thumb-link'
 
 interface IProgramProps {
   sectionId: string
+  programData: IProgramData
 }
 
-export const Program = ({ sectionId }: IProgramProps) => (
+export const Program = ({
+  sectionId,
+  programData: { contents },
+}: IProgramProps) => (
   <Section id={sectionId}>
     <Container>
       <ProgramHeading>program</ProgramHeading>
-      <ThumbLink
-        href="#"
-        labelNo={1}
-        src={cardImage1}
-        alt=""
-        width={270}
-        height={270}
-        title="“NEO渋谷”を創り続ける、わたしの憧れのリーダーズ"
-      />
-      <ThumbLink
-        href="#"
-        labelNo={1}
-        src={cardImage2}
-        alt=""
-        width={270}
-        height={270}
-        title="平成の渋谷を見続けてきた、SHIBUYA愛に満ちた3人"
-      />
-      <ThumbLink
-        href="#"
-        labelNo={1}
-        src={cardImage3}
-        alt=""
-        width={270}
-        height={270}
-        title="いま注目の幡ヶ谷エリアで商いをする地元の仲間たち"
-      />
-      <ThumbLink
-        href="#"
-        labelNo={2}
-        src={cardImage4}
-        alt=""
-        width={270}
-        height={270}
-        title="会うたびに刺激をくれる、“いまの渋谷” に詳しい仲間たち"
-      />
+      {contents.map((c) => (
+        <ThumbLink
+          key={c.id}
+          href={c.link}
+          labelNo={c.venue[0] as VenueKey}
+          // @ts-expect-error: Fix later...
+          src={c.thumbnail.url}
+          alt=""
+          width={270}
+          height={270}
+          title={c.title}
+        />
+      ))}
     </Container>
   </Section>
 )

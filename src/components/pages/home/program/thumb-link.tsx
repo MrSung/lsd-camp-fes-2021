@@ -28,7 +28,7 @@ export const ThumbLink = ({
     <ExternalLink href={href}>
       <Label labelNo={labelNo}>{Venue[labelNo].text}</Label>
       <ThumbContainer width={width} height={height}>
-        <Image src={src} alt={alt} />
+        <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
       <Title>{title}</Title>
     </ExternalLink>
@@ -80,6 +80,7 @@ interface IThumbContainerProps {
 }
 
 const ThumbContainer = styled.div<IThumbContainerProps>`
+  position: relative;
   overflow: hidden;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
