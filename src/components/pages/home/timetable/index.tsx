@@ -3,30 +3,12 @@ import styled, { css } from 'styled-components'
 
 import { Style } from '@/const/style'
 import { timeRange } from '@/const/time-range'
+import { dateToJaStdDate } from '@/utils/date'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { IProgramData, IProgramContent } from '@/pages'
-import { dateToJaStdDate } from '@/utils/date'
+import { DateHeading } from './date-heading'
 import { VenueLabel } from './venue-label'
 import { ProgramContents } from './program-contents'
-
-const programVenueReducer = (contents: IProgramContent[]) =>
-  contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
-    (acc, cur) => {
-      switch (cur.venue[0]) {
-        case `1`:
-          acc[0].push(cur)
-          break
-        case `2`:
-          acc[1].push(cur)
-          break
-        case `3`:
-          acc[2].push(cur)
-          break
-      }
-      return acc
-    },
-    [[], [], []],
-  )
 
 const programDateReducer = (contents: IProgramContent[]) =>
   contents.reduce<[IProgramContent[], IProgramContent[]]>(
@@ -50,6 +32,25 @@ const programDateReducer = (contents: IProgramContent[]) =>
     [[], []],
   )
 
+const programVenueReducer = (contents: IProgramContent[]) =>
+  contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
+    (acc, cur) => {
+      switch (cur.venue[0]) {
+        case `1`:
+          acc[0].push(cur)
+          break
+        case `2`:
+          acc[1].push(cur)
+          break
+        case `3`:
+          acc[2].push(cur)
+          break
+      }
+      return acc
+    },
+    [[], [], []],
+  )
+
 interface ITimetableProps {
   sectionId: string
   programData: IProgramData
@@ -59,23 +60,18 @@ export const Timetable = ({
   sectionId,
   programData: { contents },
 }: ITimetableProps) => {
-  const [firstVenueContents, secondVenueContents, thirdVenueContents] =
-    programVenueReducer(contents)
-  const [prevDateFirstContents, mainDateFirstContents] =
-    programDateReducer(firstVenueContents)
-  const [prevDateSecondContents, mainDateSecondContents] =
-    programDateReducer(secondVenueContents)
-  const [prevDateThirdContents, mainDateThirdContents] =
-    programDateReducer(thirdVenueContents)
+  const [prevDateContents, mainDateContents] = programDateReducer(contents)
+  const [prevDateFirstContents, prevDateSecondContents, prevDateThirdContents] =
+    programVenueReducer(prevDateContents)
+  const [mainDateFirstContents, mainDateSecondContents, mainDateThirdContents] =
+    programVenueReducer(mainDateContents)
 
   return (
     <Section id={sectionId}>
       <Container>
         <TimetableHeading>timetable</TimetableHeading>
 
-        <DateHeading>
-          <DateContainer>7 / 31 (Sat)</DateContainer>
-        </DateHeading>
+        <DateHeading>7 / 31 (Sat)</DateHeading>
         <Inner>
           <TimesContainer>
             {timeRange
@@ -99,9 +95,7 @@ export const Timetable = ({
           <Spacers />
         </Inner>
 
-        <DateHeading>
-          <DateContainer>8 / 1 (Sun)</DateContainer>
-        </DateHeading>
+        <DateHeading>8 / 1 (Sun)</DateHeading>
         <Inner>
           <TimesContainer>
             {timeRange
@@ -209,35 +203,6 @@ const TimetableHeading = styled.h2`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-template-columns: 1 / 6;
-  }
-`
-
-const DateHeading = styled.h3`
-  height: 48px;
-  background-color: ${Style.COLOR.GREEN_SHEEN};
-  color: ${Style.COLOR.WHITE};
-  font-size: 24px;
-  line-height: 48px;
-  text-align: center;
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
-    padding-right: ${Style.SIZE.TIMETABLE_COL_RIGHT_WIDTH - 2}px;
-    padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
-    font-size: 36px;
-    line-height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
-  }
-
-  & ~ & {
-    margin-top: 196px;
-  }
-`
-
-const DateContainer = styled.span`
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    display: block;
-    border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
-    border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
 `
 
