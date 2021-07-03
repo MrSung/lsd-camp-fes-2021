@@ -30,7 +30,7 @@ export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
       <Message sectionId={HOME_LINK_MESSAGE} />
       <About sectionId={HOME_LINK_ABOUT} />
       <Program sectionId={HOME_LINK_PROGRAM} programData={programData} />
-      <Timetable sectionId={HOME_LINK_TIMETABLE} />
+      <Timetable sectionId={HOME_LINK_TIMETABLE} programData={programData} />
     </DefaultTemplate>
   )
 }

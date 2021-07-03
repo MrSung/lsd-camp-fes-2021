@@ -3,24 +3,26 @@ import { GetStaticProps } from 'next'
 import { Home } from '@/components/pages/home'
 import { fetcher } from '@/utils/http-client'
 
+export interface IProgramContent {
+  id: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  revisedAt: string
+  title: string
+  link: string
+  venue: string[]
+  startDate: string
+  endDate: string
+  thumbnail: {
+    url: string
+    height: number
+    width: number
+  }
+}
+
 export interface IProgramData {
-  contents: Array<{
-    id: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-    revisedAt: string
-    title: string
-    link: string
-    venue: string[]
-    startDate: string
-    endDate: string
-    thumbnail: {
-      url: string
-      height: number
-      width: number
-    }
-  }>
+  contents: IProgramContent[]
   totalCount: number
   offset: number
   limit: number
