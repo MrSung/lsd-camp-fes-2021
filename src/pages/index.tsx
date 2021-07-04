@@ -10,6 +10,7 @@ export interface IProgramContent {
   publishedAt: string
   revisedAt: string
   title: string
+  host: string
   link: string
   venue: string[]
   startDate: string

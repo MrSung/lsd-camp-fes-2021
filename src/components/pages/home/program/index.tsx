@@ -29,6 +29,7 @@ export const Program = ({
           width={270}
           height={270}
           title={c.title}
+          host={c.host}
         />
       ))}
     </Container>

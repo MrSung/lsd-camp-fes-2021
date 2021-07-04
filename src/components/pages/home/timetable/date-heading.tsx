@@ -29,7 +29,11 @@ const Wrapper = styled.h3`
   }
 
   & ~ & {
-    margin-top: 196px;
+    margin-top: 96px;
+
+    @media (min-width: ${Style.BREAKPOINT.MD}px) {
+      margin-top: 196px;
+    }
   }
 `
 

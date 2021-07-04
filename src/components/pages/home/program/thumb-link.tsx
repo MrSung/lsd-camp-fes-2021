@@ -13,6 +13,7 @@ interface IThumbLinkProps {
   width: number
   height: number
   title: string
+  host: string
 }
 
 export const ThumbLink = ({
@@ -23,6 +24,7 @@ export const ThumbLink = ({
   width,
   height,
   title,
+  host,
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
     <ExternalLink href={href}>
@@ -31,6 +33,7 @@ export const ThumbLink = ({
         <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
       <Title>{title}</Title>
+      <Host>by {host}</Host>
     </ExternalLink>
   </Wrapper>
 )
@@ -95,6 +98,7 @@ const ThumbContainer = styled.div<IThumbContainerProps>`
 
 const Title = styled.p`
   margin-top: 16px;
+  margin-bottom: 6px;
   font-size: 14px;
   line-height: 1.5;
 
@@ -102,5 +106,14 @@ const Title = styled.p`
     margin-top: 20px;
     font-size: 18px;
     line-height: 1.6;
+  }
+`
+
+const Host = styled.p`
+  color: ${Style.COLOR.RAISIN_GRAY};
+  font-size: 14px;
+
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    font-size: 16px;
   }
 `

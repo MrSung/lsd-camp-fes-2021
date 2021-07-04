@@ -32,7 +32,7 @@ export const ProgramContents = (
         startTime={startTime}
         endTime={endTime}
         title={o.title}
-        host={`host name`}
+        host={o.host}
         gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
       />
     )
@@ -63,7 +63,7 @@ export const Content = ({
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>
           <Title>{title}</Title>
-          <Host>{host}</Host>
+          <Host>by {host}</Host>
         </Dd>
       </Dl>
     </ExternalLink>
@@ -125,6 +125,6 @@ const Host = styled.p`
   font-size: 14px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `
