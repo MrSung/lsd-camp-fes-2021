@@ -44,8 +44,12 @@ const timeRangeReducer = (contents: IProgramContent[]) => {
   }, ``)
 
   return {
-    startTime: format(parse(startTime, `HH:mm:ss`, new Date()), `HH:mm`),
-    endTime: format(parse(endTime, `HH:mm:ss`, new Date()), `HH:mm`),
+    startTime: `${
+      format(parse(startTime, `HH:mm:ss`, new Date()), `HH:mm`).split(`:`)[0]
+    }:00`,
+    endTime: `${
+      format(parse(endTime, `HH:mm:ss`, new Date()), `HH:mm`).split(`:`)[0]
+    }:00`,
   }
 }
 
