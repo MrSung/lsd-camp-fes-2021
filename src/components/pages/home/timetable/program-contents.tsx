@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, differenceInMinutes } from 'date-fns'
 import styled from 'styled-components'
 
 import { Style } from '@/const/style'
@@ -13,16 +13,13 @@ export const ProgramContents = (
   labelNo: VenueKey,
 ) =>
   contents.map((o) => {
-    const startTime = format(
-      new Date(dateToJaStdDateTime(o.startDate)),
-      `HH:mm`,
-    )
-    const endTime = format(new Date(dateToJaStdDateTime(o.endDate)), `HH:mm`)
-
+    const parsedStartTime = new Date(dateToJaStdDateTime(o.startDate))
+    const parsedEndTime = new Date(dateToJaStdDateTime(o.endDate))
+    const startTime = format(parsedStartTime, `HH:mm`)
+    const endTime = format(parsedEndTime, `HH:mm`)
     const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
-    const endTimeIndex = timeRange.findIndex((t) => t === endTime)
-    const endTimeGridIndex =
-      endTimeIndex === -1 ? timeRange.length : endTimeIndex + 2
+    const gridSpan =
+      differenceInMinutes(parsedEndTime, parsedStartTime) / (60 * 0.25)
 
     return (
       <Content
@@ -33,7 +30,7 @@ export const ProgramContents = (
         endTime={endTime}
         title={o.title}
         host={o.host}
-        gridRow={`${startTimeGridIndex} / ${endTimeGridIndex}`}
+        gridRow={`${startTimeGridIndex} / span ${gridSpan}`}
       />
     )
   })
@@ -83,7 +80,11 @@ const Wrapper = styled.div<IWrapperProps>`
   }
 `
 
-const Dl = styled.dl``
+const Dl = styled.dl`
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    height: 100%;
+  }
+`
 
 interface IDtProps {
   labelNo: IContentProps['labelNo']
@@ -104,10 +105,6 @@ const Dt = styled.dt<IDtProps>`
 const Dd = styled.dd`
   padding: 16px 16px 14px;
   background-color: ${Style.COLOR.WHITE};
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    height: ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT - 44}px;
-  }
 `
 
 const Title = styled.h4`

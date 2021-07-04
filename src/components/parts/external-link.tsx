@@ -35,4 +35,8 @@ const Wrapper = styled.a<IWrapperProps>`
     opacity: 0.8;
     color: ${Style.COLOR.RAISIN_BLACK};
   }
+
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    height: 100%;
+  }
 `
