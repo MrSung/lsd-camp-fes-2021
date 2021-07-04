@@ -55,7 +55,7 @@ export const Content = ({
   gridRow,
 }: IContentProps) => (
   <Wrapper gridRow={gridRow}>
-    <ExternalLink href={href} fillColor={Style.COLOR.WHITE}>
+    <ExternalLink href={href} fillColor={Style.COLOR.WHITE} isHeightFull>
       <Dl>
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>

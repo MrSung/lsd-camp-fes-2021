@@ -11,7 +11,7 @@ import {
   leadStyle,
   inlineBlockStyle,
 } from '@/styles'
-import { LineBreak } from '@/components/parts'
+import { LineBreak, ExternalLink } from '@/components/parts'
 
 interface IAboutProps {
   sectionId: string
@@ -34,7 +34,13 @@ export const About = ({ sectionId }: IAboutProps) => (
       </ImageContainerRight>
       <Paragraph>
         <LineBreak>
-          {`完璧になってから\n何者かになれてから\nそう考えてしまいがちですが\nここはLSD.Camp\n\nみんなの挑戦を応援する場所\n\n欠けているからこそ\nハマるピースがあります\n\nLSD.Campフェスも\nたくさんのピースが集まってできた１枚の絵\n\n自分のスタイルでお楽しみください`}
+          {`完璧になってから\n何者かになれてから\nそう考えてしまいがちですが\n`}
+        </LineBreak>
+        <ExternalLink href="https://lifestyledesign.camp/" isSecondary>
+          ここはLSD.Camp
+        </ExternalLink>
+        <LineBreak>
+          {`\nみんなの挑戦を応援する場所\n\n欠けているからこそ\nハマるピースがあります\n\nLSD.Campフェスも\nたくさんのピースが集まってできた１枚の絵\n\n自分のスタイルでお楽しみください`}
         </LineBreak>
       </Paragraph>
     </Container>
