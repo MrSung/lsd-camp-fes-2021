@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styled, { css } from 'styled-components'
+import { motion, TargetAndTransition, Transition } from 'framer-motion'
 
 import boyIllust from '@/images/boy-illustration.png'
 import boyIllustBg from '@/images/boy-illustration-bg.png'
@@ -15,6 +16,47 @@ import {
 } from '@/styles'
 import { LineBreak, ExternalLink } from '@/components/parts'
 
+const targetAndTransition: TargetAndTransition = {
+  y: [
+    ...Array(10)
+      .fill(0)
+      .map((n: number, i) => `${n + i + 1}px`),
+    ...Array(10)
+      .fill(0)
+      .map((n: number, i) => `${n + i + 1}px`)
+      .reverse(),
+  ],
+}
+
+const transitionBase: Transition = {
+  duration: 2,
+  ease: `easeInOut`,
+  loop: Infinity,
+}
+
+const IllustrationBg: React.FC = ({ children }) => (
+  <motion.div
+    animate={targetAndTransition}
+    transition={transitionBase}
+    style={{ position: `absolute` }}
+  >
+    {children}
+  </motion.div>
+)
+
+const IllustrationMain: React.FC = ({ children }) => (
+  <motion.div
+    animate={targetAndTransition}
+    transition={{
+      ...transitionBase,
+      delay: 1,
+    }}
+    style={{ position: `absolute` }}
+  >
+    {children}
+  </motion.div>
+)
+
 interface IAboutProps {
   sectionId: string
 }
@@ -29,20 +71,20 @@ export const About = ({ sectionId }: IAboutProps) => (
         <InlineBlock>発見する二日間</InlineBlock>
       </Lead>
       <ImageContainerLeft>
-        <ImageInner>
+        <IllustrationBg>
           <Image src={boyIllustBg} alt="" width={370} height={586} />
-        </ImageInner>
-        <ImageInner>
+        </IllustrationBg>
+        <IllustrationMain>
           <Image src={boyIllust} alt="" width={370} height={586} />
-        </ImageInner>
+        </IllustrationMain>
       </ImageContainerLeft>
       <ImageContainerRight>
-        <ImageInner>
+        <IllustrationBg>
           <Image src={girlIllustBg} alt="" width={370} height={586} />
-        </ImageInner>
-        <ImageInner>
+        </IllustrationBg>
+        <IllustrationMain>
           <Image src={girlIllust} alt="" width={370} height={586} />
-        </ImageInner>
+        </IllustrationMain>
       </ImageContainerRight>
       <Paragraph>
         <LineBreak>
@@ -96,6 +138,7 @@ const Lead = styled.h3`
 
   grid-column: 1 / 3;
   grid-row: 2 / 3;
+  margin-bottom: 20px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
@@ -109,9 +152,10 @@ const InlineBlock = styled.span`
 
 const imageStyle = css`
   display: flex;
-  align-items: center;
-  margin-bottom: 28px;
   position: relative;
+  align-items: center;
+  min-height: 280px;
+  margin-bottom: 28px;
 `
 
 const ImageContainerLeft = styled.div`
@@ -130,10 +174,6 @@ const ImageContainerRight = styled.div`
     grid-column: 3 / 4;
     grid-row: 1 / 4;
   }
-`
-
-const ImageInner = styled.div`
-  position: absolute;
 `
 
 const Paragraph = styled.p`
