@@ -5,6 +5,7 @@ import { Style } from '@/const/style'
 interface IExternalLinkProps {
   href: string
   children: React.ReactNode
+  display: 'block' | 'inline-block'
   fillColor?: string
   isHeightFull?: boolean
   isSecondary?: boolean
@@ -13,6 +14,7 @@ interface IExternalLinkProps {
 export const ExternalLink = ({
   href,
   children,
+  display,
   fillColor,
   isHeightFull,
   isSecondary,
@@ -21,6 +23,7 @@ export const ExternalLink = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
+    display={display}
     fillColor={fillColor}
     isHeightFull={isHeightFull}
     isSecondary={isSecondary}
@@ -30,13 +33,14 @@ export const ExternalLink = ({
 )
 
 interface IWrapperProps {
+  display: IExternalLinkProps['display']
   fillColor: IExternalLinkProps['fillColor']
   isHeightFull: IExternalLinkProps['isHeightFull']
   isSecondary: IExternalLinkProps['isSecondary']
 }
 
 const Wrapper = styled.a<IWrapperProps>`
-  display: block;
+  display: ${({ display }) => display};
   background-color: ${({ fillColor }) => fillColor};
 
   ${({ isHeightFull }) =>

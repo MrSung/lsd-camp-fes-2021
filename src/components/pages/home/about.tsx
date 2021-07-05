@@ -48,11 +48,15 @@ export const About = ({ sectionId }: IAboutProps) => (
         <LineBreak>
           {`完璧になってから\n何者かになれてから\nそう考えてしまいがちですが\n`}
         </LineBreak>
-        <ExternalLink href="https://lifestyledesign.camp/" isSecondary>
+        <ExternalLink
+          href="https://lifestyledesign.camp/"
+          display="inline-block"
+          isSecondary
+        >
           ここはLSD.Camp
         </ExternalLink>
         <LineBreak>
-          {`\nみんなの挑戦を応援する場所\n\n欠けているからこそ\nハマるピースがあります\n\nLSD.Campフェスも\nたくさんのピースが集まってできた１枚の絵\n\n自分のスタイルでお楽しみください`}
+          {`\n\nみんなの挑戦を応援する場所\n\n欠けているからこそ\nハマるピースがあります\n\nLSD.Campフェスも\nたくさんのピースが集まってできた１枚の絵\n\n自分のスタイルでお楽しみください`}
         </LineBreak>
       </Paragraph>
     </Container>
