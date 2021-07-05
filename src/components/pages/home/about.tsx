@@ -2,7 +2,9 @@ import Image from 'next/image'
 import styled, { css } from 'styled-components'
 
 import boyIllust from '@/images/boy-illustration.png'
+import boyIllustBg from '@/images/boy-illustration-bg.png'
 import girlIllust from '@/images/girl-illustration.png'
+import girlIllustBg from '@/images/girl-illustration-bg.png'
 import { Style } from '@/const/style'
 import {
   sectionStyle,
@@ -27,10 +29,20 @@ export const About = ({ sectionId }: IAboutProps) => (
         <InlineBlock>発見する二日間</InlineBlock>
       </Lead>
       <ImageContainerLeft>
-        <Image src={boyIllust} alt="" width={351} height={630} />
+        <ImageInner>
+          <Image src={boyIllustBg} alt="" width={370} height={586} />
+        </ImageInner>
+        <ImageInner>
+          <Image src={boyIllust} alt="" width={370} height={586} />
+        </ImageInner>
       </ImageContainerLeft>
       <ImageContainerRight>
-        <Image src={girlIllust} alt="" width={369} height={546} />
+        <ImageInner>
+          <Image src={girlIllustBg} alt="" width={370} height={586} />
+        </ImageInner>
+        <ImageInner>
+          <Image src={girlIllust} alt="" width={370} height={586} />
+        </ImageInner>
       </ImageContainerRight>
       <Paragraph>
         <LineBreak>
@@ -95,6 +107,7 @@ const imageStyle = css`
   display: flex;
   align-items: center;
   margin-bottom: 28px;
+  position: relative;
 `
 
 const ImageContainerLeft = styled.div`
@@ -113,6 +126,10 @@ const ImageContainerRight = styled.div`
     grid-column: 3 / 4;
     grid-row: 1 / 4;
   }
+`
+
+const ImageInner = styled.div`
+  position: absolute;
 `
 
 const Paragraph = styled.p`
