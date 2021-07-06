@@ -7,6 +7,8 @@ import Document, {
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
+import { Style } from '@/const/style'
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
@@ -39,12 +41,14 @@ export default class MyDocument extends Document {
       <Html lang="ja" prefix="og: http://ogp.me/ns#">
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <link rel="icon" href="/favicon.ico" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="/apple-touch-icon.png"
           />
+          <link rel="manifest" href="/site.webmanifest" />
+          <meta name="msapplication-TileColor" content={Style.COLOR.STRAW} />
+          <meta name="theme-color" content={Style.COLOR.LEMON_CHIFFON} />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
