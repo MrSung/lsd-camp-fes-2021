@@ -13,7 +13,7 @@ import {
   HOME_LINK_PROGRAM,
   HOME_LINK_TIMETABLE,
 } from '@/const/home-links'
-import { SITE_TITLE, SITE_DESCRIPTION, MAIN_MESSAGE } from './meta'
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, MAIN_MESSAGE } from './meta'
 
 export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
   return (
@@ -21,6 +21,12 @@ export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
       <Head>
         <title>{SITE_TITLE + ` | ` + MAIN_MESSAGE}</title>
         <meta name="description" content={SITE_DESCRIPTION} />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={SITE_TITLE + ` | ` + MAIN_MESSAGE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:site_name" content={SITE_TITLE} />
+        <meta property="og:image" content="/ogp.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
