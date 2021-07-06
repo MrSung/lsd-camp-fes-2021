@@ -23,8 +23,7 @@ export const Program = ({
           key={c.id}
           href={c.link}
           labelNo={c.venue[0] as VenueKey}
-          // @ts-expect-error: Fix later...
-          src={c.thumbnail.url}
+          src={c.thumbnail.url as StaticImageData}
           alt=""
           width={270}
           height={270}
