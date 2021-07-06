@@ -1,7 +1,16 @@
+import Image from 'next/image'
 import styled, { css } from 'styled-components'
+import {
+  motion as Motion,
+  TargetAndTransition,
+  Transition,
+} from 'framer-motion'
 
 import katy from '@/images/katy.jpg'
 import flower from '@/images/flower.jpg'
+import bulb from '@/images/bulb.svg'
+import sparkle from '@/images/sparkle.svg'
+import petal from '@/images/petal.svg'
 import { Style } from '@/const/style'
 import {
   sectionStyle,
@@ -11,7 +20,43 @@ import {
   inlineBlockStyle,
 } from '@/styles'
 import { LineBreak } from '@/components/parts'
+import styles from './Message.module.css'
 import { LayerImage } from './layer-image'
+
+interface IIllustrationProps {
+  className: string
+}
+
+const targetAndTransition: TargetAndTransition = {
+  y: [
+    ...Array(10)
+      .fill(0)
+      .map((n: number, i) => `${n + i + 1}px`),
+    ...Array(10)
+      .fill(0)
+      .map((n: number, i) => `${n + i + 1}px`)
+      .reverse(),
+  ],
+}
+
+const transitionBase: Transition = {
+  duration: 2,
+  ease: `easeInOut`,
+  loop: Infinity,
+}
+
+const Illustration: React.FC<IIllustrationProps> = ({
+  className,
+  children,
+}) => (
+  <Motion.div
+    animate={targetAndTransition}
+    transition={transitionBase}
+    className={className}
+  >
+    {children}
+  </Motion.div>
+)
 
 interface IMessageProps {
   sectionId: string
@@ -34,6 +79,12 @@ export const Message = ({ sectionId }: IMessageProps) => (
           layerPosition="leftBottom"
           layerColor={Style.COLOR.MANGO_TANGO}
         />
+        <Illustration className={styles.illustrationBulb}>
+          <Image src={bulb} alt="" width={108} height={70} />
+        </Illustration>
+        <Illustration className={styles.illustrationSparkle}>
+          <Image src={sparkle} alt="" width={104} height={160} />
+        </Illustration>
       </ImageContainerFirst>
       <ParagraphFirst>
         <LineBreak>{`いつかではなく\n"今" の自分を見て`}</LineBreak>
@@ -47,6 +98,9 @@ export const Message = ({ sectionId }: IMessageProps) => (
           layerPosition="rightBottom"
           layerColor={Style.COLOR.STRAW}
         />
+        <Illustration className={styles.illustrationPetal}>
+          <Image src={petal} alt="" width={102} height={100} />
+        </Illustration>
       </ImageContainerSecond>
       <ParagraphSecond>
         <LineBreak>{`今のあなただからできることが\nきっとあるよ`}</LineBreak>
@@ -94,6 +148,7 @@ const Lead = styled.h3`
 `
 
 const ImageContainerFirst = styled.div`
+  position: relative;
   margin-bottom: 40px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
@@ -104,6 +159,7 @@ const ImageContainerFirst = styled.div`
 `
 
 const ImageContainerSecond = styled.div`
+  position: relative;
   margin-bottom: 40px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {

@@ -1,6 +1,10 @@
 import Image from 'next/image'
 import styled, { css } from 'styled-components'
-import { motion, TargetAndTransition, Transition } from 'framer-motion'
+import {
+  motion as Motion,
+  TargetAndTransition,
+  Transition,
+} from 'framer-motion'
 
 import boyIllust from '@/images/boy-illustration.png'
 import boyIllustBg from '@/images/boy-illustration-bg.png'
@@ -35,17 +39,17 @@ const transitionBase: Transition = {
 }
 
 const IllustrationBg: React.FC = ({ children }) => (
-  <motion.div
+  <Motion.div
     animate={targetAndTransition}
     transition={transitionBase}
     style={{ position: `absolute` }}
   >
     {children}
-  </motion.div>
+  </Motion.div>
 )
 
 const IllustrationMain: React.FC = ({ children }) => (
-  <motion.div
+  <Motion.div
     animate={targetAndTransition}
     transition={{
       ...transitionBase,
@@ -54,7 +58,7 @@ const IllustrationMain: React.FC = ({ children }) => (
     style={{ position: `absolute` }}
   >
     {children}
-  </motion.div>
+  </Motion.div>
 )
 
 interface IAboutProps {
