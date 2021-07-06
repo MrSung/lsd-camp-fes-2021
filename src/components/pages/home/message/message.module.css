@@ -4,6 +4,12 @@
   left: 46px;
 }
 
+@media (max-width: 767px) {
+  .illustrationBulb {
+    width: 72px;
+  }
+}
+
 @media (min-width: 768px) {
   .illustrationBulb {
     top: 84px;
@@ -17,6 +23,12 @@
   right: 16px;
 }
 
+@media (max-width: 767px) {
+  .illustrationSparkle {
+    width: 70px;
+  }
+}
+
 @media (min-width: 768px) {
   .illustrationSparkle {
     top: 16px;
@@ -28,6 +40,12 @@
   position: absolute;
   top: 8px;
   left: 8px;
+}
+
+@media (max-width: 767px) {
+  .illustrationPetal {
+    width: 68px;
+  }
 }
 
 @media (min-width: 768px) {
