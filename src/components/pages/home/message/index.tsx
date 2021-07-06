@@ -28,7 +28,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       <ImageContainerFirst>
         <LayerImage
           src={katy}
-          alt=""
+          alt="ケイティ"
           width={450}
           height={600}
           layerPosition="leftBottom"
@@ -41,7 +41,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       <ImageContainerSecond>
         <LayerImage
           src={flower}
-          alt=""
+          alt="花"
           width={600}
           height={450}
           layerPosition="rightBottom"

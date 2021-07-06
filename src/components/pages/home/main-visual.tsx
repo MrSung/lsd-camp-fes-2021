@@ -5,12 +5,18 @@ import titleMessage from '@/images/title-message.svg'
 import mvIllustration from '@/images/mv-illustration.png'
 import { Style } from '@/const/style'
 import { sectionStyle, containerStyle } from '@/styles'
+import { SITE_TITLE, MAIN_MESSAGE } from './meta'
 
 export const MainVisual = () => (
   <Section>
     <Container>
       <ColLeft>
-        <Image src={titleMessage} alt="" width={470} height={168} />
+        <Image
+          src={titleMessage}
+          alt={`${SITE_TITLE} ${MAIN_MESSAGE}`}
+          width={470}
+          height={168}
+        />
       </ColLeft>
       <ColRight>
         <Image src={mvIllustration} alt="" width={569} height={661} />

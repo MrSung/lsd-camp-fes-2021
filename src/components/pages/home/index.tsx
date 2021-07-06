@@ -13,16 +13,14 @@ import {
   HOME_LINK_PROGRAM,
   HOME_LINK_TIMETABLE,
 } from '@/const/home-links'
+import { SITE_TITLE, SITE_DESCRIPTION, MAIN_MESSAGE } from './meta'
 
 export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
   return (
     <DefaultTemplate>
       <Head>
-        <title>TypeScript starter for Next.js</title>
-        <meta
-          name="description"
-          content="TypeScript starter for Next.js that includes all you need to build amazing apps"
-        />
+        <title>{SITE_TITLE + ` | ` + MAIN_MESSAGE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
