@@ -62,7 +62,6 @@ const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   height: 50px;
-  font-size: 16px;
   text-transform: capitalize;
   cursor: pointer;
 

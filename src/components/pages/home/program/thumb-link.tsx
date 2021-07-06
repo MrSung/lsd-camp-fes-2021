@@ -70,10 +70,6 @@ const Label = styled.span<ILabelProps>`
   padding: 1px 12px 0;
   background-color: ${({ labelNo }) => Venue[labelNo].color};
   line-height: 36px;
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    font-size: 16px;
-  }
 `
 
 interface IThumbContainerProps {
@@ -99,7 +95,6 @@ const ThumbContainer = styled.div<IThumbContainerProps>`
 const Title = styled.p`
   margin-top: 16px;
   margin-bottom: 6px;
-  font-size: 14px;
   line-height: 1.5;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
@@ -111,9 +106,4 @@ const Title = styled.p`
 
 const Host = styled.p`
   color: ${Style.COLOR.RAISIN_GRAY};
-  font-size: 14px;
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    font-size: 16px;
-  }
 `

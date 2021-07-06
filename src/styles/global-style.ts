@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${Style.COLOR.RAISIN_BLACK};
     font-family: 'Nunito Sans', 'ヒラギノ角ゴシック', 'Hiragino Sans', 'ＭＳ ゴシック',
       sans-serif;
+    font-size: 16px;
     line-height: 1.7;
   }
 

@@ -182,7 +182,6 @@ const ImageContainerRight = styled.div`
 
 const Paragraph = styled.p`
   grid-column: 1 / 3;
-  font-size: 16px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;

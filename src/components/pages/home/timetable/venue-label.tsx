@@ -30,7 +30,6 @@ const Container = styled.div<IContainerProps>`
   height: 44px;
   padding: 0 16px;
   background-color: ${({ labelNo }) => Venue[labelNo].color};
-  font-size: 16px;
   line-height: 44px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {

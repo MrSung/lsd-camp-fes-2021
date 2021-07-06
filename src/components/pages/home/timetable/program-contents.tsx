@@ -99,7 +99,6 @@ const Dt = styled.dt<IDtProps>`
   height: 44px;
   padding: 0 16px;
   background-color: ${({ labelNo }) => Venue[labelNo].color};
-  font-size: 16px;
   line-height: 44px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
@@ -114,7 +113,6 @@ const Dd = styled.dd`
 
 const Title = styled.h4`
   margin-bottom: 6px;
-  font-size: 14px;
   font-weight: 400;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
@@ -124,9 +122,4 @@ const Title = styled.h4`
 
 const Host = styled.p`
   color: ${Style.COLOR.SPANISH_GRAY};
-  font-size: 14px;
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    font-size: 16px;
-  }
 `
