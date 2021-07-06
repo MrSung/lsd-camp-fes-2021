@@ -19,6 +19,7 @@ import {
   inlineBlockStyle,
 } from '@/styles'
 import { LineBreak, ExternalLink } from '@/components/parts'
+import styles from './about.module.css'
 
 const targetAndTransition: TargetAndTransition = {
   y: [
@@ -42,7 +43,7 @@ const IllustrationBg: React.FC = ({ children }) => (
   <Motion.div
     animate={targetAndTransition}
     transition={transitionBase}
-    style={{ position: `absolute` }}
+    className={styles.illustration}
   >
     {children}
   </Motion.div>
@@ -55,7 +56,7 @@ const IllustrationMain: React.FC = ({ children }) => (
       ...transitionBase,
       delay: 1,
     }}
-    style={{ position: `absolute` }}
+    className={styles.illustration}
   >
     {children}
   </Motion.div>

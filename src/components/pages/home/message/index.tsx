@@ -20,7 +20,7 @@ import {
   inlineBlockStyle,
 } from '@/styles'
 import { LineBreak } from '@/components/parts'
-import styles from './Message.module.css'
+import styles from './message.module.css'
 import { LayerImage } from './layer-image'
 
 interface IIllustrationProps {

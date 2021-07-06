@@ -1,0 +1,38 @@
+.illustrationBulb {
+  position: absolute;
+  top: 40px;
+  left: 46px;
+}
+
+@media (min-width: 768px) {
+  .illustrationBulb {
+    top: 84px;
+    left: 96px;
+  }
+}
+
+.illustrationSparkle {
+  position: absolute;
+  top: 4px;
+  right: 16px;
+}
+
+@media (min-width: 768px) {
+  .illustrationSparkle {
+    top: 16px;
+    right: 100px;
+  }
+}
+
+.illustrationPetal {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+@media (min-width: 768px) {
+  .illustrationPetal {
+    top: 24px;
+    left: 90px;
+  }
+}
