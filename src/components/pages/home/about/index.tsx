@@ -159,8 +159,11 @@ const imageStyle = css`
   display: flex;
   position: relative;
   align-items: center;
-  min-height: 280px;
   margin-bottom: 28px;
+
+  @media (max-width: ${Style.BREAKPOINT.MD - 1}px) {
+    min-height: 70vw;
+  }
 `
 
 const ImageContainerLeft = styled.div`
