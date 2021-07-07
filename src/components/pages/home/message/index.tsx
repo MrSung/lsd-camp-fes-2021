@@ -92,7 +92,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       <ImageContainerSecond>
         <LayerImage
           src={flower}
-          alt="花"
+          alt="お花"
           width={600}
           height={450}
           layerPosition="rightBottom"
