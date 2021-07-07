@@ -11,12 +11,14 @@ export const MainVisual = () => (
   <Section>
     <Container>
       <ColLeft>
-        <Image
-          src={titleMessage}
-          alt={`${SITE_TITLE} ${MAIN_MESSAGE}`}
-          width={470}
-          height={168}
-        />
+        <h1>
+          <Image
+            src={titleMessage}
+            alt={`${SITE_TITLE} ${MAIN_MESSAGE}`}
+            width={470}
+            height={168}
+          />
+        </h1>
       </ColLeft>
       <ColRight>
         <Image src={mvIllustration} alt="" width={569} height={661} />
