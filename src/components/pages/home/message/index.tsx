@@ -10,7 +10,7 @@ import katy from '@/images/katy.jpg'
 import flower from '@/images/flower.jpg'
 import bulb from '@/images/bulb.svg'
 import sparkle from '@/images/sparkle.svg'
-import petal from '@/images/petal.svg'
+import waves from '@/images/waves.svg'
 import { Style } from '@/const/style'
 import {
   sectionStyle,
@@ -99,7 +99,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
           layerColor={Style.COLOR.STRAW}
         />
         <Illustration className={styles.illustrationPetal}>
-          <Image src={petal} alt="" width={102} height={100} />
+          <Image src={waves} alt="" width={105} height={59} />
         </Illustration>
       </ImageContainerSecond>
       <ParagraphSecond>
