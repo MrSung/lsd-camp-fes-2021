@@ -17,11 +17,10 @@ export const Style = {
     ORCHID_CRAYOLA: `#fab2ea`,
     DARK_STATE_GRAY: `#2B4141`,
     PERSIAN_GREEN: `#1b998b`,
+    LIGHTER_PERSIAN_GREEN: `rgba(27, 153, 139, 0.7)`,
     GREEN_SHEEN: `#71aaa4`,
     POWDER_BLUE: `#aad8d3`,
     LIGHTER_POWDER_BLUE: `#def0ee`,
-    BLUE_JEANS: `#18a0fb`,
-    GREEN_BLUE_CRAYOLA: `#0485dc`,
   },
   SIZE: {
     HEADER_HEIGHT: 150,

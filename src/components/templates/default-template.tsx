@@ -6,6 +6,7 @@ import { HOME_LINKS } from '@/const/home-links'
 import { CREDIT_LIST } from '@/const/credit-list'
 import { Style } from '@/const/style'
 import { GlobalStyle, containerStyle } from '@/styles'
+import { ExternalLink } from '@/components/parts'
 
 interface IDefaultTemplateProps {
   children: React.ReactNode
@@ -35,9 +36,14 @@ export const DefaultTemplate = ({ children }: IDefaultTemplateProps) => (
             <li key={o.name}>
               {o.work} by
               {` `}
-              <a href={o.link} target="_blank" rel="noopener noreferrer">
+              <ExternalLink
+                href={o.link}
+                display="inline-block"
+                color={Style.COLOR.POWDER_BLUE}
+                hoverColor={Style.COLOR.WHITE}
+              >
                 {o.name}
-              </a>
+              </ExternalLink>
             </li>
           ))}
         </ul>
@@ -94,15 +100,6 @@ const Footer = styled.footer`
   padding: 72px 0;
   background-color: ${Style.COLOR.DARK_STATE_GRAY};
   color: ${Style.COLOR.WHITISH_GRAY};
-
-  a {
-    display: inline-block;
-    color: ${Style.COLOR.POWDER_BLUE};
-  }
-
-  a:hover {
-    color: ${Style.COLOR.WHITE};
-  }
 `
 
 const Container = styled.div`

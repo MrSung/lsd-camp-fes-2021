@@ -98,7 +98,8 @@ export const About = ({ sectionId }: IAboutProps) => (
         <ExternalLink
           href="https://lifestyledesign.camp/"
           display="inline-block"
-          isSecondary
+          color={Style.COLOR.PERSIAN_GREEN}
+          hoverColor={Style.COLOR.LIGHTER_PERSIAN_GREEN}
         >
           ここはLSD.Camp
         </ExternalLink>

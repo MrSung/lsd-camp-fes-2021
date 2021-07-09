@@ -6,27 +6,29 @@ interface IExternalLinkProps {
   href: string
   children: React.ReactNode
   display: 'block' | 'inline-block'
-  fillColor?: string
   isHeightFull?: boolean
-  isSecondary?: boolean
+  fillColor?: string
+  color?: string
+  hoverColor?: string
 }
-
 export const ExternalLink = ({
   href,
   children,
   display,
-  fillColor,
   isHeightFull,
-  isSecondary,
+  fillColor,
+  color,
+  hoverColor,
 }: IExternalLinkProps) => (
   <Wrapper
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     display={display}
-    fillColor={fillColor}
     isHeightFull={isHeightFull}
-    isSecondary={isSecondary}
+    fillColor={fillColor}
+    color={color}
+    hoverColor={hoverColor}
   >
     {children}
   </Wrapper>
@@ -36,7 +38,8 @@ interface IWrapperProps {
   display: IExternalLinkProps['display']
   fillColor: IExternalLinkProps['fillColor']
   isHeightFull: IExternalLinkProps['isHeightFull']
-  isSecondary: IExternalLinkProps['isSecondary']
+  color: IExternalLinkProps['color']
+  hoverColor: IExternalLinkProps['hoverColor']
 }
 
 const Wrapper = styled.a<IWrapperProps>`
@@ -51,17 +54,22 @@ const Wrapper = styled.a<IWrapperProps>`
       }
   `}
 
-  ${({ isSecondary }) =>
-    isSecondary === true &&
-    `
-      color: ${Style.COLOR.BLUE_JEANS};
+  color: ${({ color }) => color};
 
+  ${({ hoverColor }) =>
+    typeof hoverColor !== `undefined` &&
+    `
       &:hover {
-        color: ${Style.COLOR.GREEN_BLUE_CRAYOLA};
+        color: ${hoverColor};
       }
   `}
 
-  &:hover > * {
-    opacity: 0.8;
-  }
+  ${({ color, hoverColor }) =>
+    typeof color === `undefined` &&
+    typeof hoverColor === `undefined` &&
+    `
+      &:hover > * {
+        opacity: 0.8;
+      }
+  `}
 `
