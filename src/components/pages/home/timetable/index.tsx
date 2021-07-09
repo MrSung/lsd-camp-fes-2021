@@ -1,4 +1,4 @@
-import { parse, format, isBefore, isAfter, isSameDay } from 'date-fns'
+import { parse, format, isBefore, isAfter, isSameDay, addHours } from 'date-fns'
 import styled, { css } from 'styled-components'
 
 import { Style } from '@/const/style'
@@ -13,7 +13,6 @@ import { ProgramContents } from './program-contents'
 const timeRangeReducer = (contents: IProgramContent[]) => {
   const startTime = contents.reduce((acc, cur, i) => {
     const startDate = dateToJaStdTime(cur.startDate)
-
     if (
       i === 0 ||
       isBefore(
@@ -26,10 +25,8 @@ const timeRangeReducer = (contents: IProgramContent[]) => {
 
     return acc
   }, ``)
-
   const endTime = contents.reduce((acc, cur, i) => {
     const endDate = dateToJaStdTime(cur.endDate)
-
     if (
       i === 0 ||
       isAfter(
@@ -43,13 +40,20 @@ const timeRangeReducer = (contents: IProgramContent[]) => {
     return acc
   }, ``)
 
+  const [startHour] = format(
+    parse(startTime, `HH:mm:ss`, new Date()),
+    `HH:mm`,
+  ).split(`:`)
+  const [endHour, endMinutes] = format(
+    parse(endTime, `HH:mm:ss`, new Date()),
+    `HH:mm`,
+  ).split(`:`)
+  const parsedAddedHour = addHours(parse(endTime, `HH:mm:ss`, new Date()), 1)
+  const addedHour = format(parsedAddedHour, `HH`)
+
   return {
-    startTime: `${
-      format(parse(startTime, `HH:mm:ss`, new Date()), `HH:mm`).split(`:`)[0]
-    }:00`,
-    endTime: `${
-      format(parse(endTime, `HH:mm:ss`, new Date()), `HH:mm`).split(`:`)[0]
-    }:00`,
+    startTime: `${startHour}:00`,
+    endTime: endMinutes === `00` ? `${endHour}:00` : `${addedHour}:00`,
   }
 }
 
