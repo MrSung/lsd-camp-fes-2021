@@ -16,14 +16,16 @@ import {
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, MAIN_MESSAGE } from './meta'
 
 export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
+  const siteTitle = SITE_TITLE + ` | ` + MAIN_MESSAGE
+
   return (
     <DefaultTemplate>
       <Head>
-        <title>{SITE_TITLE + ` | ` + MAIN_MESSAGE}</title>
+        <title>{siteTitle}</title>
         <meta name="description" content={SITE_DESCRIPTION} />
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={SITE_TITLE + ` | ` + MAIN_MESSAGE} />
+        <meta property="og:title" content={siteTitle} />
         <meta property="og:description" content={SITE_DESCRIPTION} />
         <meta property="og:site_name" content={SITE_TITLE} />
         <meta property="og:image" content="/ogp.jpg" />
