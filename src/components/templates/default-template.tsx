@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
 
+import { HOME_LINKS } from '@/const/home-links'
+import { CREDIT_LIST } from '@/const/credit-list'
 import { Style } from '@/const/style'
 import { GlobalStyle, containerStyle } from '@/styles'
-import { HOME_LINKS } from '@/const/home-links'
 
 interface IDefaultTemplateProps {
   children: React.ReactNode
@@ -27,6 +28,21 @@ export const DefaultTemplate = ({ children }: IDefaultTemplateProps) => (
       </Nav>
     </Header>
     <Main>{children}</Main>
+    <Footer>
+      <Container>
+        <ul>
+          {CREDIT_LIST.map((o) => (
+            <li key={o.name}>
+              {o.work} by
+              {` `}
+              <a href={o.link} target="_blank" rel="noopener noreferrer">
+                {o.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Footer>
   </>
 )
 
@@ -72,4 +88,27 @@ const NavLink = styled(Link)`
 
 const Main = styled.main`
   padding-top: ${Style.SIZE.HEADER_HEIGHT}px;
+`
+
+const Footer = styled.footer`
+  padding: 72px 0;
+  background-color: ${Style.COLOR.DARK_STATE_GRAY};
+  color: ${Style.COLOR.WHITISH_GRAY};
+
+  a {
+    display: inline-block;
+    color: ${Style.COLOR.POWDER_BLUE};
+  }
+
+  a:hover {
+    color: ${Style.COLOR.WHITE};
+  }
+`
+
+const Container = styled.div`
+  ${containerStyle}
+
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    font-size: 18px;
+  }
 `
