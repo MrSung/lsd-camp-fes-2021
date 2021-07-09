@@ -27,14 +27,6 @@ const Wrapper = styled.h3`
     font-size: 36px;
     line-height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
   }
-
-  & ~ & {
-    margin-top: 96px;
-
-    @media (min-width: ${Style.BREAKPOINT.MD}px) {
-      margin-top: 196px;
-    }
-  }
 `
 
 const Inner = styled.span`

@@ -142,73 +142,77 @@ export const Timetable = ({
       <Container>
         <TimetableHeading>timetable</TimetableHeading>
 
-        <DateHeading>7 / 31 (Sat)</DateHeading>
-        <Inner>
-          <TimesContainer>
-            {prevDateOneHourTimeRange.map((time) => (
-              <Time key={time}>{time}</Time>
-            ))}
-          </TimesContainer>
-          <VenueColFirst>
-            <VenueLabel labelNo="1" />
-            {ProgramContents(
-              prevDateFirstContents,
-              prevDateQuarterHourTimeRange,
-              `1`,
-            )}
-          </VenueColFirst>
-          <VenueColSecond>
-            <VenueLabel labelNo="2" />
-            {ProgramContents(
-              prevDateSecondContents,
-              prevDateQuarterHourTimeRange,
-              `2`,
-            )}
-          </VenueColSecond>
-          <VenueColThird>
-            <VenueLabel labelNo="3" />
-            {ProgramContents(
-              prevDateThirdContents,
-              prevDateQuarterHourTimeRange,
-              `3`,
-            )}
-          </VenueColThird>
-          <Spacers />
-        </Inner>
+        <Article>
+          <DateHeading>7 / 31 (Sat)</DateHeading>
+          <Inner>
+            <TimesContainer>
+              {prevDateOneHourTimeRange.map((time) => (
+                <Time key={time}>{time}</Time>
+              ))}
+            </TimesContainer>
+            <VenueColFirst>
+              <VenueLabel labelNo="1" />
+              {ProgramContents(
+                prevDateFirstContents,
+                prevDateQuarterHourTimeRange,
+                `1`,
+              )}
+            </VenueColFirst>
+            <VenueColSecond>
+              <VenueLabel labelNo="2" />
+              {ProgramContents(
+                prevDateSecondContents,
+                prevDateQuarterHourTimeRange,
+                `2`,
+              )}
+            </VenueColSecond>
+            <VenueColThird>
+              <VenueLabel labelNo="3" />
+              {ProgramContents(
+                prevDateThirdContents,
+                prevDateQuarterHourTimeRange,
+                `3`,
+              )}
+            </VenueColThird>
+            <Spacers />
+          </Inner>
+        </Article>
 
-        <DateHeading>8 / 1 (Sun)</DateHeading>
-        <Inner>
-          <TimesContainer>
-            {mainDateOneHourTimeRange.map((time) => (
-              <Time key={time}>{time}</Time>
-            ))}
-          </TimesContainer>
-          <VenueColFirst>
-            <VenueLabel labelNo="1" />
-            {ProgramContents(
-              mainDateFirstContents,
-              mainDateQuarterHourTimeRange,
-              `1`,
-            )}
-          </VenueColFirst>
-          <VenueColSecond>
-            <VenueLabel labelNo="2" />
-            {ProgramContents(
-              mainDateSecondContents,
-              mainDateQuarterHourTimeRange,
-              `2`,
-            )}
-          </VenueColSecond>
-          <VenueColThird>
-            <VenueLabel labelNo="3" />
-            {ProgramContents(
-              mainDateThirdContents,
-              mainDateQuarterHourTimeRange,
-              `3`,
-            )}
-          </VenueColThird>
-          <Spacers />
-        </Inner>
+        <Article>
+          <DateHeading>8 / 1 (Sun)</DateHeading>
+          <Inner>
+            <TimesContainer>
+              {mainDateOneHourTimeRange.map((time) => (
+                <Time key={time}>{time}</Time>
+              ))}
+            </TimesContainer>
+            <VenueColFirst>
+              <VenueLabel labelNo="1" />
+              {ProgramContents(
+                mainDateFirstContents,
+                mainDateQuarterHourTimeRange,
+                `1`,
+              )}
+            </VenueColFirst>
+            <VenueColSecond>
+              <VenueLabel labelNo="2" />
+              {ProgramContents(
+                mainDateSecondContents,
+                mainDateQuarterHourTimeRange,
+                `2`,
+              )}
+            </VenueColSecond>
+            <VenueColThird>
+              <VenueLabel labelNo="3" />
+              {ProgramContents(
+                mainDateThirdContents,
+                mainDateQuarterHourTimeRange,
+                `3`,
+              )}
+            </VenueColThird>
+            <Spacers />
+          </Inner>
+        </Article>
       </Container>
     </Section>
   )
@@ -232,6 +236,27 @@ const Section = styled.section`
 
 const Container = styled.div`
   ${containerStyle}
+`
+
+const TimetableHeading = styled.h2`
+  ${headingStyle}
+
+  margin-bottom: 28px;
+  color: ${Style.COLOR.WHITE};
+
+  @media (min-width: ${Style.BREAKPOINT.MD}px) {
+    grid-template-columns: 1 / 6;
+  }
+`
+
+const Article = styled.article`
+  & + & {
+    margin-top: 96px;
+
+    @media (min-width: ${Style.BREAKPOINT.MD}px) {
+      margin-top: 196px;
+    }
+  }
 `
 
 const Inner = styled.div`
@@ -283,17 +308,6 @@ const Time = styled.time`
   height: ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT}px;
   color: ${Style.COLOR.WHITE};
   font-size: 18px;
-`
-
-const TimetableHeading = styled.h2`
-  ${headingStyle}
-
-  margin-bottom: 28px;
-  color: ${Style.COLOR.WHITE};
-
-  @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    grid-template-columns: 1 / 6;
-  }
 `
 
 const venueColStyle = css`
