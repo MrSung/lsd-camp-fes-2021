@@ -5,12 +5,12 @@ export const CREDIT_LIST = [
     link: `https://www.instagram.com/takkun_kodona/`,
   },
   {
-    work: `Illustration`,
+    work: `Illustration design`,
     name: `Yuri`,
     link: `https://yurikita.myportfolio.com/`,
   },
   {
-    work: `Portrait of / Word`,
+    work: `Portrait of / Words`,
     name: `Keity`,
     link: `https://www.instagram.com/keity_kazefuwari/`,
   },
@@ -20,8 +20,8 @@ export const CREDIT_LIST = [
     link: `https://www.instagram.com/umiiro_solairo/`,
   },
   {
-    work: `Web design and development`,
+    work: `Web design / Web development`,
     name: `Sungjoon`,
-    link: `https://mrsung.dev/ja`,
+    link: `https://mrsung.dev/`,
   },
 ]
