@@ -11,12 +11,13 @@
   "scripts": {
     "dev": "next -p 1530",
     "build": "next build",
+    "build:no-cache": "run-s clean build",
     "start": "next start",
     "tsc": "tsc",
     "fix": "eslint --fix --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "fmt": "prettier --write --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "stylelint": "stylelint \"src/**/*.+(ts|js|tsx)\"",
-    "clean": "rm -rf .next",
+    "clean": "rimraf .next",
     "postinstall": "typesync"
   },
   "dependencies": {
@@ -25,9 +26,11 @@
     "isomorphic-unfetch": "3.1.0",
     "modern-css-reset": "1.4.0",
     "next": "11.0.0",
+    "npm-run-all": "4.1.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scroll": "1.8.2",
+    "rimraf": "3.0.2",
     "styled-components": "5.3.0"
   },
   "devDependencies": {
@@ -38,6 +41,7 @@
     "@types/react": "17.0.11",
     "@types/react-dom": "17.0.7",
     "@types/react-scroll": "1.8.2",
+    "@types/rimraf": "3.0.1",
     "@types/styled-components": "5.1.10",
     "@types/stylelint": "13.13.0",
     "@typescript-eslint/eslint-plugin": "4.27.0",
