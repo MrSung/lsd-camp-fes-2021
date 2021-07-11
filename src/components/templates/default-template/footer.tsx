@@ -65,6 +65,9 @@ const FooterHeading = styled.h2`
 `
 
 const FooterList = styled.ul`
+  margin-top: 1em;
+  margin-bottom: 1em;
+
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -76,6 +79,7 @@ const FooterImageContainer = styled.div`
   @media (max-width: ${Style.BREAKPOINT.MD - 1}px) {
     width: 100px;
     height: 100px;
+    margin-top: 1.5em;
   }
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
