@@ -6,7 +6,7 @@ import {
   Transition,
 } from 'framer-motion'
 
-import katy from '@/images/katy.jpg'
+import keity from '@/images/keity.jpg'
 import flower from '@/images/flower.jpg'
 import bulb from '@/images/bulb.svg'
 import sparkle from '@/images/sparkle.svg'
@@ -72,7 +72,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       </Lead>
       <ImageContainerFirst>
         <LayerImage
-          src={katy}
+          src={keity}
           alt="ケイティ"
           width={450}
           height={600}
