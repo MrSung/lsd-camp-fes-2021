@@ -1,9 +1,7 @@
 {
-  "name": "typescript-nextjs-starter",
-  "description": "A TypeScript starter for Next.js that includes all you need to build amazing projects",
+  "name": "lsd-camp-fes-2021",
   "version": "1.0.0",
-  "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (@jpedroschmitz)",
+  "author": "Sungjoon Park",
   "license": "MIT",
   "keywords": [
     "nextjs",
