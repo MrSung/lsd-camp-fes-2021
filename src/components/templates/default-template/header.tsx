@@ -2,8 +2,7 @@ import { Link } from 'react-scroll'
 import styled from 'styled-components'
 
 import { HOME_LINKS } from '@/components/pages/home/const'
-import { containerStyle } from '@/styles'
-import { Style } from '@/styles'
+import { containerStyle, Style } from '@/styles'
 
 export const Header = () => (
   <Wrapper>

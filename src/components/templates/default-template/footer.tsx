@@ -2,9 +2,9 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import favicon from '@/images/favicon.png'
-import { containerStyle } from '@/styles'
+import { containerStyle, Style } from '@/styles'
 import { creditList } from '@/contents/credit-list'
-import { Style } from '@/styles'
+
 import { SITE_TITLE } from '@/components/pages/home/meta'
 import { ExternalLink } from '@/components/parts'
 
