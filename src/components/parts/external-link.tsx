@@ -11,6 +11,7 @@ interface IExternalLinkProps {
   color?: string
   hoverColor?: string
 }
+
 export const ExternalLink = ({
   href,
   children,
@@ -45,6 +46,7 @@ interface IWrapperProps {
 const Wrapper = styled.a<IWrapperProps>`
   display: ${({ display }) => display};
   background-color: ${({ fillColor }) => fillColor};
+  color: ${({ color }) => color};
 
   ${({ isHeightFull }) =>
     isHeightFull === true &&
@@ -53,8 +55,6 @@ const Wrapper = styled.a<IWrapperProps>`
         height: 100%;
       }
   `}
-
-  color: ${({ color }) => color};
 
   ${({ hoverColor }) =>
     typeof hoverColor !== `undefined` &&
