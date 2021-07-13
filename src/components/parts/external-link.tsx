@@ -6,30 +6,33 @@ interface IExternalLinkProps {
   href: string
   children: React.ReactNode
   display: 'block' | 'inline-block'
-  isHeightFull?: boolean
   fillColor?: string
   color?: string
   hoverColor?: string
+  isHeightFull?: boolean
+  isChangeOpacityOnHover?: boolean
 }
 
 export const ExternalLink = ({
   href,
   children,
   display,
-  isHeightFull,
   fillColor,
   color,
   hoverColor,
+  isHeightFull,
+  isChangeOpacityOnHover,
 }: IExternalLinkProps) => (
   <Wrapper
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     display={display}
-    isHeightFull={isHeightFull}
     fillColor={fillColor}
     color={color}
     hoverColor={hoverColor}
+    isHeightFull={isHeightFull}
+    isChangeOpacityOnHover={isChangeOpacityOnHover}
   >
     {children}
   </Wrapper>
@@ -38,23 +41,16 @@ export const ExternalLink = ({
 interface IWrapperProps {
   display: IExternalLinkProps['display']
   fillColor: IExternalLinkProps['fillColor']
-  isHeightFull: IExternalLinkProps['isHeightFull']
   color: IExternalLinkProps['color']
   hoverColor: IExternalLinkProps['hoverColor']
+  isHeightFull: IExternalLinkProps['isHeightFull']
+  isChangeOpacityOnHover: IExternalLinkProps['isChangeOpacityOnHover']
 }
 
 const Wrapper = styled.a<IWrapperProps>`
   display: ${({ display }) => display};
   background-color: ${({ fillColor }) => fillColor};
   color: ${({ color }) => color};
-
-  ${({ isHeightFull }) =>
-    isHeightFull === true &&
-    `
-      @media (min-width: ${Style.BREAKPOINT.MD}px) {
-        height: 100%;
-      }
-  `}
 
   ${({ hoverColor }) =>
     typeof hoverColor !== `undefined` &&
@@ -64,9 +60,16 @@ const Wrapper = styled.a<IWrapperProps>`
       }
   `}
 
-  ${({ color, hoverColor }) =>
-    typeof color === `undefined` &&
-    typeof hoverColor === `undefined` &&
+  ${({ isHeightFull }) =>
+    isHeightFull === true &&
+    `
+      @media (min-width: ${Style.BREAKPOINT.MD}px) {
+        height: 100%;
+      }
+  `}
+
+  ${({ isChangeOpacityOnHover }) =>
+    isChangeOpacityOnHover === true &&
     `
       &:hover > * {
         opacity: 0.8;

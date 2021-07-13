@@ -60,6 +60,7 @@ export const Content = ({
       display="block"
       fillColor={Style.COLOR.WHITE}
       isHeightFull
+      isChangeOpacityOnHover
     >
       <Dl>
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>

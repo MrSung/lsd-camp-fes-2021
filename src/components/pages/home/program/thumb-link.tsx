@@ -27,7 +27,7 @@ export const ThumbLink = ({
   host,
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
-    <ExternalLink href={href} display="block">
+    <ExternalLink href={href} display="block" isChangeOpacityOnHover>
       <Label labelNo={labelNo}>{venue[labelNo].text}</Label>
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} layout="fill" />
