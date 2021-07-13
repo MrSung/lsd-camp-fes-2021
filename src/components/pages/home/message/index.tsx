@@ -11,14 +11,15 @@ import flower from '@/images/flower.jpg'
 import bulb from '@/images/bulb.svg'
 import sparkle from '@/images/sparkle.svg'
 import waves from '@/images/waves.svg'
-import { Style } from '@/const/style'
 import {
+  Style,
   sectionStyle,
   containerStyle,
   headingStyle,
   leadStyle,
   inlineBlockStyle,
 } from '@/styles'
+
 import { LineBreak } from '@/components/parts'
 import styles from './message.module.css'
 import { LayerImage } from './layer-image'

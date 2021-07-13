@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export const GlobalStyle = createGlobalStyle`
   body {

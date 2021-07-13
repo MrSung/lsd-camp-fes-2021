@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export const containerStyle = css`
   margin-right: auto;

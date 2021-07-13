@@ -1,4 +1,4 @@
-import { Style } from './style'
+import { Style } from '@/styles'
 
 export const HOME_LINK_MESSAGE = `message`
 export const HOME_LINK_ABOUT = `about`

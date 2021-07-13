@@ -1,10 +1,10 @@
 import { parse, format, isBefore, isAfter, isSameDay, addHours } from 'date-fns'
 import styled, { css } from 'styled-components'
 
-import { Style } from '@/const/style'
-import { timeRange } from '@/const/time-range'
+import { Style, sectionStyle, containerStyle, headingStyle } from '@/styles'
+import { timeRange } from '@/utils/time-range'
 import { dateToJaStdTime, dateToJaStdDate } from '@/utils/date'
-import { sectionStyle, containerStyle, headingStyle } from '@/styles'
+
 import { IProgramData, IProgramContent } from '@/pages'
 import { DateHeading } from './date-heading'
 import { VenueLabel } from './venue-label'

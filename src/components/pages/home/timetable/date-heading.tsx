@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 interface IDateHeadingProps {
   children: string

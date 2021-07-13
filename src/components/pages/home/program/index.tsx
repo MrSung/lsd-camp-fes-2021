@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { VenueKey } from '@/const/venue'
-import { Style } from '@/const/style'
+import { VenueKey } from '@/contents/venue'
+import { Style } from '@/styles'
 import { sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { IProgramData } from '@/pages'
 import { ThumbLink } from './thumb-link'

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { Style } from '@/const/style'
-import { GlobalStyle } from '@/styles'
+import { Style, GlobalStyle } from '@/styles'
+
 import { Header } from './header'
 import { Footer } from './footer'
 

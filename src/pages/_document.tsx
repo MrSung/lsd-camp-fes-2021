@@ -7,7 +7,7 @@ import Document, {
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

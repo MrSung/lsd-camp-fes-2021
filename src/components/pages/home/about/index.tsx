@@ -10,14 +10,15 @@ import boyIllust from '@/images/boy-illustration.png'
 import boyIllustBg from '@/images/boy-illustration-bg.png'
 import girlIllust from '@/images/girl-illustration.png'
 import girlIllustBg from '@/images/girl-illustration-bg.png'
-import { Style } from '@/const/style'
 import {
+  Style,
   sectionStyle,
   containerStyle,
   headingStyle,
   leadStyle,
   inlineBlockStyle,
 } from '@/styles'
+
 import { LineBreak, ExternalLink } from '@/components/parts'
 import styles from './about.module.css'
 

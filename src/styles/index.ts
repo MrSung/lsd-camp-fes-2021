@@ -1,6 +1,9 @@
+export * as Style from './const'
+
 export { GlobalStyle } from './global-style'
-export { sectionStyle } from './section-style'
-export { containerStyle } from './container-style'
-export { headingStyle } from './heading-style'
-export { leadStyle } from './lead-style'
-export { inlineBlockStyle } from './inline-block-style'
+
+export { containerStyle } from './mixins/container-style'
+export { headingStyle } from './mixins/heading-style'
+export { inlineBlockStyle } from './mixins/inline-block-style'
+export { leadStyle } from './mixins/lead-style'
+export { sectionStyle } from './mixins/section-style'

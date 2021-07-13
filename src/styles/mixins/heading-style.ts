@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export const headingStyle = css`
   margin-bottom: 36px;

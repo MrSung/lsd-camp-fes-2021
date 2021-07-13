@@ -1,9 +1,9 @@
 import { Link } from 'react-scroll'
 import styled from 'styled-components'
 
-import { HOME_LINKS } from '@/const/home-links'
+import { HOME_LINKS } from '@/components/pages/home/const'
 import { containerStyle } from '@/styles'
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export const Header = () => (
   <Wrapper>

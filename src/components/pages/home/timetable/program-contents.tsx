@@ -1,8 +1,8 @@
 import { format, differenceInMinutes } from 'date-fns'
 import styled from 'styled-components'
 
-import { Style } from '@/const/style'
-import { VenueKey, Venue } from '@/const/venue'
+import { Style } from '@/styles'
+import { VenueKey, Venue } from '@/contents/venue'
 import { dateToJaStdDateTime } from '@/utils/date'
 import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'

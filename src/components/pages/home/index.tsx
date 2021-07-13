@@ -12,7 +12,7 @@ import {
   HOME_LINK_ABOUT,
   HOME_LINK_PROGRAM,
   HOME_LINK_TIMETABLE,
-} from '@/const/home-links'
+} from './const'
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, MAIN_MESSAGE } from './meta'
 
 export const Home = ({ pageData: { programData } }: IIndexPageProps) => {

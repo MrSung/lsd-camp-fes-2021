@@ -1,4 +1,4 @@
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 export type VenueKey = '1' | '2' | '3'
 

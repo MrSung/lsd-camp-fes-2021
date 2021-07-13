@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import favicon from '@/images/favicon.png'
 import { containerStyle } from '@/styles'
-import { CREDIT_LIST } from '@/const/credit-list'
-import { Style } from '@/const/style'
+import { CREDIT_LIST } from '@/contents/credit-list'
+import { Style } from '@/styles'
 import { SITE_TITLE } from '@/components/pages/home/meta'
 import { ExternalLink } from '@/components/parts'
 

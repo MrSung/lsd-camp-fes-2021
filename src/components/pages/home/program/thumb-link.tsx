@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import { Style } from '@/const/style'
-import { VenueKey, Venue } from '@/const/venue'
+import { Style } from '@/styles'
+import { VenueKey, Venue } from '@/contents/venue'
 import { ExternalLink } from '@/components/parts'
 
 interface IThumbLinkProps {

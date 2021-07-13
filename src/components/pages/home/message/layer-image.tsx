@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import { Style } from '@/const/style'
+import { Style } from '@/styles'
 
 interface ILayerImageProps {
   src: StaticImageData
