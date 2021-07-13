@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import favicon from '@/images/favicon.png'
 import { containerStyle, Style } from '@/styles'
 import { creditList } from '@/contents/credit-list'
-
-import { SITE_TITLE } from '@/components/pages/home/meta'
+import { SITE_TITLE } from '@/contents/meta'
 import { ExternalLink } from '@/components/parts'
 
 export const Footer = () => (

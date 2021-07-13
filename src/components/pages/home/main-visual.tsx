@@ -5,8 +5,7 @@ import { motion as Motion } from 'framer-motion'
 import titleMessage from '@/images/title-message.svg'
 import mvIllustration from '@/images/mv-illustration.png'
 import { Style, sectionStyle, containerStyle } from '@/styles'
-
-import { SITE_TITLE, MAIN_MESSAGE } from './meta'
+import { SITE_TITLE, MAIN_MESSAGE } from '@/contents/meta'
 
 const ImageContainer: React.FC = ({ children }) => (
   <Motion.div

@@ -8,12 +8,17 @@ import { About } from '@/components/pages/home/about'
 import { Program } from '@/components/pages/home/program'
 import { Timetable } from '@/components/pages/home/timetable'
 import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  MAIN_MESSAGE,
+} from '@/contents/meta'
+import {
   HOME_LINK_MESSAGE,
   HOME_LINK_ABOUT,
   HOME_LINK_PROGRAM,
   HOME_LINK_TIMETABLE,
 } from './const'
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, MAIN_MESSAGE } from './meta'
 
 export const Home = ({ pageData: { programData } }: IIndexPageProps) => {
   const siteTitle = SITE_TITLE + ` | ` + MAIN_MESSAGE
