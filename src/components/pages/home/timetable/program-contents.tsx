@@ -2,7 +2,7 @@ import { format, differenceInMinutes } from 'date-fns'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
-import { VenueKey, Venue } from '@/contents/venue'
+import { VenueKey, venue } from '@/contents/venue'
 import { dateToJaStdDateTime } from '@/utils/date'
 import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'
@@ -98,7 +98,7 @@ interface IDtProps {
 const Dt = styled.dt<IDtProps>`
   height: 44px;
   padding: 0 16px;
-  background-color: ${({ labelNo }) => Venue[labelNo].color};
+  background-color: ${({ labelNo }) => venue[labelNo].color};
   line-height: 44px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {

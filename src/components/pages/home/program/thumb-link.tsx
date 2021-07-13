@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
-import { VenueKey, Venue } from '@/contents/venue'
+import { VenueKey, venue } from '@/contents/venue'
 import { ExternalLink } from '@/components/parts'
 
 interface IThumbLinkProps {
@@ -28,7 +28,7 @@ export const ThumbLink = ({
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
     <ExternalLink href={href} display="block">
-      <Label labelNo={labelNo}>{Venue[labelNo].text}</Label>
+      <Label labelNo={labelNo}>{venue[labelNo].text}</Label>
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
@@ -68,7 +68,7 @@ const Label = styled.span<ILabelProps>`
   height: 36px;
   margin-left: 16px;
   padding: 1px 12px 0;
-  background-color: ${({ labelNo }) => Venue[labelNo].color};
+  background-color: ${({ labelNo }) => venue[labelNo].color};
   line-height: 36px;
 `
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
-import { VenueKey, Venue } from '@/contents/venue'
+import { VenueKey, venue } from '@/contents/venue'
 
 interface IVenueLabelProps {
   labelNo: VenueKey
@@ -9,7 +9,7 @@ interface IVenueLabelProps {
 
 export const VenueLabel = ({ labelNo }: IVenueLabelProps) => (
   <Wrapper>
-    <Container labelNo={labelNo}>{Venue[labelNo].text}</Container>
+    <Container labelNo={labelNo}>{venue[labelNo].text}</Container>
   </Wrapper>
 )
 
@@ -29,7 +29,7 @@ interface IContainerProps {
 const Container = styled.div<IContainerProps>`
   height: 44px;
   padding: 0 16px;
-  background-color: ${({ labelNo }) => Venue[labelNo].color};
+  background-color: ${({ labelNo }) => venue[labelNo].color};
   line-height: 44px;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {

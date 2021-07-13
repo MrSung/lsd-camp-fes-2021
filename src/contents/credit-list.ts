@@ -1,4 +1,10 @@
-export const CREDIT_LIST = [
+interface ICreditItem {
+  work: string
+  name: string
+  link: string
+}
+
+export const creditList: ICreditItem[] = [
   {
     work: `Calligraphy`,
     name: `Takkun`,

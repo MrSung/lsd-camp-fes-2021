@@ -9,7 +9,7 @@ type VenueType = {
   }
 }
 
-export const Venue: VenueType = {
+export const venue: VenueType = {
   '1': {
     text: `会場A`,
     color: Style.COLOR.MANGO_TANGO,

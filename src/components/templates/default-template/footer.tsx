@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import favicon from '@/images/favicon.png'
 import { containerStyle } from '@/styles'
-import { CREDIT_LIST } from '@/contents/credit-list'
+import { creditList } from '@/contents/credit-list'
 import { Style } from '@/styles'
 import { SITE_TITLE } from '@/components/pages/home/meta'
 import { ExternalLink } from '@/components/parts'
@@ -13,7 +13,7 @@ export const Footer = () => (
     <FooterContainer>
       <FooterHeading>{SITE_TITLE}</FooterHeading>
       <FooterList>
-        {CREDIT_LIST.map((o) => (
+        {creditList.map((o) => (
           <li key={o.name}>
             {o.work} by
             {` `}
