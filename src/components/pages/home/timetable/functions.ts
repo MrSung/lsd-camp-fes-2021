@@ -1,24 +1,21 @@
-import { parse, format, isBefore, isAfter, addHours } from 'date-fns'
+import { format, isBefore, isAfter, addHours } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 
 import { IProgramContent } from '@/pages'
-import { dateToJaStdTime } from '@/utils/date'
 
-export const programDateReducer = (contents: IProgramContent[]) =>
-  contents.reduce<[IProgramContent[], IProgramContent[]]>(
+export const programDateReducer = (contents: IProgramContent[]) => {
+  const programDateReduced = contents.reduce<
+    [IProgramContent[], IProgramContent[]]
+  >(
     (acc, cur) => {
-      const startDateRegExpMatchArr = cur.startDate.match(/^\d{4}-\d{2}-\d{2}/)
-
-      if (startDateRegExpMatchArr === null) {
-        throw new Error(`programDateReducer ~ RegExp match failed`)
-      }
-
-      const startDateStr = startDateRegExpMatchArr[0]
+      const utcStartDate = new Date(cur.startDate)
+      const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
 
       switch (true) {
-        case startDateStr === `2021-07-31`:
+        case format(jstStartDate, `yyyy-MM-dd`) === `2021-07-31`:
           acc[0].push(cur)
           break
-        case startDateStr === `2021-08-01`:
+        case format(jstStartDate, `yyyy-MM-dd`) === `2021-08-01`:
           acc[1].push(cur)
           break
         default:
@@ -29,8 +26,13 @@ export const programDateReducer = (contents: IProgramContent[]) =>
     [[], []],
   )
 
-export const programVenueReducer = (contents: IProgramContent[]) =>
-  contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
+  return programDateReduced
+}
+
+export const programVenueReducer = (contents: IProgramContent[]) => {
+  const programVenueReduced = contents.reduce<
+    [IProgramContent[], IProgramContent[], IProgramContent[]]
+  >(
     (acc, cur) => {
       switch (cur.venue[0]) {
         case `1`:
@@ -50,45 +52,36 @@ export const programVenueReducer = (contents: IProgramContent[]) =>
     [[], [], []],
   )
 
+  return programVenueReduced
+}
+
 export const timeRangeReducer = (contents: IProgramContent[]) => {
   const startTime = contents.reduce((acc, cur, i) => {
-    const startDate = dateToJaStdTime(cur.startDate)
-    if (
-      i === 0 ||
-      isBefore(
-        parse(startDate, `HH:mm:ss`, new Date()),
-        parse(acc, `HH:mm:ss`, new Date()),
-      )
-    ) {
-      acc = startDate
+    const utcStartDate = new Date(cur.startDate)
+    const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
+
+    if (i === 0 || isBefore(jstStartDate, acc)) {
+      acc = jstStartDate
     }
 
     return acc
-  }, ``)
+  }, new Date())
+
   const endTime = contents.reduce((acc, cur, i) => {
-    const endDate = dateToJaStdTime(cur.endDate)
-    if (
-      i === 0 ||
-      isAfter(
-        parse(endDate, `HH:mm:ss`, new Date()),
-        parse(acc, `HH:mm:ss`, new Date()),
-      )
-    ) {
-      acc = endDate
+    const utcEndDate = new Date(cur.endDate)
+    const jstEndDate = utcToZonedTime(utcEndDate, `Asia/Tokyo`)
+
+    if (i === 0 || isAfter(jstEndDate, acc)) {
+      acc = jstEndDate
     }
 
     return acc
-  }, ``)
+  }, new Date())
 
-  const [startHour] = format(
-    parse(startTime, `HH:mm:ss`, new Date()),
-    `HH:mm`,
-  ).split(`:`)
-  const [endHour, endMinutes] = format(
-    parse(endTime, `HH:mm:ss`, new Date()),
-    `HH:mm`,
-  ).split(`:`)
-  const parsedAddedHour = addHours(parse(endTime, `HH:mm:ss`, new Date()), 1)
+  const startHour = format(startTime, `HH`)
+  const [endHour, endMinutes] = format(endTime, `HH:mm`).split(`:`)
+
+  const parsedAddedHour = addHours(endTime, 1)
   const addedHour = format(parsedAddedHour, `HH`)
 
   return {
