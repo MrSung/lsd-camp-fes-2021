@@ -1,4 +1,4 @@
-import { format, differenceInMinutes } from 'date-fns'
+import { format, differenceInMinutes, isBefore, isAfter } from 'date-fns'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
@@ -12,28 +12,41 @@ export const ProgramContents = (
   timeRange: string[],
   labelNo: VenueKey,
 ) =>
-  contents.map((o) => {
-    const parsedStartTime = new Date(dateToJaStdDateTime(o.startDate))
-    const parsedEndTime = new Date(dateToJaStdDateTime(o.endDate))
-    const startTime = format(parsedStartTime, `HH:mm`)
-    const endTime = format(parsedEndTime, `HH:mm`)
-    const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
-    const gridSpan =
-      differenceInMinutes(parsedEndTime, parsedStartTime) / (60 * 0.25)
+  contents
+    .sort((a, b) => {
+      const aParsedStartTime = new Date(dateToJaStdDateTime(a.startDate))
+      const bParsedStartTime = new Date(dateToJaStdDateTime(b.startDate))
 
-    return (
-      <Content
-        key={o.id}
-        href={o.link}
-        labelNo={labelNo}
-        startTime={startTime}
-        endTime={endTime}
-        title={o.title}
-        host={o.host}
-        gridRow={`${startTimeGridIndex} / span ${gridSpan}`}
-      />
-    )
-  })
+      if (isBefore(aParsedStartTime, bParsedStartTime)) {
+        return -1
+      }
+      if (isAfter(aParsedStartTime, bParsedStartTime)) {
+        return 1
+      }
+      return 0
+    })
+    .map((o) => {
+      const parsedStartTime = new Date(dateToJaStdDateTime(o.startDate))
+      const parsedEndTime = new Date(dateToJaStdDateTime(o.endDate))
+      const startTime = format(parsedStartTime, `HH:mm`)
+      const endTime = format(parsedEndTime, `HH:mm`)
+      const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
+      const gridSpan =
+        differenceInMinutes(parsedEndTime, parsedStartTime) / (60 * 0.25)
+
+      return (
+        <Content
+          key={o.id}
+          href={o.link}
+          labelNo={labelNo}
+          startTime={startTime}
+          endTime={endTime}
+          title={o.title}
+          host={o.host}
+          gridRow={`${startTimeGridIndex} / span ${gridSpan}`}
+        />
+      )
+    })
 
 interface IContentProps {
   href: string
