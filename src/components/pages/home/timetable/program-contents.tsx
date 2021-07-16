@@ -1,9 +1,9 @@
 import { format, differenceInMinutes, isBefore, isAfter } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
 import { VenueKey, venue } from '@/contents/venue'
-import { dateToJaStdDateTime } from '@/utils/date'
 import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'
 
@@ -14,25 +14,29 @@ export const ProgramContents = (
 ) =>
   contents
     .sort((a, b) => {
-      const aParsedStartTime = new Date(dateToJaStdDateTime(a.startDate))
-      const bParsedStartTime = new Date(dateToJaStdDateTime(b.startDate))
+      const aUtcStartDate = new Date(a.startDate)
+      const aJstStartDate = utcToZonedTime(aUtcStartDate, `Asia/Tokyo`)
+      const bUtcStartDate = new Date(b.startDate)
+      const bJstStartDate = utcToZonedTime(bUtcStartDate, `Asia/Tokyo`)
 
-      if (isBefore(aParsedStartTime, bParsedStartTime)) {
+      if (isBefore(aJstStartDate, bJstStartDate)) {
         return -1
       }
-      if (isAfter(aParsedStartTime, bParsedStartTime)) {
+      if (isAfter(aJstStartDate, bJstStartDate)) {
         return 1
       }
       return 0
     })
     .map((o) => {
-      const parsedStartTime = new Date(dateToJaStdDateTime(o.startDate))
-      const parsedEndTime = new Date(dateToJaStdDateTime(o.endDate))
-      const startTime = format(parsedStartTime, `HH:mm`)
-      const endTime = format(parsedEndTime, `HH:mm`)
+      const utcStartDate = new Date(o.startDate)
+      const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
+      const utcEndDate = new Date(o.endDate)
+      const jstEndDate = utcToZonedTime(utcEndDate, `Asia/Tokyo`)
+      const startTime = format(jstStartDate, `HH:mm`)
+      const endTime = format(jstEndDate, `HH:mm`)
       const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
       const gridSpan =
-        differenceInMinutes(parsedEndTime, parsedStartTime) / (60 * 0.25)
+        differenceInMinutes(jstEndDate, jstStartDate) / (60 * 0.25)
 
       return (
         <Content
