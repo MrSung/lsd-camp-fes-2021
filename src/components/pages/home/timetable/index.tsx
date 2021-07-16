@@ -1,102 +1,17 @@
-import { parse, format, isBefore, isAfter, isSameDay, addHours } from 'date-fns'
 import styled, { css } from 'styled-components'
 
 import { Style, sectionStyle, containerStyle, headingStyle } from '@/styles'
 import { timeRange } from '@/utils/time-range'
-import { dateToJaStdTime, dateToJaStdDate } from '@/utils/date'
 
-import { IProgramData, IProgramContent } from '@/pages'
+import { IProgramData } from '@/pages'
 import { DateHeading } from './date-heading'
 import { VenueLabel } from './venue-label'
 import { ProgramContents } from './program-contents'
-
-const timeRangeReducer = (contents: IProgramContent[]) => {
-  const startTime = contents.reduce((acc, cur, i) => {
-    const startDate = dateToJaStdTime(cur.startDate)
-    if (
-      i === 0 ||
-      isBefore(
-        parse(startDate, `HH:mm:ss`, new Date()),
-        parse(acc, `HH:mm:ss`, new Date()),
-      )
-    ) {
-      acc = startDate
-    }
-
-    return acc
-  }, ``)
-  const endTime = contents.reduce((acc, cur, i) => {
-    const endDate = dateToJaStdTime(cur.endDate)
-    if (
-      i === 0 ||
-      isAfter(
-        parse(endDate, `HH:mm:ss`, new Date()),
-        parse(acc, `HH:mm:ss`, new Date()),
-      )
-    ) {
-      acc = endDate
-    }
-
-    return acc
-  }, ``)
-
-  const [startHour] = format(
-    parse(startTime, `HH:mm:ss`, new Date()),
-    `HH:mm`,
-  ).split(`:`)
-  const [endHour, endMinutes] = format(
-    parse(endTime, `HH:mm:ss`, new Date()),
-    `HH:mm`,
-  ).split(`:`)
-  const parsedAddedHour = addHours(parse(endTime, `HH:mm:ss`, new Date()), 1)
-  const addedHour = format(parsedAddedHour, `HH`)
-
-  return {
-    startTime: `${startHour}:00`,
-    endTime: endMinutes === `00` ? `${endHour}:00` : `${addedHour}:00`,
-  }
-}
-
-const programDateReducer = (contents: IProgramContent[]) =>
-  contents.reduce<[IProgramContent[], IProgramContent[]]>(
-    (acc, cur) => {
-      switch (true) {
-        case isSameDay(
-          new Date(dateToJaStdDate(cur.startDate)),
-          new Date(2021, 6, 31), // 前夜祭：2021/7/31
-        ):
-          acc[0].push(cur)
-          break
-        case isSameDay(
-          new Date(dateToJaStdDate(cur.startDate)),
-          new Date(2021, 7, 1), // 当日：2021/8/1
-        ):
-          acc[1].push(cur)
-          break
-      }
-      return acc
-    },
-    [[], []],
-  )
-
-const programVenueReducer = (contents: IProgramContent[]) =>
-  contents.reduce<[IProgramContent[], IProgramContent[], IProgramContent[]]>(
-    (acc, cur) => {
-      switch (cur.venue[0]) {
-        case `1`:
-          acc[0].push(cur)
-          break
-        case `2`:
-          acc[1].push(cur)
-          break
-        case `3`:
-          acc[2].push(cur)
-          break
-      }
-      return acc
-    },
-    [[], [], []],
-  )
+import {
+  programDateReducer,
+  programVenueReducer,
+  timeRangeReducer,
+} from './functions'
 
 interface ITimetableProps {
   sectionId: string
