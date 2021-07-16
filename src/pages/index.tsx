@@ -42,7 +42,7 @@ const IndexPage = ({ pageData }: IIndexPageProps) => (
 export default IndexPage
 
 export const getStaticProps: GetStaticProps = async () => {
-  const programData = await fetcher<IProgramData>(`fes-21-program`)
+  const programData = await fetcher<IProgramData>(`fes-21-program?limit=100`)
 
   return {
     props: {
