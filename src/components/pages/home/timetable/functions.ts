@@ -7,13 +7,13 @@ export const programDateReducer = (contents: IProgramContent[]) => {
     [IProgramContent[], IProgramContent[]]
   >(
     (acc, cur) => {
-      const jstStartDate = new Date(cur.startDate)
+      const eventDate = cur.eventDate[0]
 
       switch (true) {
-        case format(jstStartDate, `yyyy-MM-dd`) === `2021-07-31`:
+        case eventDate === `7/31`: // 前夜祭
           acc[0].push(cur)
           break
-        case format(jstStartDate, `yyyy-MM-dd`) === `2021-08-01`:
+        case eventDate === `8/1`: // 当日
           acc[1].push(cur)
           break
         default:

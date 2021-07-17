@@ -16,6 +16,9 @@ export interface IProgramContent {
   venue: string[]
   startDate: string
   endDate: string
+  eventDate: string[]
+  startTime: string
+  endTime: string
   thumbnail: {
     url: unknown
     height: number
