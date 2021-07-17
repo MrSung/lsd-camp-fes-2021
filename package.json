@@ -14,7 +14,6 @@
     "build:no-cache": "run-s clean build",
     "export": "next build && next export",
     "start": "next start",
-    "start:static": "http-server out",
     "tsc": "tsc",
     "fix": "eslint --fix --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "fmt": "prettier --write --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
@@ -39,7 +38,6 @@
   "devDependencies": {
     "@types/eslint": "7.28.0",
     "@types/eslint-plugin-prettier": "3.1.0",
-    "@types/http-server": "0.12.1",
     "@types/node": "16.3.3",
     "@types/prettier": "2.3.2",
     "@types/react": "17.0.14",
@@ -63,7 +61,6 @@
     "eslint-plugin-promise": "5.1.0",
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
-    "http-server": "0.12.3",
     "prettier": "2.3.2",
     "stylelint": "13.13.1",
     "stylelint-config-property-sort-order-smacss": "7.1.0",
