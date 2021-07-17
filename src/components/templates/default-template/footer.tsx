@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
+import favicon from '@/images/favicon.png'
 import { containerStyle, Style } from '@/styles'
 import { creditList } from '@/contents/credit-list'
 import { SITE_TITLE } from '@/contents/meta'
@@ -26,7 +28,7 @@ export const Footer = () => (
         ))}
       </FooterList>
       <FooterImageContainer>
-        <img src="/png/favicon.png" alt="" width={200} height={200} />
+        <Image src={favicon} alt="" width={200} height={200} />
       </FooterImageContainer>
     </FooterContainer>
   </Wrapper>

@@ -1,6 +1,9 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 import { motion as Motion } from 'framer-motion'
 
+import titleMessage from '@/images/title-message.svg'
+import mvIllustration from '@/images/mv-illustration.png'
 import { Style, sectionStyle, containerStyle } from '@/styles'
 import { SITE_TITLE, MAIN_MESSAGE } from '@/contents/meta'
 
@@ -23,8 +26,8 @@ export const MainVisual = () => (
       <ColLeft>
         <h1>
           <ImageContainer>
-            <img
-              src="/svg/title-message.svg"
+            <Image
+              src={titleMessage}
               alt={`${SITE_TITLE} ${MAIN_MESSAGE}`}
               width={470}
               height={168}
@@ -34,7 +37,7 @@ export const MainVisual = () => (
       </ColLeft>
       <ColRight>
         <ImageContainer>
-          <img src="/png/mv-illustration.png" alt="" width={569} height={661} />
+          <Image src={mvIllustration} alt="" width={569} height={661} />
         </ImageContainer>
       </ColRight>
     </Container>

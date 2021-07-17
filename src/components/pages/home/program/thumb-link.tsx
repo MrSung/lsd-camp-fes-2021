@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
@@ -7,7 +8,7 @@ import { ExternalLink } from '@/components/parts'
 interface IThumbLinkProps {
   href: string
   labelNo: VenueKey
-  src: string
+  src: StaticImageData
   alt: string
   width: number
   height: number
@@ -29,7 +30,7 @@ export const ThumbLink = ({
     <ExternalLink href={href} display="block" isChangeOpacityOnHover>
       <Label labelNo={labelNo}>{venue[labelNo].text}</Label>
       <ThumbContainer width={width} height={height}>
-        <img src={src} alt="" />
+        <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
       <Title>{title}</Title>
       <Host>{host}</Host>
