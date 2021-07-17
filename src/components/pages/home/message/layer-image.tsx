@@ -1,10 +1,9 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
 
 interface ILayerImageProps {
-  src: StaticImageData
+  src: string
   alt: string
   width: number
   height: number
@@ -23,7 +22,7 @@ export const LayerImage = ({
   <Wrapper layerPosition={layerPosition}>
     <Container width={width} height={height}>
       <BackgroundLayer layerPosition={layerPosition} layerColor={layerColor} />
-      <Image src={src} alt={alt} />
+      <Img src={src} alt={alt} />
     </Container>
   </Wrapper>
 )
@@ -116,4 +115,8 @@ const BackgroundLayer = styled.div<IBackgroundLayer>`
         `
     }
   }}
+`
+
+const Img = styled.img`
+  position: relative;
 `

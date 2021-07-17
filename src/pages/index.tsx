@@ -17,7 +17,7 @@ export interface IProgramContent {
   startDate: string
   endDate: string
   thumbnail: {
-    url: unknown
+    url: string
     height: number
     width: number
   }

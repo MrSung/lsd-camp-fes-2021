@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled, { css } from 'styled-components'
 import {
   motion as Motion,
@@ -6,10 +5,6 @@ import {
   Transition,
 } from 'framer-motion'
 
-import boyIllust from '@/images/boy-illustration.png'
-import boyIllustBg from '@/images/boy-illustration-bg.png'
-import girlIllust from '@/images/girl-illustration.png'
-import girlIllustBg from '@/images/girl-illustration-bg.png'
 import {
   Style,
   sectionStyle,
@@ -78,18 +73,38 @@ export const About = ({ sectionId }: IAboutProps) => (
       </Lead>
       <ImageContainerLeft>
         <IllustrationBg>
-          <Image src={boyIllustBg} alt="" width={370} height={586} />
+          <img
+            src="/png/boy-illustration-bg.png"
+            alt=""
+            width={370}
+            height={586}
+          />
         </IllustrationBg>
         <IllustrationMain>
-          <Image src={boyIllust} alt="" width={370} height={586} />
+          <img
+            src="/png/boy-illustration.png"
+            alt=""
+            width={370}
+            height={586}
+          />
         </IllustrationMain>
       </ImageContainerLeft>
       <ImageContainerRight>
         <IllustrationBg>
-          <Image src={girlIllustBg} alt="" width={370} height={586} />
+          <img
+            src="/png/girl-illustration-bg.png"
+            alt=""
+            width={370}
+            height={586}
+          />
         </IllustrationBg>
         <IllustrationMain>
-          <Image src={girlIllust} alt="" width={370} height={586} />
+          <img
+            src="/png/girl-illustration.png"
+            alt=""
+            width={370}
+            height={586}
+          />
         </IllustrationMain>
       </ImageContainerRight>
       <Paragraph>

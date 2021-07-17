@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled, { css } from 'styled-components'
 import {
   motion as Motion,
@@ -6,11 +5,6 @@ import {
   Transition,
 } from 'framer-motion'
 
-import keity from '@/images/keity.jpg'
-import flower from '@/images/flower.jpg'
-import bulb from '@/images/bulb.svg'
-import sparkle from '@/images/sparkle.svg'
-import waves from '@/images/waves.svg'
 import {
   Style,
   sectionStyle,
@@ -73,7 +67,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       </Lead>
       <ImageContainerFirst>
         <LayerImage
-          src={keity}
+          src="/png/keity.jpg"
           alt="ケイティ"
           width={450}
           height={600}
@@ -81,10 +75,10 @@ export const Message = ({ sectionId }: IMessageProps) => (
           layerColor={Style.COLOR.MANGO_TANGO}
         />
         <Illustration className={styles.illustrationBulb}>
-          <Image src={bulb} alt="" width={108} height={70} />
+          <img src="/svg/bulb.svg" alt="" width={108} height={70} />
         </Illustration>
         <Illustration className={styles.illustrationSparkle}>
-          <Image src={sparkle} alt="" width={104} height={160} />
+          <img src="/svg/sparkle.svg" alt="" width={104} height={160} />
         </Illustration>
       </ImageContainerFirst>
       <ParagraphFirst>
@@ -92,7 +86,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
       </ParagraphFirst>
       <ImageContainerSecond>
         <LayerImage
-          src={flower}
+          src="/jpg/flower.jpg"
           alt="お花"
           width={600}
           height={450}
@@ -100,7 +94,7 @@ export const Message = ({ sectionId }: IMessageProps) => (
           layerColor={Style.COLOR.STRAW}
         />
         <Illustration className={styles.illustrationPetal}>
-          <Image src={waves} alt="" width={105} height={59} />
+          <img src="/svg/waves.svg" alt="" width={105} height={59} />
         </Illustration>
       </ImageContainerSecond>
       <ParagraphSecond>

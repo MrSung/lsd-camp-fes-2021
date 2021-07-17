@@ -12,6 +12,7 @@
     "dev": "next -p 1530",
     "build": "next build",
     "build:no-cache": "run-s clean build",
+    "export": "next build && next export",
     "start": "next start",
     "tsc": "tsc",
     "fix": "eslint --fix --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",

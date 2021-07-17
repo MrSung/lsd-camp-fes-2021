@@ -15,7 +15,15 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "plugins": ["node", "import", "promise", "jsx-a11y", "react", "react-hooks", "prettier"],
+  "plugins": [
+    "node",
+    "import",
+    "promise",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
   "extends": [
     "eslint-config-standard-with-typescript",
     "prettier",
@@ -71,7 +79,8 @@
           {
             "avoidEscape": true
           }
-        ]
+        ],
+        "@next/next/no-img-element": "off"
       }
     }
   ],
