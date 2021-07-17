@@ -72,7 +72,7 @@ const Wrapper = styled.a<IWrapperProps>`
     isChangeOpacityOnHover === true &&
     `
       &:hover > * {
-        opacity: 0.8;
+        opacity: 0.9;
       }
   `}
 `
