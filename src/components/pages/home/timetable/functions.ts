@@ -76,9 +76,7 @@ export const timeRangeReducer = (contents: IProgramContent[]) => {
 
   const startHour = format(startTime, `HH`)
   const [endHour, endMinutes] = format(endTime, `HH:mm`).split(`:`)
-
-  const parsedAddedHour = addHours(endTime, 1)
-  const addedHour = format(parsedAddedHour, `HH`)
+  const addedHour = format(addHours(endTime, 1), `HH`)
 
   return {
     startTime: `${startHour}:00`,

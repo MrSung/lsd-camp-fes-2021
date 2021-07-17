@@ -6,6 +6,27 @@ import { VenueKey, venue } from '@/contents/venue'
 import { IProgramContent } from '@/pages'
 import { ExternalLink } from '@/components/parts'
 
+const hhmmQuarterMinReducer = (hhColonMm: string) => {
+  const [hh, mm] = hhColonMm.split(`:`)
+
+  switch (mm) {
+    case `55`:
+    case `05`:
+      return `${hh}:00`
+    case `10`:
+    case `20`:
+      return `${hh}:15`
+    case `25`:
+    case `35`:
+      return `${hh}:30`
+    case `40`:
+    case `50`:
+      return `${hh}:45`
+    default:
+      throw new Error(`hhmmQuarterMinReducer ~ default case error`)
+  }
+}
+
 export const ProgramContents = (
   contents: IProgramContent[],
   timeRange: string[],
@@ -29,9 +50,14 @@ export const ProgramContents = (
       const jstEndDate = new Date(o.endDate)
       const startTime = format(jstStartDate, `HH:mm`)
       const endTime = format(jstEndDate, `HH:mm`)
-      const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2
-      const gridSpan =
-        differenceInMinutes(jstEndDate, jstStartDate) / (60 * 0.25)
+      const startTimeIndex =
+        timeRange.findIndex((t) => t === startTime) !== -1
+          ? timeRange.findIndex((t) => t === startTime)
+          : timeRange.findIndex((t) => t === hhmmQuarterMinReducer(startTime))
+      const startTimeGridIndex = startTimeIndex + 2
+      const gridSpan = Math.ceil(
+        differenceInMinutes(jstEndDate, jstStartDate) / (60 * 0.25),
+      )
 
       return (
         <Content
