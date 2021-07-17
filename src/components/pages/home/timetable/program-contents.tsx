@@ -83,7 +83,7 @@ export const Content = ({
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>
           <Title>{title}</Title>
-          <Host>by {host}</Host>
+          <Host>{host}</Host>
         </Dd>
       </Dl>
     </ExternalLink>

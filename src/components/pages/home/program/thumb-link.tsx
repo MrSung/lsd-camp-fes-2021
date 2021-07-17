@@ -33,7 +33,7 @@ export const ThumbLink = ({
         <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
       <Title>{title}</Title>
-      <Host>by {host}</Host>
+      <Host>{host}</Host>
     </ExternalLink>
   </Wrapper>
 )
