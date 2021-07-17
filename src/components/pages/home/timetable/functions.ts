@@ -1,4 +1,4 @@
-import { format, isBefore, isAfter, addHours } from 'date-fns'
+import { parse, format, isBefore, isAfter, addHours } from 'date-fns'
 
 import { IProgramContent } from '@/pages'
 
@@ -10,10 +10,10 @@ export const programDateReducer = (contents: IProgramContent[]) => {
       const eventDate = cur.eventDate[0]
 
       switch (true) {
-        case eventDate === `7/31`: // 前夜祭
+        case eventDate === `07/31`: // 前夜祭
           acc[0].push(cur)
           break
-        case eventDate === `8/1`: // 当日
+        case eventDate === `08/01`: // 当日
           acc[1].push(cur)
           break
         default:
@@ -55,20 +55,20 @@ export const programVenueReducer = (contents: IProgramContent[]) => {
 
 export const timeRangeReducer = (contents: IProgramContent[]) => {
   const startTime = contents.reduce((acc, cur, i) => {
-    const jstStartDate = new Date(cur.startDate)
+    const st = parse(cur.startTime, `HH:mm`, new Date())
 
-    if (i === 0 || isBefore(jstStartDate, acc)) {
-      acc = jstStartDate
+    if (i === 0 || isBefore(st, acc)) {
+      acc = st
     }
 
     return acc
   }, new Date())
 
   const endTime = contents.reduce((acc, cur, i) => {
-    const jstEndDate = new Date(cur.endDate)
+    const et = parse(cur.endTime, `HH:mm`, new Date())
 
-    if (i === 0 || isAfter(jstEndDate, acc)) {
-      acc = jstEndDate
+    if (i === 0 || isAfter(et, acc)) {
+      acc = et
     }
 
     return acc

@@ -1,4 +1,4 @@
-import { format, differenceInMinutes, isBefore, isAfter } from 'date-fns'
+import { parse, format, differenceInMinutes, isBefore, isAfter } from 'date-fns'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
@@ -34,30 +34,28 @@ export const ProgramContents = (
 ) =>
   contents
     .sort((a, b) => {
-      const aJstStartDate = new Date(a.startDate)
-      const bJstStartDate = new Date(b.startDate)
+      const ast = parse(a.startTime, `HH:mm`, new Date())
+      const bst = parse(b.startTime, `HH:mm`, new Date())
 
-      if (isBefore(aJstStartDate, bJstStartDate)) {
+      if (isBefore(ast, bst)) {
         return -1
       }
-      if (isAfter(aJstStartDate, bJstStartDate)) {
+      if (isAfter(ast, bst)) {
         return 1
       }
       return 0
     })
     .map((o) => {
-      const jstStartDate = new Date(o.startDate)
-      const jstEndDate = new Date(o.endDate)
-      const startTime = format(jstStartDate, `HH:mm`)
-      const endTime = format(jstEndDate, `HH:mm`)
+      const st = parse(o.startTime, `HH:mm`, new Date())
+      const et = parse(o.endTime, `HH:mm`, new Date())
+      const startTime = format(parse(o.startTime, `HH:mm`, new Date()), `HH:mm`)
+      const endTime = format(parse(o.endTime, `HH:mm`, new Date()), `HH:mm`)
       const startTimeIndex =
         timeRange.findIndex((t) => t === startTime) !== -1
           ? timeRange.findIndex((t) => t === startTime)
           : timeRange.findIndex((t) => t === hhmmQuarterMinReducer(startTime))
       const startTimeGridIndex = startTimeIndex + 2
-      const gridSpan = Math.ceil(
-        differenceInMinutes(jstEndDate, jstStartDate) / (60 * 0.25),
-      )
+      const gridSpan = Math.ceil(differenceInMinutes(et, st) / (60 * 0.25))
 
       return (
         <Content
