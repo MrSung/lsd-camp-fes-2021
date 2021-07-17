@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import { utcToZonedTime } from 'date-fns-tz'
 
 import { Home } from '@/components/pages/home'
 import { fetcher } from '@/utils/http-client'
@@ -47,7 +48,16 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       pageData: {
-        programData,
+        programData: {
+          ...programData,
+          contents: programData.contents.map((c) => ({
+            ...c,
+            startDate: String(
+              utcToZonedTime(new Date(c.startDate), `Asia/Tokyo`),
+            ),
+            endDate: String(utcToZonedTime(new Date(c.endDate), `Asia/Tokyo`)),
+          })),
+        },
       },
     },
   }

@@ -1,5 +1,4 @@
 import { format, differenceInMinutes, isBefore, isAfter } from 'date-fns'
-import { utcToZonedTime } from 'date-fns-tz'
 import styled from 'styled-components'
 
 import { Style } from '@/styles'
@@ -14,10 +13,8 @@ export const ProgramContents = (
 ) =>
   contents
     .sort((a, b) => {
-      const aUtcStartDate = new Date(a.startDate)
-      const aJstStartDate = utcToZonedTime(aUtcStartDate, `Asia/Tokyo`)
-      const bUtcStartDate = new Date(b.startDate)
-      const bJstStartDate = utcToZonedTime(bUtcStartDate, `Asia/Tokyo`)
+      const aJstStartDate = new Date(a.startDate)
+      const bJstStartDate = new Date(b.startDate)
 
       if (isBefore(aJstStartDate, bJstStartDate)) {
         return -1
@@ -28,10 +25,8 @@ export const ProgramContents = (
       return 0
     })
     .map((o) => {
-      const utcStartDate = new Date(o.startDate)
-      const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
-      const utcEndDate = new Date(o.endDate)
-      const jstEndDate = utcToZonedTime(utcEndDate, `Asia/Tokyo`)
+      const jstStartDate = new Date(o.startDate)
+      const jstEndDate = new Date(o.endDate)
       const startTime = format(jstStartDate, `HH:mm`)
       const endTime = format(jstEndDate, `HH:mm`)
       const startTimeGridIndex = timeRange.findIndex((t) => t === startTime) + 2

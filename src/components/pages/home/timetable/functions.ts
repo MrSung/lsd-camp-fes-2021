@@ -1,5 +1,4 @@
 import { format, isBefore, isAfter, addHours } from 'date-fns'
-import { utcToZonedTime } from 'date-fns-tz'
 
 import { IProgramContent } from '@/pages'
 
@@ -8,8 +7,7 @@ export const programDateReducer = (contents: IProgramContent[]) => {
     [IProgramContent[], IProgramContent[]]
   >(
     (acc, cur) => {
-      const utcStartDate = new Date(cur.startDate)
-      const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
+      const jstStartDate = new Date(cur.startDate)
 
       switch (true) {
         case format(jstStartDate, `yyyy-MM-dd`) === `2021-07-31`:
@@ -57,8 +55,7 @@ export const programVenueReducer = (contents: IProgramContent[]) => {
 
 export const timeRangeReducer = (contents: IProgramContent[]) => {
   const startTime = contents.reduce((acc, cur, i) => {
-    const utcStartDate = new Date(cur.startDate)
-    const jstStartDate = utcToZonedTime(utcStartDate, `Asia/Tokyo`)
+    const jstStartDate = new Date(cur.startDate)
 
     if (i === 0 || isBefore(jstStartDate, acc)) {
       acc = jstStartDate
@@ -68,8 +65,7 @@ export const timeRangeReducer = (contents: IProgramContent[]) => {
   }, new Date())
 
   const endTime = contents.reduce((acc, cur, i) => {
-    const utcEndDate = new Date(cur.endDate)
-    const jstEndDate = utcToZonedTime(utcEndDate, `Asia/Tokyo`)
+    const jstEndDate = new Date(cur.endDate)
 
     if (i === 0 || isAfter(jstEndDate, acc)) {
       acc = jstEndDate
