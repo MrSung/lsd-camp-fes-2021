@@ -1,6 +1,6 @@
 import { Style } from '@/styles'
 
-export type VenueKey = '1' | '2' | '3'
+export type VenueKey = '1' | '2' | '3' | '4'
 
 type VenueType = {
   [key in VenueKey]: {
@@ -21,5 +21,9 @@ export const venue: VenueType = {
   '3': {
     text: `会場C`,
     color: Style.COLOR.ORCHID_CRAYOLA,
+  },
+  '4': {
+    text: `会場D`,
+    color: Style.COLOR.ELECTRIC_BLUE,
   },
 }

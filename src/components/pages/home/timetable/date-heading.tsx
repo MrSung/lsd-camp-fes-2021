@@ -22,8 +22,8 @@ const Wrapper = styled.h3`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
-    padding-right: ${Style.SIZE.TIMETABLE_COL_RIGHT_WIDTH - 2}px;
-    padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH - 2}px;
+    padding-right: 0;
+    padding-left: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH}px;
     font-size: 36px;
     line-height: ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
   }
@@ -32,7 +32,5 @@ const Wrapper = styled.h3`
 const Inner = styled.span`
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: block;
-    border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
-    border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
 `

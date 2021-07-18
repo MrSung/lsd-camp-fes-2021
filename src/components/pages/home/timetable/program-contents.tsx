@@ -67,6 +67,7 @@ export const ProgramContents = (
           title={o.title}
           host={o.host}
           gridRow={`${startTimeGridIndex} / span ${gridSpan}`}
+          gridSpan={gridSpan}
         />
       )
     })
@@ -79,6 +80,7 @@ interface IContentProps {
   title: string
   host: string
   gridRow: string
+  gridSpan: number
 }
 
 export const Content = ({
@@ -89,6 +91,7 @@ export const Content = ({
   title,
   host,
   gridRow,
+  gridSpan,
 }: IContentProps) => (
   <Wrapper gridRow={gridRow}>
     <ExternalLink
@@ -101,8 +104,8 @@ export const Content = ({
       <Dl>
         <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
         <Dd>
-          <Title>{title}</Title>
-          <Host>{host}</Host>
+          <Title gridSpan={gridSpan}>{title}</Title>
+          {gridSpan >= 2 && <Host>{host}</Host>}
         </Dd>
       </Dl>
     </ExternalLink>
@@ -118,7 +121,7 @@ const Wrapper = styled.div<IWrapperProps>`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-row: ${({ gridRow }) => gridRow};
-    padding: 0 24px;
+    padding: 0 24px 0 0;
   }
 `
 
@@ -148,15 +151,30 @@ const Dd = styled.dd`
   background-color: ${Style.COLOR.WHITE};
 `
 
-const Title = styled.h4`
-  margin-bottom: 6px;
+interface ITitleProps {
+  gridSpan: IContentProps['gridSpan']
+}
+
+const Title = styled.h4<ITitleProps>`
   font-weight: 400;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     font-size: 18px;
   }
+
+  ${({ gridSpan }) =>
+    gridSpan <= 2 &&
+    `
+    @media (min-width: ${Style.BREAKPOINT.MD}px) {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  `}
 `
 
 const Host = styled.p`
+  margin-top: 6px;
   color: ${Style.COLOR.SPANISH_GRAY};
 `

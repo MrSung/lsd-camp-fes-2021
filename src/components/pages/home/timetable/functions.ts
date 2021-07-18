@@ -29,7 +29,7 @@ export const programDateReducer = (contents: IProgramContent[]) => {
 
 export const programVenueReducer = (contents: IProgramContent[]) => {
   const programVenueReduced = contents.reduce<
-    [IProgramContent[], IProgramContent[], IProgramContent[]]
+    [IProgramContent[], IProgramContent[], IProgramContent[], IProgramContent[]]
   >(
     (acc, cur) => {
       switch (cur.venue[0]) {
@@ -42,12 +42,15 @@ export const programVenueReducer = (contents: IProgramContent[]) => {
         case `3`:
           acc[2].push(cur)
           break
+        case `4`:
+          acc[3].push(cur)
+          break
         default:
           throw new Error(`programVenueReducer ~ default case error`)
       }
       return acc
     },
-    [[], [], []],
+    [[], [], [], []],
   )
 
   return programVenueReduced

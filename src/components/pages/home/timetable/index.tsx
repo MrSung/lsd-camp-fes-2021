@@ -23,10 +23,18 @@ export const Timetable = ({
   programData: { contents },
 }: ITimetableProps) => {
   const [prevDateContents, mainDateContents] = programDateReducer(contents)
-  const [prevDateFirstContents, prevDateSecondContents, prevDateThirdContents] =
-    programVenueReducer(prevDateContents)
-  const [mainDateFirstContents, mainDateSecondContents, mainDateThirdContents] =
-    programVenueReducer(mainDateContents)
+  const [
+    prevDateFirstContents,
+    prevDateSecondContents,
+    prevDateThirdContents,
+    prevDateFourthContents,
+  ] = programVenueReducer(prevDateContents)
+  const [
+    mainDateFirstContents,
+    mainDateSecondContents,
+    mainDateThirdContents,
+    mainDateFourthContents,
+  ] = programVenueReducer(mainDateContents)
   const { startTime: prevDateStartTime, endTime: prevDateEndTime } =
     timeRangeReducer(prevDateContents)
   const { startTime: mainDateStartTime, endTime: mainDateEndTime } =
@@ -89,7 +97,14 @@ export const Timetable = ({
                 `3`,
               )}
             </VenueColThird>
-            <Spacers />
+            <VenueColFourth>
+              <VenueLabel labelNo="4" />
+              {ProgramContents(
+                prevDateFourthContents,
+                prevDateQuarterHourTimeRange,
+                `4`,
+              )}
+            </VenueColFourth>
           </Inner>
         </Article>
 
@@ -125,7 +140,14 @@ export const Timetable = ({
                 `3`,
               )}
             </VenueColThird>
-            <Spacers />
+            <VenueColFourth>
+              <VenueLabel labelNo="4" />
+              {ProgramContents(
+                mainDateFourthContents,
+                mainDateQuarterHourTimeRange,
+                `4`,
+              )}
+            </VenueColFourth>
           </Inner>
         </Article>
       </Container>
@@ -176,8 +198,7 @@ const Article = styled.article`
 const Inner = styled.div`
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     display: grid;
-    grid-template-columns: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH}px 1fr 1fr 1fr ${Style
-        .SIZE.TIMETABLE_COL_RIGHT_WIDTH}px;
+    grid-template-columns: ${Style.SIZE.TIMETABLE_COL_LEFT_WIDTH}px 1fr 1fr 1fr 1fr;
   }
 `
 
@@ -211,7 +232,6 @@ const TimesContainer = styled.div`
     display: flex;
     grid-column: 1 / 2;
     flex-direction: column;
-    border-right: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
 `
 
@@ -244,7 +264,6 @@ const VenueColFirst = styled.div`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 2 / 3;
-    margin-right: -24px;
   }
 `
 
@@ -253,7 +272,6 @@ const VenueColSecond = styled.div`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-column: 3 / 4;
-    margin-right: -24px;
   }
 `
 
@@ -265,16 +283,10 @@ const VenueColThird = styled.div`
   }
 `
 
-const Spacers = styled.span`
-  display: none;
+const VenueColFourth = styled.div`
+  ${venueColStyle}
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    ${repeatingStripe}
-    ${repeatingStripeHeader}
-
-    display: flex;
     grid-column: 5 / 6;
-    flex-direction: column;
-    border-left: 2px solid ${Style.COLOR.POWDER_BLUE};
   }
 `
