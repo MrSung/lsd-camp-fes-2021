@@ -27,6 +27,7 @@ export const Program = ({
           alt=""
           width={270}
           height={270}
+          time={`${c.eventDate[0]} ${c.startTime}〜${c.endTime}`}
           title={c.title}
           host={c.host}
         />

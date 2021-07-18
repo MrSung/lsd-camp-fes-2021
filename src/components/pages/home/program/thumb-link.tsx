@@ -12,6 +12,7 @@ interface IThumbLinkProps {
   alt: string
   width: number
   height: number
+  time: string
   title: string
   host: string
 }
@@ -23,6 +24,7 @@ export const ThumbLink = ({
   alt,
   width,
   height,
+  time,
   title,
   host,
 }: IThumbLinkProps) => (
@@ -32,8 +34,11 @@ export const ThumbLink = ({
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
-      <Title>{title}</Title>
-      <Host>{host}</Host>
+      <TextContainer>
+        <Title>{title}</Title>
+        <Time>{time}</Time>
+        <Host>{host}</Host>
+      </TextContainer>
     </ExternalLink>
   </Wrapper>
 )
@@ -92,16 +97,24 @@ const ThumbContainer = styled.div<IThumbContainerProps>`
   }
 `
 
+const TextContainer = styled.div`
+  margin-top: 10px;
+`
+
 const Title = styled.p`
-  margin-top: 16px;
+  margin-top: 10px;
   margin-bottom: 6px;
   line-height: 1.5;
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
-    margin-top: 20px;
     font-size: 18px;
     line-height: 1.6;
   }
+`
+
+const Time = styled.p`
+  margin-bottom: 4px;
+  color: ${Style.COLOR.RAISIN_GRAY};
 `
 
 const Host = styled.p`
