@@ -144,6 +144,7 @@ const Section = styled.section`
 
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     margin-top: 136px;
+    margin-bottom: 0;
   }
 `
 
