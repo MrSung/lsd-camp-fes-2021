@@ -9,7 +9,7 @@ interface IExternalLinkProps {
   fillColor?: string
   color?: string
   hoverColor?: string
-  isHeightFull?: boolean
+  isProgramContents?: boolean
   isChangeOpacityOnHover?: boolean
 }
 
@@ -20,7 +20,7 @@ export const ExternalLink = ({
   fillColor,
   color,
   hoverColor,
-  isHeightFull,
+  isProgramContents,
   isChangeOpacityOnHover,
 }: IExternalLinkProps) => (
   <Wrapper
@@ -31,7 +31,7 @@ export const ExternalLink = ({
     fillColor={fillColor}
     color={color}
     hoverColor={hoverColor}
-    isHeightFull={isHeightFull}
+    isProgramContents={isProgramContents}
     isChangeOpacityOnHover={isChangeOpacityOnHover}
   >
     {children}
@@ -43,7 +43,7 @@ interface IWrapperProps {
   fillColor: IExternalLinkProps['fillColor']
   color: IExternalLinkProps['color']
   hoverColor: IExternalLinkProps['hoverColor']
-  isHeightFull: IExternalLinkProps['isHeightFull']
+  isProgramContents: IExternalLinkProps['isProgramContents']
   isChangeOpacityOnHover: IExternalLinkProps['isChangeOpacityOnHover']
 }
 
@@ -60,11 +60,12 @@ const Wrapper = styled.a<IWrapperProps>`
       }
   `}
 
-  ${({ isHeightFull }) =>
-    isHeightFull === true &&
+  ${({ isProgramContents }) =>
+    isProgramContents === true &&
     `
       @media (min-width: ${Style.BREAKPOINT.MD}px) {
         height: 100%;
+        min-height: 104px;
       }
   `}
 

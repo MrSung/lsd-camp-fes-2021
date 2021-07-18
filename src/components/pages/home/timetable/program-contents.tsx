@@ -98,7 +98,7 @@ export const Content = ({
       href={href}
       display="block"
       fillColor={Style.COLOR.WHITE}
-      isHeightFull
+      isProgramContents
       isChangeOpacityOnHover
     >
       <Dl>
@@ -128,6 +128,7 @@ const Wrapper = styled.div<IWrapperProps>`
 const Dl = styled.dl`
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     height: 100%;
+    min-height: 104px;
   }
 `
 
