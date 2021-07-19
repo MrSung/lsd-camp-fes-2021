@@ -48,7 +48,7 @@ export const ThumbLink = ({
   <Wrapper width={width}>
     <ExternalLink href={href} display="block" isChangeOpacityOnHover>
       <Label>
-        <VenueLabel labelNo={labelNo}>{venue[labelNo].text}</VenueLabel>
+        <VenueLabel labelNo={labelNo}>&ensp;</VenueLabel>
         <TimeLabel>{zeroStrippedMonthDateFactory(time)}</TimeLabel>
       </Label>
       <ThumbContainer width={width} height={height}>
@@ -147,11 +147,6 @@ const Title = styled.p`
     font-size: 18px;
     line-height: 1.6;
   }
-`
-
-const Time = styled.p`
-  margin-bottom: 4px;
-  color: ${Style.COLOR.RAISIN_GRAY};
 `
 
 const Host = styled.p`
