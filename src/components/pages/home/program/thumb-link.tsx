@@ -8,12 +8,18 @@ import { ExternalLink } from '@/components/parts'
 const zeroStrippedMonthDateFactory = (time: string) => {
   const [monthDay, timeRange] = time.split(` `)
   const [month, day] = monthDay.split(`/`)
+  const [startTime, endTime] = timeRange.split(`〜`)
+  const [hh1, mm1] = startTime.split(`:`)
+  const [hh2, mm2] = endTime.split(`:`)
+
   const stripZero = (twoDigitNumber: string) =>
-    twoDigitNumber.startsWith(`0`)
+    twoDigitNumber !== `00` && twoDigitNumber.startsWith(`0`)
       ? Array.from(twoDigitNumber).slice(-1).join(``)
       : twoDigitNumber
 
-  return `${stripZero(month)}/${stripZero(day)} ${timeRange}`
+  return `${stripZero(month)}/${stripZero(day)} ${stripZero(hh1)}:${stripZero(
+    mm1,
+  )}〜${stripZero(hh2)}:${stripZero(mm2)}`
 }
 
 interface IThumbLinkProps {
