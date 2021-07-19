@@ -16,6 +16,7 @@ export const SIZE = {
 
 export const COLOR = {
   WHITE: `#fff`,
+  PLATINUM: `#e7e7e7`,
   WHITISH_GRAY: `#ccc`,
   RAISIN_BLACK: `#1e1e24`,
   RAISIN_GRAY: `rgba(30, 30, 36, 0.7)`,

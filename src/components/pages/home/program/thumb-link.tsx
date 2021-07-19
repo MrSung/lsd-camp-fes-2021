@@ -1,9 +1,20 @@
 import Image from 'next/image'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Style } from '@/styles'
 import { VenueKey, venue } from '@/contents/venue'
 import { ExternalLink } from '@/components/parts'
+
+const zeroStrippedMonthDateFactory = (time: string) => {
+  const [monthDay, timeRange] = time.split(` `)
+  const [month, day] = monthDay.split(`/`)
+  const stripZero = (twoDigitNumber: string) =>
+    twoDigitNumber.startsWith(`0`)
+      ? Array.from(twoDigitNumber).slice(-1).join(``)
+      : twoDigitNumber
+
+  return `${stripZero(month)}/${stripZero(day)} ${timeRange}`
+}
 
 interface IThumbLinkProps {
   href: string
@@ -30,13 +41,15 @@ export const ThumbLink = ({
 }: IThumbLinkProps) => (
   <Wrapper width={width}>
     <ExternalLink href={href} display="block" isChangeOpacityOnHover>
-      <Label labelNo={labelNo}>{venue[labelNo].text}</Label>
+      <Label>
+        <VenueLabel labelNo={labelNo}>{venue[labelNo].text}</VenueLabel>
+        <TimeLabel>{zeroStrippedMonthDateFactory(time)}</TimeLabel>
+      </Label>
       <ThumbContainer width={width} height={height}>
         <Image src={src} alt={alt} layout="fill" />
       </ThumbContainer>
       <TextContainer>
         <Title>{title}</Title>
-        <Time>{time}</Time>
         <Host>{host}</Host>
       </TextContainer>
     </ExternalLink>
@@ -61,20 +74,38 @@ const Wrapper = styled.div<IWrapperProps>`
   }
 `
 
-interface ILabelProps {
-  labelNo: IThumbLinkProps['labelNo']
-}
-
-const Label = styled.span<ILabelProps>`
-  display: inline-block;
+const Label = styled.div`
   position: relative;
   z-index: ${Style.Z_INDEX_1};
   bottom: -18px;
+  left: 16px;
+  width: calc(100% - 16px);
   height: 36px;
-  margin-left: 16px;
-  padding: 1px 12px 0;
-  background-color: ${({ labelNo }) => venue[labelNo].color};
   line-height: 36px;
+`
+
+const labelItemStyle = css`
+  display: inline-block;
+  padding: 1px 12px 0;
+  border: 1px solid ${Style.COLOR.PLATINUM};
+`
+
+interface IVenueLabelProps {
+  labelNo: IThumbLinkProps['labelNo']
+}
+
+const VenueLabel = styled.span<IVenueLabelProps>`
+  ${labelItemStyle}
+
+  border-right: none;
+  background-color: ${({ labelNo }) => venue[labelNo].color};
+`
+
+const TimeLabel = styled.span`
+  ${labelItemStyle}
+
+  border-left: none;
+  background-color: ${Style.COLOR.WHITE};
 `
 
 interface IThumbContainerProps {
