@@ -33,6 +33,9 @@ export const ExternalLink = ({
     hoverColor={hoverColor}
     isProgramContents={isProgramContents}
     isChangeOpacityOnHover={isChangeOpacityOnHover}
+    onClick={(ev) => {
+      href === `#` && ev.preventDefault()
+    }}
   >
     {children}
   </Wrapper>
