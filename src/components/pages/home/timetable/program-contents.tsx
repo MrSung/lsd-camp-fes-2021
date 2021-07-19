@@ -55,7 +55,7 @@ export const ProgramContents = (
           ? timeRange.findIndex((t) => t === startTime)
           : timeRange.findIndex((t) => t === hhmmQuarterMinReducer(startTime))
       const startTimeGridIndex = startTimeIndex + 2
-      const gridSpan = Math.ceil(differenceInMinutes(et, st) / (60 * 0.25))
+      const gridSpan = Math.round(differenceInMinutes(et, st) / (60 * 0.25))
 
       return (
         <Content
