@@ -213,16 +213,6 @@ const repeatingStripe = css`
     ${Style.COLOR.GREEN_SHEEN} ${Style.SIZE.TIMETABLE_CONTENT_HEIGHT * 2}px
   );
   background-position: 0 ${Style.SIZE.TIMETABLE_HEADER_HEIGHT}px;
-
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${Style.COLOR.GREEN_SHEEN};
-  }
 `
 
 const repeatingStripeHeader = css`
