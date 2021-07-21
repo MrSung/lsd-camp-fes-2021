@@ -11,19 +11,19 @@ type VenueType = {
 
 export const venue: VenueType = {
   '1': {
-    text: `会場A`,
+    text: `みんなの広場`,
     color: Style.COLOR.MANGO_TANGO,
   },
   '2': {
-    text: `会場B`,
+    text: `Camper's Market A`,
     color: Style.COLOR.STRAW,
   },
   '3': {
-    text: `会場C`,
+    text: `Camper's Market B`,
     color: Style.COLOR.ORCHID_CRAYOLA,
   },
   '4': {
-    text: `会場D`,
+    text: `Camper's Market C`,
     color: Style.COLOR.ELECTRIC_BLUE,
   },
 }
