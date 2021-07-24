@@ -15,15 +15,15 @@ export const venue: VenueType = {
     color: Style.COLOR.MANGO_TANGO,
   },
   '2': {
-    text: `Camper's Market A`,
+    text: `ひだまりキャンプ`,
     color: Style.COLOR.STRAW,
   },
   '3': {
-    text: `Camper's Market B`,
+    text: `わくわくキャンプ`,
     color: Style.COLOR.ORCHID_CRAYOLA,
   },
   '4': {
-    text: `Camper's Market C`,
+    text: `あおぞらキャンプ`,
     color: Style.COLOR.ELECTRIC_BLUE,
   },
 }
