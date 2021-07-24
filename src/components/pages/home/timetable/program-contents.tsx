@@ -92,25 +92,30 @@ export const Content = ({
   host,
   gridRow,
   gridSpan,
-}: IContentProps) => (
-  <Wrapper gridRow={gridRow}>
-    <ExternalLink
-      href={href}
-      display="block"
-      fillColor={Style.COLOR.WHITE}
-      isProgramContents
-      isChangeOpacityOnHover
-    >
-      <Dl>
-        <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
-        <Dd>
-          <Title gridSpan={gridSpan}>{title}</Title>
-          {gridSpan >= 2 && <Host>{host}</Host>}
-        </Dd>
-      </Dl>
-    </ExternalLink>
-  </Wrapper>
-)
+}: IContentProps) => {
+  const isTallEnough = gridSpan >= 2
+  const isShort = gridSpan <= 2
+
+  return (
+    <Wrapper gridRow={gridRow}>
+      <ExternalLink
+        href={href}
+        display="block"
+        fillColor={Style.COLOR.WHITE}
+        isProgramContents
+        isChangeOpacityOnHover
+      >
+        <Dl>
+          <Dt labelNo={labelNo}>{`${startTime} 〜 ${endTime}`}</Dt>
+          <Dd isTallEnough={isTallEnough}>
+            <Title isShort={isShort}>{title}</Title>
+            {isTallEnough && <Host>{host}</Host>}
+          </Dd>
+        </Dl>
+      </ExternalLink>
+    </Wrapper>
+  )
+}
 
 interface IWrapperProps {
   gridRow: IContentProps['gridRow']
@@ -122,6 +127,7 @@ const Wrapper = styled.div<IWrapperProps>`
   @media (min-width: ${Style.BREAKPOINT.MD}px) {
     grid-row: ${({ gridRow }) => gridRow};
     padding: 0 24px 0 0;
+    overflow-y: hidden;
   }
 `
 
@@ -147,13 +153,26 @@ const Dt = styled.dt<IDtProps>`
   }
 `
 
-const Dd = styled.dd`
+interface IDdProps {
+  isTallEnough: boolean
+}
+
+const Dd = styled.dd<IDdProps>`
   padding: 16px 16px 14px;
   background-color: ${Style.COLOR.WHITE};
+
+  ${({ isTallEnough }) =>
+    !isTallEnough &&
+    `
+    @media (min-width: ${Style.BREAKPOINT.MD}px) {
+      padding-top: 7px;
+      padding-bottom: 8px;
+    }
+  `}
 `
 
 interface ITitleProps {
-  gridSpan: IContentProps['gridSpan']
+  isShort: boolean
 }
 
 const Title = styled.h4<ITitleProps>`
@@ -163,8 +182,8 @@ const Title = styled.h4<ITitleProps>`
     font-size: 18px;
   }
 
-  ${({ gridSpan }) =>
-    gridSpan <= 2 &&
+  ${({ isShort }) =>
+    isShort &&
     `
     @media (min-width: ${Style.BREAKPOINT.MD}px) {
       display: -webkit-box;
