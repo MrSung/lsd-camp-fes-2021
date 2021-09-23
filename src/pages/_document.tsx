@@ -5,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document'
+import Script from 'next/script'
 import { ServerStyleSheet } from 'styled-components'
 
 import { Style } from '@/styles'
@@ -56,11 +57,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           {/* Global site tag (gtag.js) - Google Analytics */}
-          <script
+          <Script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-RGEKY41LTN"
           />
-          <script>
+          <Script>
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
@@ -68,7 +69,7 @@ export default class MyDocument extends Document {
 
               gtag('config', 'G-RGEKY41LTN');
             `}
-          </script>
+          </Script>
         </Head>
         <body>
           <Main />
