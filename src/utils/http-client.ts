@@ -22,6 +22,6 @@ export const fetcher = async <T>(path: string): Promise<T> => {
 
     return await response.json()
   } catch (error) {
-    throw new Error(error)
+    throw new Error(error as string)
   }
 }
